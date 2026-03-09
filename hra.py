@@ -90,7 +90,7 @@ def calculate_passive_gain_per_second(current_score, level):
     
     Vzorec: (score/100)^0.6 × 0.1 × (1.2^level) × (5^(level//10))
     
-    Aktivace: Spustí se až po dosáhnutí skóru 1000
+    Aktivace: Spustí se až po dosáhnutí skóre 1000
     
     Komponenty výpočtu:
     1. Základní část: (score/100)^0.6 - Pocházení z aktuálního skóre
