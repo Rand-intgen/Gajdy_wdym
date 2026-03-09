@@ -140,13 +140,13 @@ while bezi: # Hlavní cyklus hry
     klavesa = pygame.key.get_pressed() # Zjistí stisknuté klávesy
     dx = 0
     dy = 0
-    if klavesa[pygame.K_LEFT]:
+    if klavesa[pygame.K_a]:
         dx = -rychlost
-    if klavesa[pygame.K_RIGHT]:
+    if klavesa[pygame.K_d]:
         dx = rychlost
-    if klavesa[pygame.K_UP]:
+    if klavesa[pygame.K_w]:
         dy = -rychlost
-    if klavesa[pygame.K_DOWN]:
+    if klavesa[pygame.K_s]:
         dy = rychlost
     # Výpočet a aplikace pasivního gainu s upgrady
     passive_gain_per_second = calculate_passive_gain_per_second(score, passive_gain_level)
@@ -203,8 +203,8 @@ while bezi: # Hlavní cyklus hry
 
     # Zobrazení skóre a počtu čtverců + bodů za zásah + pasivní gain
     passive_gain_display = calculate_passive_gain_per_second(score, passive_gain_level)
-    # Use scientific notation automatically when `eternitynum` is enabled and value >= 1e12
-    sci_threshold = 1e12
+    # Use scientific notation automatically when `eternitynum` is enabled and value >= 1e300
+    sci_threshold = 1e300
     if eternitynum and score >= sci_threshold:
         score_str = f"{score:.2e}"
     else:
