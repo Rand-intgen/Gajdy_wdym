@@ -56,40 +56,70 @@ wall_bonus_level = 0  # Úroveň wall bonus upgradu
 
 def calculate_passive_gain_cost(level):
     """Vypočítá cenu pro nákup passive gain upgradu.
+    
     Exponenciální růst ceny: 10 * 1.5^level
+    - Cena se zvyšuje s každou novou úrovní
+    - Cíl: Kontrolovat inflaci dostatečně vysokými cenami
+    - Př: level 0 = 10 bodů, level 5 = 76 bodů, level 10 = 576 bodů
     """
     return int(10 * (1.5 ** level))
 
 def calculate_wall_bonus_cost(level):
     """Vypočítá cenu pro nákup wall bonus upgradu.
+    
     Exponenciální růst ceny: 5 * 1.4^level
+    - Pomalejší růst než Passive Gain (1.4 vs 1.5)
+    - Více dostupné pro hráče začátečníky
+    - Př: level 0 = 5 bodů, level 10 = 56 bodů, level 20 = 628 bodů
     """
     return int(5 * (1.4 ** level))
 
 def calculate_wall_bonus_damage(level):
     """Vypočítá počet bodů za náraz do stěny s wall bonus upgradem.
-    Level 0-4: +1, +2, +3, +4, +5
-    Každých 5 levelů se vše zdvojnásobí (bez resetu)
+    
+    Vzorec: (1 + level) * 2^(level // 5)
+    - Lineární růst do level 4 (1 až 5 bodů)
+    - Mega-skokový růst každých 5 levelů (zdvojnásobení)
+    - Level 5-9: 6-10 bodů, Level 10-14: 12-20 bodů atd.
+    - Cíl: Poskytnout hráčům dramatické zlepšení po dosažení milníků
     """
     return (1 + level) * (2 ** (level // 5))
 
 def calculate_passive_gain_per_second(current_score, level):
     """Vypočítá pasivní gain za sekundu na základě aktuálního skóre a úrovně upgradu.
-    Exponenciální růst: (score / 100) ^ 1.1 * 0.1 * (1.2 ^ level)
-    Každých 10 levelů se efekt zvýší 5x
-    """
-    if current_score < 100:
-        return 0
-    # Základní gain z score
-    multiplier = (current_score / 100) ** 1.05
-    base_gain = multiplier * 0.1
     
-    # Aplikuj upgrade level
+    Vzorec: (score/100)^0.6 × 0.1 × (1.2^level) × (5^(level//10))
+    
+    Aktivace: Spustí se až po dosáhnutí skóru 1000
+    
+    Komponenty výpočtu:
+    1. Základní část: (score/100)^0.6 - Pocházení z aktuálního skóre
+       - Exponent 0.6 znamená pomalejší růst (sublineární)
+       - Brání příliš rychlému zdvojnásobení příjmu
+    
+    2. Upgrade multiplier: 1.2^level
+       - Každá úroveň zvýší příjem o 20%
+       - Motivuje hráče k nákupům upgradů
+    
+    3. Mega multiplier: 5^(level//10)
+       - Každých 10 levelů se efekt znásobí 5x
+       - Poskytuje dramatické milníky (level 10, 20, 30...)
+    """
+    if current_score < 1000:
+        return 0
+    
+    # Základní gain z aktuálního skóre
+    # Exponent 0.6 zajišťuje, že pasivní příjem je pomalejší než exponenciální
+    multiplier = (current_score / 100) ** 0.6
+    base_gain = multiplier * 0.1  # 0.1 je škálovací faktor
+    
+    # Upgrade level multiplier - lineárně na exponenciální stupnici
     upgrade_multiplier = (1.2 ** level)
     
-    # Každých 10 levelů zvýš efekt 5x
+    # Mega-multiplier - dramatické zvýšení každých 10 levelů
     mega_multiplier = (5 ** (level // 10))
     
+    # Kombinuj všechny faktory
     total_gain = base_gain * upgrade_multiplier * mega_multiplier
     return total_gain
 
@@ -160,30 +190,39 @@ while bezi: # Hlavní cyklus hry
         sq = squares[i]
         prev = prev_colliding[i]
 
-        # Aplikuj pohyb
+        # Aplikuj pohyb na základě stisknutých kláves
         sq['x'] += dx
         sq['y'] += dy
 
-        # Omez pozici na okno (clamp)
+        # Omez pozici na okno (clamp) - zabrání jití čtverce mimo obrazovku
+        # Zajišťuje, že čtverec zůstane v mezích 0 až SIRKA/VYSKA
         sq['x'] = max(0, min(sq['x'], SIRKA - sq['size']))
         sq['y'] = max(0, min(sq['y'], VYSKA - sq['size']))
 
+        # Detekuj kolizi se stěnou
         now_collide = is_colliding_with_wall(sq['x'], sq['y'], sq['size'])
 
-        # Pokud právě došlo k novému nárazu do stěny -> skóre + zničení čtverce
+        # Klíčová logika: Skóre se přičítá POUZE při přechodu z ne-kolize na kolizi
+        # To zabraňuje vícenásobným bodům za jednu kolizi (hrács by mohl zůstat u stěny)
+        # Podmínka: (not prev) and now_collide znamená "právě jsme si kolizi všimli"
         if (not prev) and now_collide:
-            # Základní 1 bod + bonus z wall_bonus upgradu
+            # Přidej body za náraz - základní body + bonus z wall_bonus upgradu
             score += calculate_wall_bonus_damage(wall_bonus_level)
+            # Označ čtverec k odstranění (nový se vytvoří později)
             to_remove.append(i)
 
-        # Aktualizuj prev_colliding pro tento čtverec
+        # Aktualizuj prev_colliding - pamatuj si, zda jsme nyní v kolizi
+        # To je zásadní pro detekci pouze NOVÉ kolize v příštím snímku
         prev_colliding[i] = now_collide
 
-    # Odstraň čtverce, které byly zničeny při nárazu
+    # Odstraň čtverce, které byly zničeny při nárazu do stěny
+    # Máme seznam indexů (to_remove) čtverců, které se mají smazat
     if to_remove:
+        # Vytvořit nové seznamy bez odstraněných čtverců
         new_squares_list = []
         new_prev = []
         for idx, sq in enumerate(squares):
+            # Zkontroluj, zda aktuální index NENÍ v seznamu k odstranění
             if idx not in to_remove:
                 new_squares_list.append(sq)
                 new_prev.append(prev_colliding[idx])
