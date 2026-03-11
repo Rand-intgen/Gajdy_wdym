@@ -1,6 +1,0 @@
-# Ignore everything
-*
-!.gitignore
-
-# But not our game
-!hra.py
