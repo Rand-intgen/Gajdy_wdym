@@ -1,144 +1,74 @@
-# Projekt: Gajdy_wdym - Interaktivní Arcade Hra s Ekonomickým Systémem
+# Arcade Hra s Ekonomickým Systémem
 
-## Cíl Projektu
+## Popis a cíl projektu
 
-Vytvořit plně funkcční a zabavující arcade hru v Pythonu s použitím Pygame, která kombinuje jednoduchou herní mechaniku (pohyb a srážky) s komplexním ekonomickým systémem exponenciálních upgradů. Projekt slouží k demonstraci:
+Cílem projektu je vytvoření hry v Pythonu pomocí knihovny Pygame, která kombinuje jednoduchou herní mechaniku (pohyb čtverce a nárazy do stěn) s komplexním systémem upgradů a prestiže. Hra je inspirována žánrem „idle/incremental game" – hráč vydělává body, které investuje do upgradů pro zrychlení dalšího příjmu.
 
-- Ovládání grafických herních prvků (Pygame)
-- Implementace matematických vzorců pro ekonomické modelování
-- Správy stavu hry a objektů v reálném čase
-- Uživatelského rozhraní v herním prostředí
+Hra je určena komukoliv, kdo si chce zahrát jednoduchou, ale návykovou hru s hlubokým progresním systémem.
 
-## Specifikace Projektu
+## Funkcionalita programu
 
-### Funkční Požadavky
+Program se skládá z těchto hlavních technických částí:
 
-1. **Herní Mechanika**
-   - Pohybující se čtverec, který hráč řídí klávesami WASD
-   - Detekce kolizí se stěnami okna
-   - Genství skóre za každý náraz do stěny
-   - Zobrazování aktuálního skóre a dalších statistik v HUD
+- **Herní smyčka (game loop):** Nekonečná smyčka zpracovávající vstupy, aktualizující stav a překreslující okno při 60 FPS.
+- **Pohyb a detekce kolizí:** Čtverec se pohybuje pomocí kláves WASD. Kolize se stěnou je detekována hraničními podmínkami souřadnic a spouští připsání bodů.
+- **Systém upgradů (Shop):** Hráč nakupuje upgrady za získané body:
+  - *Wall Bonus* – zvyšuje body za každý náraz (vzorec: `(1 + level) × 2^(level // 5)`)
+  - *Multi Base Gain* – násobí veškerý příjem (vzorec: `1.2^level`)
+- **Systém pasivního příjmu:** Po odemknutí prestiže se body generují automaticky každou sekundu (vzorec: `(score/100)^0.6 × 0.1 × (1.2^level) × (5^(level // 10))`).
+- **Prestige & Rebirth systém:** Po nashromáždění rebirth bodů může hráč provedět „rebirth" – resetuje základní progres, ale odemyká stromové prestige upgrady, které trvale znásobují příjem.
+- **Prestige Upgrade Tree:** Strom 15 upgradů rozdělených do 4 úrovní (Tier 1–4) s prerekvizitami. Každý upgrade má jiný efekt a maximální počet úrovní.
+- **Formátování velkých čísel:** Funkce `format_large_number()` zobrazuje čísla ve vědecké notaci, nebo při odemknutí „Break Infinity" upgradu v rozšířené Break Infinity notaci (`1ee12`).
 
-2. **Upgrade Systém**
-   - Passive Gain upgrade - automatická tvorba bodů
-   - Wall Bonus upgrade - zvýšení bodů za náraz
-   - Exponenciální růst cen upgradů
-   - Exponenciální zvyšování efektu upgradů
-   - Správa úrovní a nákladů každého upgradu
+## Technická část
 
-3. **Numerická Robustnost**
-   - Podpora velmi velkých čísel (až 1e300)
-   - Automatické přepnutí na vědeckou notaci pro čitatelnost
-   - Formátování s tisícovými oddělovači pro menší čísla
+### Použité knihovny
 
-4. **Uživatelské Rozhraní**
-   - Navigace v shopu s upgrady
-   - Zobrazování cen a efektů upgradů
-   - Zobrazování statistik (skóre, pasivní příjem, počet čtverců atd.)
+| Knihovna | Účel |
+|---|---|
+| `pygame` | Tvorba okna, vykreslování, zpracování vstupu |
+| `sys` | Ukončení programu |
+| `math` | Výpočty (sqrt, log10) pro prestige a notaci |
+| `random` | Importován, připraven pro budoucí rozšíření |
 
-### Architektura Systému
+### Klíčové algoritmy a datové struktury
 
-#### Hlavní Komponenty
+**Detekce kolize:**
+```python
+def is_colliding_with_wall(x, y, size):
+    return x <= 0 or (x + size) >= SIRKA or y <= 0 or (y + size) >= VYSKA
+```
+Skóre se přičítá pouze při přechodu z „ne-kolize" na „kolizi" (přes stavovou proměnnou `prev_colliding`), aby nedocházelo k vícenásobnému připsání za jedno dotýkání se stěny.
+
+**Exponenciální cenové vzorce:**
+- Wall Bonus cena: `5 × 1.4^level`
+- Passive Gain cena: `10 × 1.5^level`
+- Multi Base Gain cena: `20 × 1.6^level`
+
+**Prestige Upgrade Tree:**  
+Datová struktura slovníku – každý upgrade obsahuje `cost`, `prereq` (seznam prerekvizit), `level` a `max_level`. Dostupnost se dynamicky kontroluje při vykreslování a kliknutí.
+
+**Break Infinity notace:**  
+Pro čísla větší než `1e306` je použita dvojitá logaritmická notace: `1ee{log10(log10(num)):.1f}`.
+
+### Struktura programu
 
 ```
 hra.py
-├── Inicializace (Pygame setup)
-├── Definice konstant (rozměry, barvy)
-├── Systém upgradů (kalkulace cen a efektů)
-├── Herní smyčka
-│   ├── Zpracování vstupů (WASD, myš)
-│   ├── Aktualizace stavu
-│   ├── Detekce kolizí
-│   ├── Výpočet pasivního příjmu
-│   └── Vykreslování
-└── Event handling (QUIT, mouse clicks)
+├── Import knihoven a inicializace Pygame
+├── Konstanty (rozměry okna, barvy, písma)
+├── Herní proměnné (čtverce, skóre, upgrade úrovně)
+├── Prestige Upgrade Tree (slovník upgradů)
+├── Výpočetní funkce
+│   ├── calculate_*_cost()       – ceny upgradů
+│   ├── calculate_*_damage()     – efekty
+│   ├── calculate_passive_gain_per_second()
+│   ├── calculate_prestige_multiplier()
+│   └── format_large_number()    – notace čísel
+├── Hlavní herní smyčka
+│   ├── Zpracování událostí (klávesy, kliknutí, zavření)
+│   ├── Pohyb čtverců a detekce kolizí
+│   ├── Výpočet a přirčtení pasivního příjmu
+│   └── Vykreslování (HUD, shop, rebirth tree, různá menu)
+└── Ukončení (pygame.quit, sys.exit)
 ```
-
-#### Klíčové Funkce
-
-**calculate_passive_gain_cost(level)**
-- Určuje cenu pro nákup pasivního příjmu na danou úroveň
-- Vzorec: `10 × 1.5^level`
-- Účel: Exponenciálně zvyšuje cenu s každou úrovní
-
-**calculate_wall_bonus_cost(level)**
-- Určuje cenu pro nákup wall bonusu na danou úroveň
-- Vzorec: `5 × 1.4^level`
-- Účel: Exponenciálně zvyšuje cenu s každou úrovní
-
-**calculate_wall_bonus_damage(level)**
-- Vypočítá počet bodů za náraz do stěny s danou úrovní wall bonusu
-- Vzorec: `(1 + level) × 2^(level/5)`
-- Logika: Základní zvyšování + mega-zvyšování každých 5 levelů
-
-**calculate_passive_gain_per_second(current_score, level)**
-- Vypočítá automatickou produkci bodů za sekundu
-- Vzorec: `(score/100)^0.6 × 0.1 × (1.2^level) × (5^(level/10))`
-- Logika: 
-  - Spuští se až po dosáhnutí skóru 1000
-  - Roste s mocninou 0.6 od skóre (pomalejší růst než kvadratický)
-  - Multiplicita s úrovní upgradu (faktor 1.2)
-  - Mega-faktor každých 10 levelů (5x zesílení)
-
-### Vývoj a Iterace
-
-#### Iterace 1: Základní Herní Smyčka
-- Vytvoření okna s Pygame
-- Implementace pohybu čtverce pomocí šipek
-- Implementace detekce kolizí se stěnami
-- Získávání bodů za nárazy
-
-#### Iterace 2: Upgrade Systém
-- Implementace Passive Gain upgradu
-- Implementace Wall Bonus upgradu
-- Vytvořte obchod (shop) s pořizovatelným rozhraním
-- Správa úrovní upgradů a jejich cen
-
-#### Iterace 3: Numerická Optimalizace
-- Přidání vědecké notace pro velká čísla
-- Rozšíření limitu pro vědeckou notaci na 1e300
-
-#### Iterace 4: Game Balance
-- Změna řízení z šipek na WASD (ergonomie)
-- Pozdější spuštění Passive Gain (od 1000 místo 100)
-- Pomalejší růst Passive Gain (exponent 0.6 místo 1.05)
-
-### Technologické Rozhodnutí
-
-1. **Pygame** - Zvoleno pro jednoduchost, portabilitu a dostupnost
-2. **Slovníky pro objekty** - Místo tříd pro jednoduchost
-3. **Exponenciální vzorce** - Pro adekvátní ekonomickou simulaci
-4. **Vědecká notace** - Pro podporu astronomických čísel
-
-### Testování
-
-Projekt byl otestován na:
-- ✅ Korektní detekce kolizí
-- ✅ Správné výpočty upgradů
-- ✅ Správné zobrazování velkých čísel
-- ✅ Responzivní ovládání
-- ✅ Generování nových čtverců po zničení
-
-### Úrovně Náročnosti
-
-Projekt odpovídá **Úrovni 4: Těžká**
-- Obsahuje algoritmizaci (kolize, ekonomické výpočty)
-- Implementuje externalní framework (Pygame)
-- Používá strukturované datové struktury (slovníky, seznamy)
-- Aplikuje matematické koncepty (exponenciální funkce)
-- Má komplexní stav hry a event handling
-
-### Budoucí Rozšíření
-
-Možná vylepšení:
-- Přidání více typů čtverců s různými vlastnostmi
-- Systém dosahů (achievements)
-- Uložení a načítání her
-- Zvukové efekty aBackground Music
-- Různé úrovně obtížnosti
-- Leaderboard systém
-- Animace a vizuální efekty
-
-## Souhrn
-
-Projekt "Gajdy_wdym" je komplexní arcade hra, která kombinuje jednoduché herní prvky s sofistikovaným ekonomickým systémem. Hra je plně funkcční a nabízí hodinově hraničitého zábavu s možností nekonečného progressu. Projekt demonstruje schopnost práce s herními frameworky, matematickými vzorci a správou komplexního stavu v reálném čase.
