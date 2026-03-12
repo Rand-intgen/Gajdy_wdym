@@ -1,15 +1,21 @@
 import pygame # Importuje knihovnu Pygame
 import sys # Importuje systémový modul
 import random
+import os
+
+# Nejostřejší škálování (bez rozmazani písma ve fullscreenu)
+os.environ['SDL_RENDER_SCALE_QUALITY'] = '0'
 
 # Inicializace Pygame
 pygame.init() # Inicializuje Pygame
 
 # Nastavení okna
-SIRKA = 1080 # Nastaví šířku okna
-VYSKA = 920 # Nastaví výšku okna
-okno = pygame.display.set_mode((SIRKA, VYSKA)) # Vytvoří okno
-pygame.display.set_caption("Souřadnicový systém - Fáze 2") # Nastaví titulek okna
+SIRKA = 1560 # Šířka herního okna
+VYSKA = 960  # Výška herního okna
+okno = pygame.display.set_mode((SIRKA, VYSKA)) # Windowed 1280x720
+game_surf = pygame.Surface((SIRKA, VYSKA)) # Herní plocha (rendering sem, pak scale na okno)
+
+pygame.display.set_caption("Gajdy_wdym - Idle Arcade") # Nastaví titulek okna
 
 # Barvy
 CERNA = (0, 0, 0) # Definuje černou barvu
@@ -61,39 +67,47 @@ prestige_multiplier = 1.0  # Bonusový multiplikátor skóre z prestige upgradů
 break_infinity_unlocked = False  # Zda je odemknut Break Infinity upgrade
 
 # Prestige Upgrade Tree - komplexní systém inspirovaný The Ultimate Upgrade Tree
-# Struktura: "upgrade_name": {"cost": cena, "prereq": [], "unlocked": False, "effect": funkce}
 prestige_upgrades = {
-    # Základní upgrady (Tier 1) - bez prerekvizit
-    "Automation (Passive Gain)": {"cost": 1, "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 20},
-    "Score Booster": {"cost": 2, "prereq": [], "unlocked": False, "level": 0, "max_level": 15},
-    "Point Multiplier": {"cost": 3, "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 10},
-    
-    # Mid-game upgrady (Tier 2) - vyžadují základní
-    "Passive Amplifier": {"cost": 5, "prereq": ["Automation (Passive Gain)"], "unlocked": False, "level": 0, "max_level": 12},
-    "Efficiency Boost": {"cost": 4, "prereq": ["Point Multiplier"], "unlocked": False, "level": 0, "max_level": 15},
-    "Greater Infinity I": {"cost": 6, "prereq": ["Automation (Passive Gain)"], "unlocked": False, "level": 0, "max_level": 8},
-    
-    # Pokročilé upgrady (Tier 3) - vyžadují mid-game
-    "Super Charge": {"cost": 8, "prereq": ["Passive Amplifier", "Efficiency Boost"], "unlocked": False, "level": 0, "max_level": 10},
-    "Infinity Engine": {"cost": 10, "prereq": ["Greater Infinity I"], "unlocked": False, "level": 0, "max_level": 6},
-    "Quantum Leap": {"cost": 12, "prereq": ["Super Charge"], "unlocked": False, "level": 0, "max_level": 5},
-    
-    # Elite upgrady (Tier 4) - vyžadují pokročilé
-    "Break Infinity": {"cost": 50, "prereq": ["Infinity Engine", "Quantum Leap"], "unlocked": False, "level": 0, "max_level": 1},
-    "Ultimate Power": {"cost": 25, "prereq": ["Quantum Leap"], "unlocked": False, "level": 0, "max_level": 3},
-    "Rebirth Mastery": {"cost": 30, "prereq": ["Break Infinity"], "unlocked": False, "level": 0, "max_level": 1},
-    
-    # Alternativní větve
-    "Speed Demon": {"cost": 7, "prereq": ["Efficiency Boost"], "unlocked": False, "level": 0, "max_level": 8},
-    "Wealth Generator": {"cost": 9, "prereq": ["Speed Demon"], "unlocked": False, "level": 0, "max_level": 6},
-    "Time Warp": {"cost": 15, "prereq": ["Wealth Generator", "Infinity Engine"], "unlocked": False, "level": 0, "max_level": 4}
+    # Základní upgrady (Tier 1)
+    "Automation (Passive Gain)": {"cost": 8,     "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 20},
+    "Score Booster":             {"cost": 5,     "prereq": [], "unlocked": False, "level": 0, "max_level": 15},
+    "Point Multiplier":          {"cost": 10,    "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 10},
+    # Self-boost větev - Points boost themselves
+    "Score Momentum":            {"cost": 12,    "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 10},
+    "Momentum Amplifier":        {"cost": 35,    "prereq": ["Score Momentum"], "unlocked": False, "level": 0, "max_level": 7},
+
+    # Mid-game upgrady (Tier 2)
+    "Passive Amplifier":         {"cost": 20,    "prereq": ["Automation (Passive Gain)"], "unlocked": False, "level": 0, "max_level": 12},
+    "Efficiency Boost":          {"cost": 15,    "prereq": ["Point Multiplier"], "unlocked": False, "level": 0, "max_level": 15},
+    "Greater Infinity I":        {"cost": 25,    "prereq": ["Automation (Passive Gain)"], "unlocked": False, "level": 0, "max_level": 8},
+
+    # Pokročilé upgrady (Tier 3) - ceny 800-3000 rebirth bodů
+    "Super Charge":              {"cost": 800,   "prereq": ["Passive Amplifier", "Efficiency Boost"], "unlocked": False, "level": 0, "max_level": 10},
+    "Infinity Engine":           {"cost": 1500,  "prereq": ["Greater Infinity I"], "unlocked": False, "level": 0, "max_level": 6},
+    "Quantum Leap":              {"cost": 3000,  "prereq": ["Super Charge"], "unlocked": False, "level": 0, "max_level": 5},
+
+    # Elite upgrady (Tier 4) - endgame (10k-50k)
+    "Break Infinity":            {"cost": 25000, "prereq": ["Infinity Engine", "Quantum Leap"], "unlocked": False, "level": 0, "max_level": 1},
+    "Ultimate Power":            {"cost": 10000, "prereq": ["Quantum Leap"], "unlocked": False, "level": 0, "max_level": 3},
+    "Rebirth Mastery":           {"cost": 50000, "prereq": ["Break Infinity"], "unlocked": False, "level": 0, "max_level": 1},
+
+    # Alternativní větve - LEVO (ekonomické)
+    "Speed Demon":               {"cost": 30,    "prereq": ["Efficiency Boost"], "unlocked": False, "level": 0, "max_level": 8},
+    "Wealth Generator":          {"cost": 45,    "prereq": ["Speed Demon"], "unlocked": False, "level": 0, "max_level": 6},
+    "Time Warp":                 {"cost": 75,    "prereq": ["Wealth Generator", "Infinity Engine"], "unlocked": False, "level": 0, "max_level": 4},
+
+    # Alternativní větve - PRAVO (tick speed) - ceny 1k-15k
+    "Tick Booster":              {"cost": 1000,  "prereq": ["Automation (Passive Gain)"], "unlocked": False, "level": 0, "max_level": 10},
+    "Rapid Tick":                {"cost": 5000,  "prereq": ["Tick Booster"], "unlocked": False, "level": 0, "max_level": 8},
+    "Time Accelerator":          {"cost": 15000, "prereq": ["Rapid Tick"], "unlocked": False, "level": 0, "max_level": 5},
 }
+
 
 # Upgrade systém
 passive_gain_level = 0  # Úroveň passive gain upgradu
 wall_bonus_level = 0  # Úroveň wall bonus upgradu
 multi_base_gain_level = 0  # Úroveň multi base gain upgradu (násobí pasivní gain)
-rebirth_requirement = 10000  # Kolik rebirth pointů je potřeba na rebirth
+rebirth_requirement = 10000  # Kolik skóre je potřeba na rebirth
 
 def calculate_passive_gain_cost(level):
     """Vypočítá cenu pro nákup passive gain upgradu.
@@ -148,34 +162,37 @@ def calculate_wall_bonus_damage(level):
 def calculate_passive_gain_per_second(current_score, level):
     """Vypočítá pasivní gain za sekundu na základě aktuálního skóre a úrovně upgradu.
     
-    Vzorec: (score/100)^0.6 × 0.1 × (1.2^level) × (5^(level//10))
+    Vzorec: (score/100)^0.6 × 0.005 × (1.2^level) × (8^(level//10))
     
     Poznámka: Aktivace je řízena prestige upgrade "Automation (Passive Gain)"
     
     Komponenty výpočtu:
-    1. Základní část: (score/100)^0.6 - Pocházení z aktuálního skóre
+    1. Základní část: (score/100)^0.6 - vychází z aktuálního skóre
        - Exponent 0.6 znamená pomalejší růst (sublineární)
        - Brání příliš rychlému zdvojnásobení příjmu
     
-    2. Upgrade multiplier: 1.2^level
+    2. Koeficient: 0.005
+       - Záměrně velmi malý, aby automation byl na začátku slabý
+       - Styl inspirovaný incremental hrami (postupný růst)
+    
+    3. Upgrade multiplier: 1.2^level
        - Každá úroveň zvýší příjem o 20%
        - Motivuje hráče k nákupům upgradů
     
-    3. Mega multiplier: 5^(level//10)
-       - Každých 10 levelů se efekt znásobí 5x
-       - Poskytuje dramatické milníky (level 10, 20, 30...)
+    4. Mega multiplier: 8^(level//10)
+       - Každých 10 levelů se efekt znásobí 8x
+       - Umožňuje dosáhnout extrémních čísel (1e60+) ve vysokých levelech
     """
-    # Základní gain z aktuálního skóre
-    # Exponent 0.6 zajišťuje, že pasivní příjem je pomalejší než exponenciální
+    # Základní gain z aktuálního skóre (sublineární škálování)
     multiplier = (current_score / 100) ** 0.6
-    base_gain = multiplier * 0.1  # 0.1 je škálovací faktor
-    
+    base_gain = multiplier * 0.005  # Velmi slabý základ - silnější jen ve vysokých levelech
+
     # Upgrade level multiplier - lineárně na exponenciální stupnici
     upgrade_multiplier = (1.2 ** level)
-    
-    # Mega-multiplier - dramatické zvýšení každých 10 levelů
-    mega_multiplier = (5 ** (level // 10))
-    
+
+    # Mega-multiplier - dramatické zvýšení každých 10 levelů (8x silnější než verze 5x)
+    mega_multiplier = (8 ** (level // 10))
+
     # Kombinuj všechny faktory
     total_gain = base_gain * upgrade_multiplier * mega_multiplier
     return total_gain
@@ -197,16 +214,22 @@ def calculate_prestige_points_from_score(current_score):
 
 def calculate_rebirth_points_from_score(current_score):
     """Vypočítá rebirth body na základě dosažného skóru.
-    
-    Vzorec: sqrt(score) / 5
-    - Hráč získává rebirth body za rebirth
-    - Více skóre = více rebirth bodů
-    - Rebirth body se NIKDY neresetnují, kumulují se
+
+    Vzorec: sqrt(score / 1000)
+    - Na začátku dává málo bodů (slabý skór = málo rebirth bodů)
+    - Škáluje smysluplně s rostoucím skórem
+    - Rebirth body se NIKDY neresetují, kumulují se
+
+    Příklady:
+      score = 1 000       →    1 rebirth bod
+      score = 100 000     →   10 rebirth bodů
+      score = 10 000 000  →  100 rebirth bodů
+      score = 1e12        → 1 000 000 rebirth bodů
     """
-    if current_score < 1:
+    if current_score < 10000:
         return 0
     import math
-    return int(math.sqrt(current_score) / 5)
+    return int(math.sqrt(current_score / 1000))
 
 def calculate_prestige_multiplier(prestige_upgrades):
     """Vypočítá multiplikátor skóre z prestige upgradů.
@@ -249,6 +272,8 @@ def calculate_prestige_multiplier(prestige_upgrades):
     # Elite upgrady
     if "Ultimate Power" in prestige_upgrades:
         multiplier *= (1.25 ** prestige_upgrades["Ultimate Power"]["level"])
+    if "Rebirth Mastery" in prestige_upgrades:
+        multiplier *= (5.0 ** prestige_upgrades["Rebirth Mastery"]["level"])
     
     # Alternativní větve
     if "Speed Demon" in prestige_upgrades:
@@ -290,6 +315,10 @@ def calculate_passive_gain_multiplier_from_prestige(prestige_upgrades):
     if "Quantum Leap" in prestige_upgrades:
         multiplier *= (1.15 ** prestige_upgrades["Quantum Leap"]["level"])
     
+    # Elite efekty
+    if "Rebirth Mastery" in prestige_upgrades:
+        multiplier *= (5.0 ** prestige_upgrades["Rebirth Mastery"]["level"])
+    
     # Alternativní větve
     if "Speed Demon" in prestige_upgrades:
         multiplier *= (1.06 ** prestige_upgrades["Speed Demon"]["level"])
@@ -328,6 +357,139 @@ def format_large_number(num):
         return f"1ee{outer_exp:.1f}"
     except:
         return "Infinity"
+
+def calculate_tick_speed_multiplier(prestige_upgrades):
+    """Vypočítá multiplikátor rychlosti ticků z alternativních pravých upgradů.
+
+    Každý level tick-speed upgradu přidává +15% pasivního pří­mu.
+    Celkový efekt: 1.15 ^ (součet všech tick levelů)
+    """
+    tick_levels = 0
+    for name in ["Tick Booster", "Rapid Tick", "Time Accelerator"]:
+        if name in prestige_upgrades:
+            tick_levels += prestige_upgrades[name]["level"]
+    return 1.15 ** tick_levels
+
+def calculate_score_self_boost(current_score, prestige_upgrades):
+    """Vypočítá self-boost skoru za sekundu (body boosí samy sebe).
+
+    Vzorec: log10(score+1) * 0.0005 * momentum_lvl * (1.15^momentum_lvl) * (1.3^amplifier_lvl)
+    - Logaritmické škálování - silnější při vyšším skóru ale ne příliš OP
+    - Motivuje ké držení skoru před rebirthem
+    - Odemkne se nákupem Score Momentum z Prestige Tree
+    """
+    momentum_lvl = prestige_upgrades.get("Score Momentum", {}).get("level", 0)
+    amplifier_lvl = prestige_upgrades.get("Momentum Amplifier", {}).get("level", 0)
+    if momentum_lvl == 0:
+        return 0.0
+    import math
+    log_base = math.log10(max(current_score + 1, 10))
+    boost = log_base * 0.0005 * momentum_lvl * (1.15 ** momentum_lvl) * (1.3 ** amplifier_lvl)
+    return boost
+
+# === UPGRADE TREE LAYOUT - konstanty pro pozice a barvy ===
+_UPG_BW = 140  # šířka uzlu
+_UPG_BH = 42   # výška uzlu
+_cx = SIRKA // 2  # střed obrazovky X
+
+# Barvy uzlů podle tieru (inspirováno ultimátním upgrade stromem)
+TIER_COLORS = {
+    "Tier1": (220, 200, 0),    # Žlutá  - základní upgrady
+    "Tier2": (0, 200, 80),     # Zelená - mid-game
+    "Tier3": (0, 200, 220),    # Azurová - pokročilé
+    "Tier4": (220, 50, 50),    # Červená - Elite
+    "Alt":   (180, 50, 200),   # Fialová - levá alternativní větev
+    "Tick":  (220, 130, 0),    # Orůžová - pravá tick-speed větev
+}
+
+# Přiřazení každého upgradu k tieru
+UPGRADE_TIERS = {
+    "Automation (Passive Gain)": "Tier1",
+    "Score Booster":             "Tier1",
+    "Point Multiplier":          "Tier1",
+    "Passive Amplifier":         "Tier2",
+    "Efficiency Boost":          "Tier2",
+    "Greater Infinity I":        "Tier2",
+    "Super Charge":              "Tier3",
+    "Infinity Engine":           "Tier3",
+    "Quantum Leap":              "Tier3",
+    "Break Infinity":            "Tier4",
+    "Ultimate Power":            "Tier4",
+    "Rebirth Mastery":           "Tier4",
+    "Speed Demon":               "Alt",
+    "Wealth Generator":          "Alt",
+    "Time Warp":                 "Alt",
+    # Self-boost větev (pod Score Boosterem) - stejný tier jako Tier1
+    "Score Momentum":            "Tier1",
+    "Momentum Amplifier":        "Tier1",
+    # Tick-speed větev (pravá strana) - orůžová barva
+    "Tick Booster":              "Tick",
+    "Rapid Tick":                "Tick",
+    "Time Accelerator":          "Tick",
+}
+
+# Pozice každého uzlu v prestige stromě (levý horní roh)
+UPGRADE_POSITIONS = {
+    # TIER 1 - ROOT (Úplně nahoře uprostřed)
+    "Score Booster":             (_cx +   0 - 70,  120),
+    
+    # SELF-BOOST větev (Přímo pod Score Boosterem)
+    "Score Momentum":            (_cx +   0 - 70,  210),
+    "Momentum Amplifier":        (_cx +   0 - 70,  300),
+
+    # TIER 1 - Ostatní větve (Point Multiplier nalevo, Automation napravo)
+    "Point Multiplier":          (_cx - 300 - 70,  210),
+    "Automation (Passive Gain)": (_cx + 300 - 70,  210),
+
+    # TIER 2 a přidružené středové uzly
+    "Efficiency Boost":          (_cx - 300 - 70,  300),
+    "Passive Amplifier":         (_cx + 150 - 70,  300),
+    "Greater Infinity I":        (_cx + 300 - 70,  390), 
+    
+    # TIER 3 - pokročilé 
+    "Super Charge":              (_cx +   0 - 70,  390),
+    "Quantum Leap":              (_cx - 150 - 70,  480),
+    "Infinity Engine":           (_cx + 150 - 70,  480),
+
+    # TIER 4 - elite
+    "Ultimate Power":            (_cx - 150 - 70,  570),
+    "Break Infinity":            (_cx +   0 - 70,  570),
+    "Rebirth Mastery":           (_cx +   0 - 70,  660),
+
+    # ALTERNATIVNÍ větev LEVO (ekonomické, z Efficiency Boost)
+    "Speed Demon":               (_cx - 500 - 70,  390),
+    "Wealth Generator":          (_cx - 500 - 70,  480),
+    "Time Warp":                 (_cx - 500 - 70,  570),
+
+    # ALTERNATIVNÍ větev PRAVO (tick-speed, z Automation)
+    "Tick Booster":              (_cx + 500 - 70,  390),
+    "Rapid Tick":                (_cx + 500 - 70,  480),
+    "Time Accelerator":          (_cx + 500 - 70,  570),
+}
+
+# Popis efektu každého upgradu (zobrazuje se jako tooltip při najetí myší)
+UPGRADE_EFFECTS = {
+    "Score Booster":             "+5% skóre za level (1.05^lvl)",
+    "Automation (Passive Gain)": "Odemkne pasivní příjem bodů/s",
+    "Point Multiplier":          "+8% skóre za level (1.08^lvl)",
+    "Score Momentum":            "log10(score)*0.0005*lvl boost/s",
+    "Momentum Amplifier":        "x1.3^lvl na Score Momentum",
+    "Passive Amplifier":         "+10% pasivní příjem za level",
+    "Efficiency Boost":          "+6% skóre za level (1.06^lvl)",
+    "Greater Infinity I":        "+10% skóre za level (1.10^lvl)",
+    "Super Charge":              "+12% skóre i passiv za level",
+    "Infinity Engine":           "+15% skóre, +8% passiv/lvl",
+    "Quantum Leap":              "+20% skóre, +15% passiv/lvl",
+    "Break Infinity":            "Odemkne Break Infinity notaci",
+    "Ultimate Power":            "+25% skóre za level (1.25^lvl)",
+    "Rebirth Mastery":           "x5 globální skóre a pasiv",
+    "Speed Demon":               "+7% skóre za level (1.07^lvl)",
+    "Wealth Generator":          "+18% skóre za level (1.18^lvl)",
+    "Time Warp":                 "+30% skóre za level (1.30^lvl)",
+    "Tick Booster":              "+15% rych. pasiv. příjmu/level",
+    "Rapid Tick":                "+15% rych. pasiv. příjmu/level",
+    "Time Accelerator":          "+15% rych. pasiv. příjmu/level",
+}
 
 while bezi: # Hlavní cyklus hry
     # Zpracování událostí
@@ -374,53 +536,43 @@ while bezi: # Hlavní cyklus hry
                         score -= multi_cost
                         multi_base_gain_level += 1
 
-            # Kliknutí v settings - no interactive toggle any more (eternitynum controlled in code)
+            # Settings kliknutí - bez fullscreen toggleu
             if settings_open:
                 pass
 
-            # Upgrade kliknutí v rebirth menu
+            # Upgrade kliknutí v rebirth menu - používáme UPGRADE_POSITIONS pro detekci kliknutí
             if rebirth_open:
-                mouse_x, mouse_y = event.pos
-                
-                # Rebirth button
-                rebirth_button = pygame.Rect(SIRKA//2 - 100, 50, 200, 40)
+                # Rebirth tlačítko (pozice musí odpovídat renderu)
+                rebirth_button = pygame.Rect(SIRKA//2 - 120, 70, 240, 45)
                 if rebirth_button.collidepoint(event.pos):
-                    # Zkontroluj zda má hráč dost rebirth bodů
                     if rebirth_points >= rebirth_requirement:
-                        # Reset skóre a upgradů (ale NE prestige upgradů!)
+                        # Reset skóre a základních upgradů (prestige upgrady zůstávají!)
                         score = 0
                         passive_gain_level = 0
                         wall_bonus_level = 0
                         multi_base_gain_level = 0
                         rebirth_points -= rebirth_requirement
-                        
-                        # Zavři rebirth menu
                         rebirth_open = False
-                
-                # Prestige upgrade tlačítka - zobrazují se postupně (offset Y)
-                upgrade_y = 150
+
+                # Kliknutí na uzly stromu - porovnáme s UPGRADE_POSITIONS
                 for upgrade_name, upgrade_info in prestige_upgrades.items():
-                    # Zkontroluj zda jsou splněny prerekvizity
-                    prerequisites_met = all(prestige_upgrades[prereq]["level"] > 0 for prereq in upgrade_info["prereq"])
-                    
-                    # Je-li splněna, je viditelná/koupitelná
-                    if prerequisites_met or len(upgrade_info["prereq"]) == 0:
-                        upgrade_button = pygame.Rect(SIRKA//2 - 200, upgrade_y, 400, 35)
-                        if upgrade_button.collidepoint(event.pos):
-                            # Spočter cenu s rebirth pointy
-                            cost = upgrade_info["cost"]
-                            if rebirth_points >= cost and upgrade_info["level"] < upgrade_info["max_level"]:
-                                rebirth_points -= cost
-                                upgrade_info["level"] += 1
-                                
-                                # Přepočítej prestige multiplier
-                                prestige_multiplier = calculate_prestige_multiplier(prestige_upgrades)
-                                
-                                # Unlock Break Infinity
-                                if upgrade_name == "Break Infinity" and upgrade_info["level"] == 1:
-                                    break_infinity_unlocked = True
-                        
-                        upgrade_y += 45
+                    if upgrade_name not in UPGRADE_POSITIONS:
+                        continue
+                    pos_x, pos_y = UPGRADE_POSITIONS[upgrade_name]
+                    upgrade_button = pygame.Rect(pos_x, pos_y, _UPG_BW, _UPG_BH)
+                    if upgrade_button.collidepoint(event.pos):
+                        prerequisites_met = all(
+                            prestige_upgrades[prereq]["level"] > 0
+                            for prereq in upgrade_info["prereq"]
+                        )
+                        is_available = prerequisites_met or len(upgrade_info["prereq"]) == 0
+                        cost = upgrade_info["cost"]
+                        if is_available and rebirth_points >= cost and upgrade_info["level"] < upgrade_info["max_level"]:
+                            rebirth_points -= cost
+                            upgrade_info["level"] += 1
+                            prestige_multiplier = calculate_prestige_multiplier(prestige_upgrades)
+                            if upgrade_name == "Break Infinity" and upgrade_info["level"] == 1:
+                                break_infinity_unlocked = True
 
     # Získání stavu kláves
     klavesa = pygame.key.get_pressed() # Zjistí stisknuté klávesy
@@ -444,12 +596,18 @@ while bezi: # Hlavní cyklus hry
         passive_gain_per_second *= calculate_passive_gain_multiplier_from_prestige(prestige_upgrades)
         # Aplikuj multi base gain multiplikátor
         passive_gain_per_second *= calculate_multi_base_gain_multiplier(multi_base_gain_level)
+        # Aplikuj tick-speed multiplikátor z pravé alt větve
+        passive_gain_per_second *= calculate_tick_speed_multiplier(prestige_upgrades)
     else:
         # Bez Automation upgradu: žádný pasivní gain!
         passive_gain_per_second = 0
     
     passive_gain_per_frame = passive_gain_per_second / 60  # 60 FPS
     score += passive_gain_per_frame
+
+    # Score Momentum self-boost (logaritmický, nezávislý na Automation)
+    self_boost_per_second = calculate_score_self_boost(score, prestige_upgrades)
+    score += self_boost_per_second / 60
 
     # Pohyb všech čtverců stejným směrem podle vstupu
     to_remove = []
@@ -505,11 +663,11 @@ while bezi: # Hlavní cyklus hry
             prev_colliding.append(False)
 
     # Vykreslení
-    okno.fill(CERNA) # Vyčistí okno černou barvou
+    game_surf.fill(CERNA) # Vyčistí okno černou barvou
 
     # Vykreslení všech čtverců
     for sq in squares:
-        pygame.draw.rect(okno, CERVENA, (sq['x'], sq['y'], sq['size'], sq['size']))
+        pygame.draw.rect(game_surf, CERVENA, (sq['x'], sq['y'], sq['size'], sq['size']))
 
     # Zobrazení skóre a počtu čtverců + bodů za zásah + pasivní gain
     # Přepočítej pasivní gain pro zobrazení (stejně jako pro herní logiku)
@@ -544,31 +702,31 @@ while bezi: # Hlavní cyklus hry
     
     hud_text = f"Score: {score_str}    Passive/s: {passive_str}    Wall+: {wall_str}    Rebirth: {rebirth_points}    Rebirth Multi: x{prestige_multiplier:.2f}    Squares: {len(squares)}"
     text_plocha = pismo.render(hud_text, True, BILA)
-    okno.blit(text_plocha, (10, VYSKA - 30))
+    game_surf.blit(text_plocha, (10, VYSKA - 30))
 
     # Tlačítko pro settings
-    pygame.draw.rect(okno, (100, 100, 100), settings_button_rect)
+    pygame.draw.rect(game_surf, (100, 100, 100), settings_button_rect)
     settings_text = pismo.render("Settings", True, BILA)
-    okno.blit(settings_text, (settings_button_rect.x + 8, settings_button_rect.y + 5))
+    game_surf.blit(settings_text, (settings_button_rect.x + 8, settings_button_rect.y + 5))
 
     # Tlačítko pro shop
-    pygame.draw.rect(okno, (100, 100, 100), shop_button_rect)
+    pygame.draw.rect(game_surf, (100, 100, 100), shop_button_rect)
     btn_text = pismo.render("Upgrades", True, BILA)
-    okno.blit(btn_text, (shop_button_rect.x + 8, shop_button_rect.y + 5))
+    game_surf.blit(btn_text, (shop_button_rect.x + 8, shop_button_rect.y + 5))
     
     # Tlačítko pro rebirth
-    pygame.draw.rect(okno, (150, 50, 50), rebirth_button_rect)
+    pygame.draw.rect(game_surf, (150, 50, 50), rebirth_button_rect)
     rebirth_text = pismo.render("Rebirth", True, BILA)
-    okno.blit(rebirth_text, (rebirth_button_rect.x + 18, rebirth_button_rect.y + 5))
+    game_surf.blit(rebirth_text, (rebirth_button_rect.x + 18, rebirth_button_rect.y + 5))
 
     # Pokud je shop otevřený, vykreslíme upgrade tlačítka
     if shop_open:
         overlay = pygame.Surface((500, 300))
         overlay.set_alpha(220)
         overlay.fill((30, 30, 30))
-        okno.blit(overlay, (SIRKA//2 - 250, VYSKA//2 - 150))
+        game_surf.blit(overlay, (SIRKA//2 - 250, VYSKA//2 - 150))
         shop_title = pismo.render("Shop - Upgrades", True, BILA)
-        okno.blit(shop_title, (SIRKA//2 - 200, VYSKA//2 - 130))
+        game_surf.blit(shop_title, (SIRKA//2 - 200, VYSKA//2 - 130))
         
         # Passive Gain upgrade - informační text (koupen přes Prestige)
         automation_level = prestige_upgrades["Automation (Passive Gain)"]["level"]
@@ -579,7 +737,7 @@ while bezi: # Hlavní cyklus hry
             passive_status = "✗ Automation Locked (Buy in Prestige Tree)"
             passive_color = (255, 100, 100)  # Červená - není dostupné
         passive_label = pismo.render(passive_status, True, passive_color)
-        okno.blit(passive_label, (SIRKA//2 - 240, VYSKA//2 - 70))
+        game_surf.blit(passive_label, (SIRKA//2 - 240, VYSKA//2 - 70))
         
         # Wall Bonus upgrade
         wall_cost = calculate_wall_bonus_cost(wall_bonus_level)
@@ -590,7 +748,7 @@ while bezi: # Hlavní cyklus hry
         else:
             wall_color = (255, 0, 0)
         wall_label = pismo.render(wall_text, True, wall_color)
-        okno.blit(wall_label, (SIRKA//2 - 240, VYSKA//2 - 20))
+        game_surf.blit(wall_label, (SIRKA//2 - 240, VYSKA//2 - 20))
         
         # Multi Base Gain upgrade
         multi_cost = calculate_multi_base_gain_cost(multi_base_gain_level)
@@ -601,145 +759,194 @@ while bezi: # Hlavní cyklus hry
         else:
             multi_color = (255, 0, 0)
         multi_label = pismo.render(multi_text, True, multi_color)
-        okno.blit(multi_label, (SIRKA//2 - 240, VYSKA//2 + 20))
+        game_surf.blit(multi_label, (SIRKA//2 - 240, VYSKA//2 + 20))
         
         # Info text
         info_text = pismo.render("Click on upgrade to buy", True, (200, 200, 200))
-        okno.blit(info_text, (SIRKA//2 - 200, VYSKA//2 + 80))
+        game_surf.blit(info_text, (SIRKA//2 - 200, VYSKA//2 + 80))
     # Pokud jsou settings otevřené, vykreslíme nastavení
     if settings_open:
-        overlay = pygame.Surface((480, 220))
+        overlay = pygame.Surface((480, 200))
         overlay.set_alpha(230)
         overlay.fill((30, 30, 30))
-        okno.blit(overlay, (SIRKA//2 - 240, VYSKA//2 - 110))
+        game_surf.blit(overlay, (SIRKA//2 - 240, VYSKA//2 - 100))
         settings_title = pismo.render("Settings", True, BILA)
-        okno.blit(settings_title, (SIRKA//2 - 200, VYSKA//2 - 90))
+        game_surf.blit(settings_title, (SIRKA//2 - 200, VYSKA//2 - 80))
 
-        # Use smaller font for clarity
-        desc = small_pismo.render("Starts at 1,000,000,000,000", True, (200, 200, 200))
-        okno.blit(desc, (SIRKA//2 - 200, VYSKA//2 - 52))
-
-        # Informational label: eternitynum is controlled in code
-        state_text = "Eternitynum (code): Enabled" if eternitynum else "Eternitynum (code): Disabled"
+        desc = small_pismo.render("Vědecká notace (Eternitynum) - spouští se od 1,000,000,000,000", True, (200, 200, 200))
+        game_surf.blit(desc, (SIRKA//2 - 200, VYSKA//2 - 40))
+        state_text = "Eternitynum: Enabled" if eternitynum else "Eternitynum: Disabled"
         label = small_pismo.render(state_text, True, BILA)
-        okno.blit(label, (SIRKA//2 - 200, VYSKA//2 - 30))
+        game_surf.blit(label, (SIRKA//2 - 200, VYSKA//2 - 18))
 
-        # No interactive toggle here; the behavior is controlled by `eternitynum` in the source.
-
-    # Pokud je rebirth menu otevřené, vykreslíme upgrade tree
+    # Pokud je rebirth menu otevřené, vykreslíme upgrade tree (inspirováno The Ultimate Upgrade Tree)
     if rebirth_open:
-        overlay = pygame.Surface((1000, 750))
-        overlay.set_alpha(230)
-        overlay.fill((30, 30, 30))
-        okno.blit(overlay, (SIRKA//2 - 500, VYSKA//2 - 300))
-        
-        rebirth_title = pismo.render("Prestige - Ultimate Upgrade Tree", True, BILA)
-        okno.blit(rebirth_title, (SIRKA//2 - 150, VYSKA//2 - 275))
-        
-        # Rebirth button
-        rebirth_button = pygame.Rect(SIRKA//2 - 100, VYSKA//2 - 235, 200, 40)
+        # Plnoobrazovkový tmavý overlay
+        overlay = pygame.Surface((SIRKA, VYSKA))
+        overlay.set_alpha(245)
+        overlay.fill((8, 8, 12))
+        game_surf.blit(overlay, (0, 0))
+
+        # Nadpis
+        rebirth_title = pismo.render("★  Prestige - Ultimate Upgrade Tree  ★", True, (255, 255, 255))
+        game_surf.blit(rebirth_title, (SIRKA//2 - rebirth_title.get_width()//2, 12))
+
+        # Info řádek nahoře - aktuální rebirth body a multiplier
+        info_bar = small_pismo.render(
+            f"Rebirth Points: {rebirth_points}    |    Score Multiplier: x{prestige_multiplier:.2f}    |    Rebirth potřeba: {max(0, rebirth_requirement - rebirth_points)} bodů",
+            True, (180, 180, 180)
+        )
+        game_surf.blit(info_bar, (SIRKA//2 - info_bar.get_width()//2, 42))
+
+        # Rebirth tlačítko
+        rebirth_button = pygame.Rect(SIRKA//2 - 120, 70, 240, 45)
         needed_rebirth = max(0, rebirth_requirement - rebirth_points)
-        pygame.draw.rect(okno, (100, 50, 50), rebirth_button)
+        btn_bg = (140, 45, 45) if needed_rebirth > 0 else (40, 140, 40)
+        pygame.draw.rect(game_surf, btn_bg, rebirth_button, border_radius=8)
+        pygame.draw.rect(game_surf, (220, 220, 220), rebirth_button, 2, border_radius=8)
         if needed_rebirth > 0:
-            rebirth_btn_text = pismo.render(f"REBIRTH ({needed_rebirth} more)", True, BILA)
+            rb_label = small_pismo.render(f"REBIRTH  ({needed_rebirth} více bodů)", True, (255, 255, 255))
         else:
-            rebirth_btn_text = pismo.render(f"REBIRTH Ready!", True, (0, 255, 0))
-        okno.blit(rebirth_btn_text, (rebirth_button.x + 10, rebirth_button.y + 8))
-        
-        # Upgrade tree positions - malá tlačítka v tree struktuře
-        button_width = 130
-        button_height = 40
-        
-        upgrade_positions = {
-            # TIER 1 - Basis (horní řada)
-            "Automation (Passive Gain)": (SIRKA//2 - 250, VYSKA//2 - 135),
-            "Score Booster": (SIRKA//2 - 70, VYSKA//2 - 175),
-            "Point Multiplier": (SIRKA//2 + 110, VYSKA//2 - 135),
-            
-            # TIER 2 - Mid-game (druhá řada)
-            "Passive Amplifier": (SIRKA//2 - 250, VYSKA//2 - 65),
-            "Efficiency Boost": (SIRKA//2 - 70, VYSKA//2 - 105),
-            "Greater Infinity I": (SIRKA//2 + 110, VYSKA//2 - 65),
-            
-            # TIER 3 - Advanced (třetí řada)
-            "Super Charge": (SIRKA//2 - 180, VYSKA//2 + 10),
-            "Infinity Engine": (SIRKA//2 - 40, VYSKA//2 - 30),
-            "Quantum Leap": (SIRKA//2 + 110, VYSKA//2 + 10),
-            
-            # TIER 4 - Elite (čtvrtá řada)
-            "Break Infinity": (SIRKA//2 - 180, VYSKA//2 + 85),
-            "Ultimate Power": (SIRKA//2 - 40, VYSKA//2 + 45),
-            "Rebirth Mastery": (SIRKA//2 + 110, VYSKA//2 + 85),
-            
-            # ALTERNATIVE PATH (spodní větev)
-            "Speed Demon": (SIRKA//2 - 250, VYSKA//2 + 160),
-            "Wealth Generator": (SIRKA//2 - 70, VYSKA//2 + 120),
-            "Time Warp": (SIRKA//2 + 110, VYSKA//2 + 160)
-        }
-        
-        # Nejdříve vykreslíme čáry mezi upgradama (prerekvizity)
+            rb_label = small_pismo.render("★  REBIRTH - Připraveno!  ★", True, (255, 230, 0))
+        game_surf.blit(rb_label, (rebirth_button.x + rebirth_button.w//2 - rb_label.get_width()//2, rebirth_button.y + 10))
+
+        # --- Vykreslíme čáry (prerekvizity) PŘED uzly ---
         for upgrade_name, upgrade_info in prestige_upgrades.items():
-            if upgrade_name in upgrade_positions and upgrade_info["prereq"]:
-                from_x, from_y = upgrade_positions[upgrade_name]
-                from_center = (from_x + button_width // 2, from_y + button_height // 2)
-                
-                # Nakresli čáru k všem prerequisitům
-                for prereq in upgrade_info["prereq"]:
-                    if prereq in upgrade_positions:
-                        to_x, to_y = upgrade_positions[prereq]
-                        to_center = (to_x + button_width // 2, to_y + button_height // 2)
-                        
-                        # Čára v bílé barvě s nižší opacitou - začíná od spodku prereq, končí na vrchu aktuálního
-                        line_color = (150, 150, 150)
-                        pygame.draw.line(okno, line_color, to_center, from_center, 2)
-        
-        # Pak vykreslíme tlačítka upgradů
+            if upgrade_name not in UPGRADE_POSITIONS:
+                continue
+            from_x, from_y = UPGRADE_POSITIONS[upgrade_name]
+            from_cx = from_x + _UPG_BW // 2
+            from_cy = from_y  # vrchol uzlu
+            for prereq in upgrade_info["prereq"]:
+                if prereq not in UPGRADE_POSITIONS:
+                    continue
+                to_x, to_y = UPGRADE_POSITIONS[prereq]
+                to_cx = to_x + _UPG_BW // 2
+                to_cy = to_y + _UPG_BH  # spodek prerekvizity
+                # Barva čáry: světlá pokud prerekvizita splněna, tmavá jinak
+                prereq_done = prestige_upgrades[prereq]["level"] > 0
+                line_col = (160, 160, 160) if prereq_done else (60, 60, 70)
+                pygame.draw.line(game_surf, line_col, (to_cx, to_cy), (from_cx, from_cy), 2)
+
+        # --- Vykreslíme uzly stromu ---
         for upgrade_name, upgrade_info in prestige_upgrades.items():
-            if upgrade_name in upgrade_positions:
-                pos_x, pos_y = upgrade_positions[upgrade_name]
-                
-                # Zkontroluj prerekvizity
-                prerequisites_met = all(prestige_upgrades[prereq]["level"] > 0 for prereq in upgrade_info["prereq"])
-                is_available = prerequisites_met or len(upgrade_info["prereq"]) == 0
-                
-                upgrade_rect = pygame.Rect(pos_x, pos_y, button_width, button_height)
-                cost = upgrade_info["cost"]
-                level = upgrade_info["level"]
-                max_level = upgrade_info["max_level"]
-                
-                if is_available:
-                    # Barva podle dostupnosti
-                    if rebirth_points >= cost and level < max_level:
-                        button_color = (50, 150, 50)  # Zelená - koupitelné
-                    elif level >= max_level:
-                        button_color = (100, 100, 100)  # Šedá - maxed
-                    else:
-                        button_color = (100, 50, 50)  # Červená - nemůžete si koupit
-                else:
-                    button_color = (40, 40, 40)  # Černá - locked
-                
-                # Tlačítko
-                pygame.draw.rect(okno, button_color, upgrade_rect)
-                pygame.draw.rect(okno, (200, 200, 200), upgrade_rect, 1)  # Border
-                
-                # Text - celý název a level
-                if level >= max_level:
-                    status_text = "MAX"
-                else:
-                    status_text = f"L{level}"
-                
-                # Vykresli text - název a level
-                name_line = tiny_pismo.render(upgrade_name, True, BILA)
-                level_line = tiny_pismo.render(status_text, True, (200, 200, 200))
-                
-                okno.blit(name_line, (upgrade_rect.x + 5, upgrade_rect.y + 5))
-                okno.blit(level_line, (upgrade_rect.x + 5, upgrade_rect.y + 22))
-        
-        # Přidej info text s rebirth pointy a multiplikátorem
-        info_text = small_pismo.render(f"Rebirth Points: {rebirth_points}    Multiplier: x{prestige_multiplier:.2f}", True, (200, 200, 200))
-        okno.blit(info_text, (SIRKA//2 - 480, VYSKA//2 + 300))
+            if upgrade_name not in UPGRADE_POSITIONS:
+                continue
+            pos_x, pos_y = UPGRADE_POSITIONS[upgrade_name]
+            level = upgrade_info["level"]
+            max_level = upgrade_info["max_level"]
+            cost = upgrade_info["cost"]
+
+            # Zkontroluj prerekvizity
+            prerequisites_met = all(prestige_upgrades[p]["level"] > 0 for p in upgrade_info["prereq"])
+            is_available = prerequisites_met or len(upgrade_info["prereq"]) == 0
+
+            # Základní barva tieru
+            tier = UPGRADE_TIERS.get(upgrade_name, "Tier1")
+            base_col = TIER_COLORS[tier]
+
+            rect = pygame.Rect(pos_x, pos_y, _UPG_BW, _UPG_BH)
+
+            if not is_available:
+                # Zamčený uzel - velmi tmavý
+                node_bg    = (25, 25, 32)
+                node_border = (55, 55, 65)
+                text_col   = (80, 80, 90)
+            elif level >= max_level:
+                # MAX level - zlatá hranice, plná barva tieru
+                r, g, b = base_col
+                node_bg    = (r//3, g//3, b//3)
+                node_border = (220, 180, 0)
+                text_col   = (255, 255, 255)
+            elif rebirth_points >= cost:
+                # Koupitelný - plná barva tieru, světlá hranice
+                r, g, b = base_col
+                node_bg    = (r//4, g//4, b//4)
+                node_border = base_col
+                text_col   = (255, 255, 255)
+            else:
+                # Dostupný, ale nestačí bodů - ztlumená verze
+                r, g, b = base_col
+                node_bg    = (20, 20, 25)
+                node_border = (r//2, g//2, b//2)
+                text_col   = (r//2 + 50, g//2 + 50, b//2 + 50)
+
+            # Kresba uzlu s kulatými rohy
+            pygame.draw.rect(game_surf, node_bg, rect, border_radius=6)
+            pygame.draw.rect(game_surf, node_border, rect, 2, border_radius=6)
+
+            # Název upgradu (zkrácení pokud je moc dlouhý)
+            name_display = upgrade_name if len(upgrade_name) <= 18 else upgrade_name[:16] + ".."
+            name_surf = tiny_pismo.render(name_display, True, text_col)
+            game_surf.blit(name_surf, (rect.x + rect.w//2 - name_surf.get_width()//2, rect.y + 5))
+
+            # Status řádek (level / MAX a cena)
+            if level >= max_level:
+                status_str = "✓  MAX"
+                status_col = (220, 180, 0)
+            else:
+                status_str = f"Lv{level}/{max_level}  cost:{cost}"
+                status_col = (200, 200, 200) if is_available else (80, 80, 90)
+            status_surf = tiny_pismo.render(status_str, True, status_col)
+            game_surf.blit(status_surf, (rect.x + rect.w//2 - status_surf.get_width()//2, rect.y + 22))
+
+        # --- Legenda barv (vlevo dole) ---
+        legend_items = [
+            ("Tier 1 - Základní",  TIER_COLORS["Tier1"]),
+            ("Tier 2 - Mid-game",  TIER_COLORS["Tier2"]),
+            ("Tier 3 - Pokročilé", TIER_COLORS["Tier3"]),
+            ("Tier 4 - Elite",     TIER_COLORS["Tier4"]),
+            ("Alt. větev L",       TIER_COLORS["Alt"]),
+            ("Tick Speed R",       TIER_COLORS["Tick"]),
+        ]
+        leg_title = small_pismo.render("Legenda:", True, (160, 160, 160))
+        game_surf.blit(leg_title, (15, VYSKA - 170))
+        for i, (label, col) in enumerate(legend_items):
+            pygame.draw.rect(game_surf, col, (15, VYSKA - 150 + i * 20, 14, 14), border_radius=3)
+            pygame.draw.rect(game_surf, (120, 120, 120), (15, VYSKA - 150 + i * 20, 14, 14), 1, border_radius=3)
+            leg_surf = small_pismo.render(label, True, col)
+            game_surf.blit(leg_surf, (34, VYSKA - 150 + i * 20))
+
+        # --- Tooltip: zobrazí efekt upgradu při najetí myší ---
+        mouse_pos = pygame.mouse.get_pos()
+        for upg_name, upg_info in prestige_upgrades.items():
+            if upg_name not in UPGRADE_POSITIONS:
+                continue
+            tx, ty = UPGRADE_POSITIONS[upg_name]
+            hover_rect = pygame.Rect(tx, ty, _UPG_BW, _UPG_BH)
+            if hover_rect.collidepoint(mouse_pos):
+                # Sestav text tooltipu
+                effect_txt  = UPGRADE_EFFECTS.get(upg_name, "")
+                lvl_txt     = f"Level: {upg_info['level']} / {upg_info['max_level']}"
+                cost_txt    = f"Cena: {upg_info['cost']} rebirth bodů"
+                lines = [upg_name, effect_txt, lvl_txt, cost_txt]
+
+                # Šířka tooltipu podle nejdelšího řádku
+                line_surfs = [small_pismo.render(l, True, (230, 230, 230)) for l in lines]
+                tip_w = max(s.get_width() for s in line_surfs) + 16
+                tip_h = len(lines) * 22 + 10
+
+                # Pozice: vedle kurzoru, ale ne mimo obrazovku
+                tip_x = min(mouse_pos[0] + 12, SIRKA - tip_w - 4)
+                tip_y = min(mouse_pos[1] + 12, VYSKA - tip_h - 4)
+
+                # Pozadí tooltipu
+                tip_surf = pygame.Surface((tip_w, tip_h))
+                tip_surf.set_alpha(220)
+                tip_surf.fill((20, 20, 28))
+                game_surf.blit(tip_surf, (tip_x, tip_y))
+                pygame.draw.rect(game_surf, TIER_COLORS.get(UPGRADE_TIERS.get(upg_name, "Tier1"), (200,200,200)),
+                                 (tip_x, tip_y, tip_w, tip_h), 1, border_radius=4)
+
+                # Text tooltipu
+                for i, surf in enumerate(line_surfs):
+                    col = TIER_COLORS.get(UPGRADE_TIERS.get(upg_name, "Tier1"), (230,230,230)) if i == 0 else (200, 200, 200)
+                    surf = small_pismo.render(lines[i], True, col)
+                    game_surf.blit(surf, (tip_x + 8, tip_y + 6 + i * 22))
+                break  # Zobraz max 1 tooltip najednou
 
     # Aktualizace displeje
+    okno.blit(game_surf, (0, 0))
     pygame.display.flip() # Zobrazí změny na obrazovce
 
     # Omezení FPS
