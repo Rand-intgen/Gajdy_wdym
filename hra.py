@@ -61,11 +61,35 @@ eternitynum = True
 # Rebirth / Prestige systém
 rebirth_open = False
 rebirth_button_rect = pygame.Rect(SIRKA - 330, 10, 100, 30)
-rebirth_points = 0  # Měna pro rebirth - kumuluje se a resetuje skóre/upgrady
-prestige_points = 0  # Měna pro prestige upgradů
-prestige_multiplier = 1.0  # Bonusový multiplikátor skóre z prestige upgradů
+rebirth_points = 0  # Měna pro rebirth strom - kumuluje se a resetuje skóre/upgrady
+prestige_points = 0  # Počet prestiží (Milestones)
+prestige_multiplier = 1.0  # Bonusový multiplikátor skóre z rebirth stromu
 break_infinity_unlocked = False  # Zda je odemknut Break Infinity upgrade
 
+prestige_menu_open = False
+prestige_btn_rect = pygame.Rect(SIRKA - 440, 10, 100, 30)
+prestige_requirement = 100000  # Kolik rebirth bodů je potřeba na Prestige
+
+def get_milestone_multipliers():
+    """Vrací bonusy podle počtu prestiží: rebirth_mult, passive_mult, global_mult, start_score, start_wall"""
+    m_rebirth = 1
+    m_passive = 1
+    m_global = 1
+    start_score = 0
+    start_wall = 0
+    
+    if prestige_points >= 1:
+        start_wall += 50
+    if prestige_points >= 2:
+        m_rebirth *= 5
+    if prestige_points >= 3:
+        m_passive *= 10
+    if prestige_points >= 4:
+        start_score += 1000000
+    if prestige_points >= 5:
+        m_global *= 100
+        
+    return m_rebirth, m_passive, m_global, start_score, start_wall
 # Prestige Upgrade Tree - komplexní systém inspirovaný The Ultimate Upgrade Tree
 prestige_upgrades = {
     # Základní upgrady (Tier 1)
@@ -157,7 +181,8 @@ def calculate_wall_bonus_damage(level):
     - Level 5-9: 6-10 bodů, Level 10-14: 12-20 bodů atd.
     - Cíl: Poskytnout hráčům dramatické zlepšení po dosažení milníků
     """
-    return (1 + level) * (2 ** (level // 5))
+    _, _, _, _, start_wall = get_milestone_multipliers()
+    return (1 + level) * (2 ** (level // 5)) + start_wall
 
 def calculate_passive_gain_per_second(current_score, level):
     """Vypočítá pasivní gain za sekundu na základě aktuálního skóre a úrovně upgradu.
@@ -229,7 +254,9 @@ def calculate_rebirth_points_from_score(current_score):
     if current_score < 10000:
         return 0
     import math
-    return int(math.sqrt(current_score / 1000))
+    base = int(math.sqrt(current_score / 1000))
+    m_rebirth, _, _, _, _ = get_milestone_multipliers()
+    return base * m_rebirth
 
 def calculate_prestige_multiplier(prestige_upgrades):
     """Vypočítá multiplikátor skóre z prestige upgradů.
@@ -503,18 +530,28 @@ while bezi: # Hlavní cyklus hry
                 if shop_open:
                     settings_open = False
                     rebirth_open = False
+                    prestige_menu_open = False
             # Kliknutí myší - přepnout settings pokud bylo kliknuto na tlačítko
             if settings_button_rect.collidepoint(event.pos):
                 settings_open = not settings_open
                 if settings_open:
                     shop_open = False
                     rebirth_open = False
+                    prestige_menu_open = False
             # Kliknutí myší - přepnout rebirth pokud bylo kliknuto na tlačítko
             if rebirth_button_rect.collidepoint(event.pos):
                 rebirth_open = not rebirth_open
                 if rebirth_open:
                     shop_open = False
                     settings_open = False
+                    prestige_menu_open = False
+            # Kliknutí myší - přepnout prestige menu pokud bylo kliknuto
+            if prestige_btn_rect.collidepoint(event.pos):
+                prestige_menu_open = not prestige_menu_open
+                if prestige_menu_open:
+                    shop_open = False
+                    settings_open = False
+                    rebirth_open = False
 
             # Upgrade kliknutí v shopu
             if shop_open:
@@ -545,14 +582,39 @@ while bezi: # Hlavní cyklus hry
                 # Rebirth tlačítko (pozice musí odpovídat renderu)
                 rebirth_button = pygame.Rect(SIRKA//2 - 120, 70, 240, 45)
                 if rebirth_button.collidepoint(event.pos):
-                    if rebirth_points >= rebirth_requirement:
-                        # Reset skóre a základních upgradů (prestige upgrady zůstávají!)
-                        score = 0
+                    if score >= rebirth_requirement:
+                        # PŘIČTI rebirth body (oprava bugu)
+                        earned = calculate_rebirth_points_from_score(score)
+                        rebirth_points += earned
+                        # Reset skóre a základních upgradů
+                        _, _, _, start_score, _ = get_milestone_multipliers()
+                        score = start_score
                         passive_gain_level = 0
                         wall_bonus_level = 0
                         multi_base_gain_level = 0
-                        rebirth_points -= rebirth_requirement
                         rebirth_open = False
+                        
+            # Prestige menu kliknutí
+            if prestige_menu_open:
+                p_button = pygame.Rect(SIRKA//2 - 150, 110, 300, 50)
+                if p_button.collidepoint(event.pos) and rebirth_points >= prestige_requirement:
+                    # PROVEĎ PRESTIGE
+                    prestige_points += 1
+                    rebirth_points = 0
+                    
+                    # reset rebirth tree
+                    for v in prestige_upgrades.values():
+                        v["level"] = 0
+                    
+                    _, _, _, start_score, _ = get_milestone_multipliers()
+                    score = start_score
+                    passive_gain_level = 0
+                    wall_bonus_level = 0
+                    multi_base_gain_level = 0
+                    
+                    break_infinity_unlocked = False
+                    prestige_multiplier = 1.0
+                    prestige_menu_open = False
 
                 # Kliknutí na uzly stromu - porovnáme s UPGRADE_POSITIONS
                 for upgrade_name, upgrade_info in prestige_upgrades.items():
@@ -598,6 +660,10 @@ while bezi: # Hlavní cyklus hry
         passive_gain_per_second *= calculate_multi_base_gain_multiplier(multi_base_gain_level)
         # Aplikuj tick-speed multiplikátor z pravé alt větve
         passive_gain_per_second *= calculate_tick_speed_multiplier(prestige_upgrades)
+        
+        # Aplikuj milestone multiplikátory prestige funkce!
+        _, m_passive, m_global, _, _ = get_milestone_multipliers()
+        passive_gain_per_second *= (m_passive * m_global)
     else:
         # Bez Automation upgradu: žádný pasivní gain!
         passive_gain_per_second = 0
@@ -636,6 +702,10 @@ while bezi: # Hlavní cyklus hry
             wall_damage = calculate_wall_bonus_damage(wall_bonus_level)
             # Aplikuj multi base gain multiplikátor na wall damage
             wall_damage *= calculate_multi_base_gain_multiplier(multi_base_gain_level)
+            # Aplikuj global milestone multiplikátor
+            _, _, m_global, _, _ = get_milestone_multipliers()
+            wall_damage *= m_global
+            
             score += wall_damage
             # Označ čtverec k odstranění (nový se vytvoří později)
             to_remove.append(i)
@@ -676,6 +746,8 @@ while bezi: # Hlavní cyklus hry
         passive_gain_display *= prestige_multiplier
         passive_gain_display *= calculate_passive_gain_multiplier_from_prestige(prestige_upgrades)
         passive_gain_display *= calculate_multi_base_gain_multiplier(multi_base_gain_level)
+        _, m_passive, m_global, _, _ = get_milestone_multipliers()
+        passive_gain_display *= (m_passive * m_global)
     else:
         passive_gain_display = 0
     
@@ -695,6 +767,8 @@ while bezi: # Hlavní cyklus hry
     
     # Vypočti wall damage s multiplikátorem
     wall_damage_display = calculate_wall_bonus_damage(wall_bonus_level) * calculate_multi_base_gain_multiplier(multi_base_gain_level)
+    _, _, m_global, _, _ = get_milestone_multipliers()
+    wall_damage_display *= m_global
     if wall_damage_display == int(wall_damage_display):
         wall_str = f"{int(wall_damage_display)}"
     else:
@@ -718,6 +792,11 @@ while bezi: # Hlavní cyklus hry
     pygame.draw.rect(game_surf, (150, 50, 50), rebirth_button_rect)
     rebirth_text = pismo.render("Rebirth", True, BILA)
     game_surf.blit(rebirth_text, (rebirth_button_rect.x + 18, rebirth_button_rect.y + 5))
+
+    # Tlačítko pro prestige
+    pygame.draw.rect(game_surf, (200, 150, 50), prestige_btn_rect)
+    prestige_btn_text = pismo.render("Prestige", True, BILA)
+    game_surf.blit(prestige_btn_text, (prestige_btn_rect.x + 12, prestige_btn_rect.y + 5))
 
     # Pokud je shop otevřený, vykreslíme upgrade tlačítka
     if shop_open:
@@ -792,24 +871,25 @@ while bezi: # Hlavní cyklus hry
         game_surf.blit(rebirth_title, (SIRKA//2 - rebirth_title.get_width()//2, 12))
 
         # Info řádek nahoře - aktuální rebirth body a multiplier
+        earned_if_rebirth = calculate_rebirth_points_from_score(score)
         info_bar = small_pismo.render(
-            f"Rebirth Points: {rebirth_points}    |    Score Multiplier: x{prestige_multiplier:.2f}    |    Rebirth potřeba: {max(0, rebirth_requirement - rebirth_points)} bodů",
+            f"Rebirth Points: {rebirth_points}    |    Score Multiplier: x{prestige_multiplier:.2f}    |    Score do resetu: {max(0, rebirth_requirement - score):.0f}",
             True, (180, 180, 180)
         )
         game_surf.blit(info_bar, (SIRKA//2 - info_bar.get_width()//2, 42))
 
         # Rebirth tlačítko
         rebirth_button = pygame.Rect(SIRKA//2 - 120, 70, 240, 45)
-        needed_rebirth = max(0, rebirth_requirement - rebirth_points)
-        btn_bg = (140, 45, 45) if needed_rebirth > 0 else (40, 140, 40)
+        can_rebirth = score >= rebirth_requirement
+        btn_bg = (50, 150, 50) if can_rebirth else (140, 45, 45)
         pygame.draw.rect(game_surf, btn_bg, rebirth_button, border_radius=8)
         pygame.draw.rect(game_surf, (220, 220, 220), rebirth_button, 2, border_radius=8)
-        if needed_rebirth > 0:
-            rb_label = small_pismo.render(f"REBIRTH  ({needed_rebirth} více bodů)", True, (255, 255, 255))
+        if can_rebirth:
+            rb_label = small_pismo.render(f"★  Získat {earned_if_rebirth} Rebirth Bodů  ★", True, (255, 230, 0))
         else:
-            rb_label = small_pismo.render("★  REBIRTH - Připraveno!  ★", True, (255, 230, 0))
+            rb_label = small_pismo.render(f"Potřeba {rebirth_requirement} skóre", True, (255, 255, 255))
         game_surf.blit(rb_label, (rebirth_button.x + rebirth_button.w//2 - rb_label.get_width()//2, rebirth_button.y + 10))
-
+        
         # --- Vykreslíme čáry (prerekvizity) PŘED uzly ---
         for upgrade_name, upgrade_info in prestige_upgrades.items():
             if upgrade_name not in UPGRADE_POSITIONS:
@@ -944,6 +1024,52 @@ while bezi: # Hlavní cyklus hry
                     surf = small_pismo.render(lines[i], True, col)
                     game_surf.blit(surf, (tip_x + 8, tip_y + 6 + i * 22))
                 break  # Zobraz max 1 tooltip najednou
+
+    # Vykreslení Prestige menu s tabulkou milníků
+    if prestige_menu_open:
+        overlay = pygame.Surface((SIRKA, VYSKA))
+        overlay.set_alpha(245)
+        overlay.fill((10, 5, 20))
+        game_surf.blit(overlay, (0, 0))
+
+        prestige_title = pismo.render("★  PRESTIGE (Milestones)  ★", True, (255, 215, 0))
+        game_surf.blit(prestige_title, (SIRKA//2 - prestige_title.get_width()//2, 30))
+        
+        info_txt = small_pismo.render(f"Vaše celkové Prestiže: {prestige_points}    |    Vaše Rebirth Body: {rebirth_points}", True, (200, 200, 200))
+        game_surf.blit(info_txt, (SIRKA//2 - info_txt.get_width()//2, 70))
+
+        # Tlačítko k prestiži
+        p_button = pygame.Rect(SIRKA//2 - 150, 110, 300, 50)
+        can_prestige = (rebirth_points >= prestige_requirement)
+        bg_col = (50, 150, 50) if can_prestige else (150, 50, 50)
+        pygame.draw.rect(game_surf, bg_col, p_button, border_radius=8)
+        pygame.draw.rect(game_surf, (200, 200, 200), p_button, 2, border_radius=8)
+        
+        if can_prestige:
+            btn_lbl = small_pismo.render("SPUSTIT PRESTIGE", True, (255, 255, 255))
+        else:
+            btn_lbl = small_pismo.render(f"Chybí {prestige_requirement - rebirth_points} RB na Prestige", True, (200, 200, 200))
+        game_surf.blit(btn_lbl, (p_button.x + p_button.w//2 - btn_lbl.get_width()//2, p_button.y + 12))
+
+        # Tabulka milestones
+        miles_y = 200
+        miles_title = pismo.render("--- Milestones (Získané výhody napořád) ---", True, BILA)
+        game_surf.blit(miles_title, (SIRKA//2 - miles_title.get_width()//2, miles_y))
+        
+        milestones = [
+            (1, "Zeď vždy dává základ +50 damage navíc"),
+            (2, "Zisk Rebirth bodů je zvýšen 5x"),
+            (3, "Pasivní příjem bodů je zvýšen 10x"),
+            (4, "Po každém dalším resetu začínáte s 1,000,000 skóre"),
+            (5, "Globální Multiplikátor skóre zvýšen 100x")
+        ]
+        
+        for m_req, m_desc in milestones:
+            miles_y += 50
+            m_col = (0, 255, 0) if prestige_points >= m_req else (100, 100, 100)
+            status_char = "✓" if prestige_points >= m_req else "✗"
+            m_surf = pismo.render(f"{status_char} [{m_req} Prestige]: {m_desc}", True, m_col)
+            game_surf.blit(m_surf, (SIRKA//2 - 300, miles_y))
 
     # Aktualizace displeje
     okno.blit(game_surf, (0, 0))
