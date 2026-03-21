@@ -212,7 +212,7 @@ prestige_upgrades = {
     # Alternativní větve - LEVO (ekonomické)
     "Speed Demon":               {"cost": 30,    "prereq": ["Efficiency Boost"], "unlocked": False, "level": 0, "max_level": 8},
     "Wealth Generator":          {"cost": 45,    "prereq": ["Speed Demon"], "unlocked": False, "level": 0, "max_level": 6},
-    "Time Warp":                 {"cost": 75,    "prereq": ["Wealth Generator", "Infinity Engine"], "unlocked": False, "level": 0, "max_level": 4},
+    "Time Warp":                 {"cost": 75,    "prereq": ["Wealth Generator"], "unlocked": False, "level": 0, "max_level": 4},
 
     # Alternativní větve - PRAVO (tick speed) - ceny 1k-15k
     "Tick Booster":              {"cost": 1000,  "prereq": ["Automation (Passive Gain)"], "unlocked": False, "level": 0, "max_level": 10},
@@ -971,18 +971,18 @@ while bezi: # Hlavní cyklus hry
         game_surf.blit(info_text, (SIRKA//2 - 200, VYSKA//2 + 80))
     # Pokud jsou settings otevřené, vykreslíme nastavení
     if settings_open:
-        overlay = pygame.Surface((480, 200))
+        overlay = pygame.Surface((580, 200))
         overlay.set_alpha(230)
         overlay.fill((30, 30, 30))
-        game_surf.blit(overlay, (SIRKA//2 - 240, VYSKA//2 - 100))
+        game_surf.blit(overlay, (SIRKA//2 - 290, VYSKA//2 - 100))
         settings_title = pismo.render("Settings", True, BILA)
-        game_surf.blit(settings_title, (SIRKA//2 - 200, VYSKA//2 - 80))
+        game_surf.blit(settings_title, (SIRKA//2 - 260, VYSKA//2 - 80))
 
         desc = small_pismo.render("Vědecká notace (Eternitynum) - spouští se od 1,000,000,000,000", True, (200, 200, 200))
-        game_surf.blit(desc, (SIRKA//2 - 200, VYSKA//2 - 40))
+        game_surf.blit(desc, (SIRKA//2 - 260, VYSKA//2 - 40))
         state_text = "Eternitynum: Enabled" if eternitynum else "Eternitynum: Disabled"
         label = small_pismo.render(state_text, True, BILA)
-        game_surf.blit(label, (SIRKA//2 - 200, VYSKA//2 - 18))
+        game_surf.blit(label, (SIRKA//2 - 260, VYSKA//2 - 18))
 
     # Pokud je rebirth menu otevřené, vykreslíme upgrade tree (inspirováno The Ultimate Upgrade Tree)
     if rebirth_open:
