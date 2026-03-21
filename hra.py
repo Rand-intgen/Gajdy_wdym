@@ -70,6 +70,25 @@ prestige_menu_open = False
 prestige_btn_rect = pygame.Rect(SIRKA - 440, 10, 100, 30)
 prestige_requirement = 100000  # Kolik rebirth bodů je potřeba na Prestige
 
+# Periodic Table systém
+periodic_table_open = False
+periodic_btn_rect = pygame.Rect(SIRKA - 550, 10, 100, 30)
+# Všechny odemčené/dostupné prvky. "cost" v Rebirth bodech. Vzorec boostu bude v samostatné funkci.
+elements_db = {
+    "H": {"cost": 50000, "name": "Hydrogen", "symbol": "H", "desc": "Základní boost pasivního skóre z aktuálních Rebirth bodů."},
+    "He": {"cost": 250000, "name": "Helium", "symbol": "He", "desc": "Boostuje globální násobič z logaritmu skóre."},
+    "Li": {"cost": 1000000, "name": "Lithium", "symbol": "Li", "desc": "Boostuje wall damage úměrně počtu prestiží."},
+    "Be": {"cost": 5000000, "name": "Beryllium", "symbol": "Be", "desc": "Masivně zvyšuje pasivní příjem na základě zakoupených upgradů."},
+    "B": {"cost": 25000000, "name": "Boron", "symbol": "B", "desc": "Zrychluje tick-speed podľa aktuálneho zisku z wall damage."},
+    "C": {"cost": 100000000, "name": "Carbon", "symbol": "C", "desc": "Logaritmický násobič Score i Rebirth bodů dohromady."},
+    "N": {"cost": 500000000, "name": "Nitrogen", "symbol": "N", "desc": "Exponenciální nárůst pasivního zisku (menší exponent)."},
+    "O": {"cost": 2500000000, "name": "Oxygen", "symbol": "O", "desc": "Dvojnásobně zesiluje efekt všech předchozích prvků."},
+    "F": {"cost": 10000000000, "name": "Fluorine", "symbol": "F", "desc": "Každý odemčený element přidá globální 2x boost."},
+    "Ne": {"cost": 50000000000, "name": "Neon", "symbol": "Ne", "desc": "Zářící neonová aura: Trvale x10 na vše."}
+}
+# Status vlastnění prvků - ukládáme jako slovník True/False
+elements_unlocked = {sym: False for sym in elements_db}
+
 def get_milestone_multipliers():
     """Vrací bonusy podle počtu prestiží: rebirth_mult, passive_mult, global_mult, start_score, start_wall"""
     m_rebirth = 1
@@ -88,8 +107,83 @@ def get_milestone_multipliers():
         start_score += 1000000
     if prestige_points >= 5:
         m_global *= 100
+    if prestige_points >= 6:
+        m_rebirth *= 10
+    if prestige_points >= 7:
+        m_passive *= 100
+    if prestige_points >= 8:
+        start_wall += 1000
+    if prestige_points >= 10:
+        start_score += 1000000000
+    if prestige_points >= 12:
+        m_global *= 10000
+    if prestige_points >= 15:
+        m_rebirth *= 100
         
     return m_rebirth, m_passive, m_global, start_score, start_wall
+
+def calculate_elements_multipliers(current_score, rebirth_pts, upgrades=None):
+    """Vrací trojici multiplikátorů z odemčených prvků: (m_passive, m_global, m_wall).
+    Tento boost se dynamicky počítá z měn a odemčených prvků každou chvíli.
+    """
+    import math
+    em_passive = 1.0
+    em_global = 1.0
+    em_wall = 1.0
+    
+    # Kaskádové bonusy z těžších prvků
+    oxygen_bonus = 2.0 if elements_unlocked["O"] else 1.0
+    
+    # H: Pasivní skóre z aktuálních Rebirth bodů
+    if elements_unlocked["H"]:
+        # log10 z rebirth bodů, s mírným offsetem a omezeným skalováním
+        h_boost = 1.0 + (math.log10(max(rebirth_pts + 1, 10)) * 0.5)
+        em_passive *= (h_boost * oxygen_bonus)
+        
+    # He: Globální skóre z logaritmu celkového skóre
+    if elements_unlocked["He"]:
+        he_boost = 1.0 + (math.log10(max(current_score + 1, 10)) * 0.3)
+        em_global *= (he_boost * oxygen_bonus)
+        
+    # Li: Wall damage podle počtu prestiží
+    if elements_unlocked["Li"]:
+        li_boost = 1.0 + (prestige_points * 2.5)
+        em_wall *= (li_boost * oxygen_bonus)
+        
+    # Be: Zvyšuje pasivní příjem na základě levelu zakoupených upgradů z Prestige Tree
+    if elements_unlocked["Be"]:
+        total_upgrade_levels = sum(u["level"] for u in prestige_upgrades.values()) if upgrades else 0
+        be_boost = 1.0 + (total_upgrade_levels * 0.1)
+        em_passive *= (be_boost * oxygen_bonus)
+        
+    # B: Tik-speed (aplikován převážně na wall damage / pasiv)
+    if elements_unlocked["B"]:
+        em_passive *= (1.5 * oxygen_bonus)
+        
+    # C: Skóre i Rebirth bodů boost z celkové logaritmické báze
+    if elements_unlocked["C"]:
+        combined = rebirth_pts + current_score
+        c_boost = 1.0 + (math.log10(max(combined + 1, 10)) * 0.8)
+        em_global *= (c_boost * oxygen_bonus)
+        
+    # N: Exponenciální (menší nárůst) pasivního zisku
+    if elements_unlocked["N"]:
+        # Menší base (1.02), umocněno na tier/prestige, ale ne aby to explodovalo, jen konstantní masivní boost
+        em_passive *= (5.0 * oxygen_bonus)
+        
+    # F: Každý odemčený prvek * 2 globálně
+    if elements_unlocked["F"]:
+        unlocked_count = sum(1 for v in elements_unlocked.values() if v)
+        f_boost = 2.0 ** unlocked_count
+        em_global *= f_boost # Nenásobíme oxygen_bonus, Fluorine má plošný hard multiplier
+        
+    # Ne: Trvale x10 na všechno
+    if elements_unlocked["Ne"]:
+        em_passive *= (10.0 * oxygen_bonus)
+        em_global *= (10.0 * oxygen_bonus)
+        em_wall *= (10.0 * oxygen_bonus)
+        
+    return em_passive, em_global, em_wall
 # Prestige Upgrade Tree - komplexní systém inspirovaný The Ultimate Upgrade Tree
 prestige_upgrades = {
     # Základní upgrady (Tier 1)
@@ -552,6 +646,15 @@ while bezi: # Hlavní cyklus hry
                     shop_open = False
                     settings_open = False
                     rebirth_open = False
+                    periodic_table_open = False
+            # Kliknutí myší - přepnout periodic table pokud bylo kliknuto
+            if periodic_btn_rect.collidepoint(event.pos):
+                periodic_table_open = not periodic_table_open
+                if periodic_table_open:
+                    shop_open = False
+                    settings_open = False
+                    rebirth_open = False
+                    prestige_menu_open = False
 
             # Upgrade kliknutí v shopu
             if shop_open:
@@ -636,6 +739,20 @@ while bezi: # Hlavní cyklus hry
                             if upgrade_name == "Break Infinity" and upgrade_info["level"] == 1:
                                 break_infinity_unlocked = True
 
+            # Periodic table element kliknutí
+            if periodic_table_open:
+                # Obdelníky logiky nákupu vykreslujeme v render_periodic_table. Můžeme je tu re-kalkulovat.
+                elem_keys = list(elements_db.keys())
+                for i, key in enumerate(elem_keys):
+                    row = i // 5
+                    col = i % 5
+                    rect = pygame.Rect((SIRKA // 2 - 250) + col * 100, (VYSKA // 2 - 100) + row * 100, 90, 90)
+                    if rect.collidepoint(event.pos):
+                        if not elements_unlocked[key]:
+                            if rebirth_points >= elements_db[key]["cost"]:
+                                rebirth_points -= elements_db[key]["cost"]
+                                elements_unlocked[key] = True
+
     # Získání stavu kláves
     klavesa = pygame.key.get_pressed() # Zjistí stisknuté klávesy
     dx = 0
@@ -663,7 +780,8 @@ while bezi: # Hlavní cyklus hry
         
         # Aplikuj milestone multiplikátory prestige funkce!
         _, m_passive, m_global, _, _ = get_milestone_multipliers()
-        passive_gain_per_second *= (m_passive * m_global)
+        em_passive, em_global, em_wall = calculate_elements_multipliers(score, rebirth_points, prestige_upgrades)
+        passive_gain_per_second *= (m_passive * m_global * em_passive * em_global)
     else:
         # Bez Automation upgradu: žádný pasivní gain!
         passive_gain_per_second = 0
@@ -704,7 +822,8 @@ while bezi: # Hlavní cyklus hry
             wall_damage *= calculate_multi_base_gain_multiplier(multi_base_gain_level)
             # Aplikuj global milestone multiplikátor
             _, _, m_global, _, _ = get_milestone_multipliers()
-            wall_damage *= m_global
+            em_passive, em_global, em_wall = calculate_elements_multipliers(score, rebirth_points, prestige_upgrades)
+            wall_damage *= (m_global * em_global * em_wall)
             
             score += wall_damage
             # Označ čtverec k odstranění (nový se vytvoří později)
@@ -747,7 +866,8 @@ while bezi: # Hlavní cyklus hry
         passive_gain_display *= calculate_passive_gain_multiplier_from_prestige(prestige_upgrades)
         passive_gain_display *= calculate_multi_base_gain_multiplier(multi_base_gain_level)
         _, m_passive, m_global, _, _ = get_milestone_multipliers()
-        passive_gain_display *= (m_passive * m_global)
+        em_passive, em_global, em_wall = calculate_elements_multipliers(score, rebirth_points, prestige_upgrades)
+        passive_gain_display *= (m_passive * m_global * em_passive * em_global)
     else:
         passive_gain_display = 0
     
@@ -768,7 +888,8 @@ while bezi: # Hlavní cyklus hry
     # Vypočti wall damage s multiplikátorem
     wall_damage_display = calculate_wall_bonus_damage(wall_bonus_level) * calculate_multi_base_gain_multiplier(multi_base_gain_level)
     _, _, m_global, _, _ = get_milestone_multipliers()
-    wall_damage_display *= m_global
+    em_passive, em_global, em_wall = calculate_elements_multipliers(score, rebirth_points, prestige_upgrades)
+    wall_damage_display *= (m_global * em_global * em_wall)
     if wall_damage_display == int(wall_damage_display):
         wall_str = f"{int(wall_damage_display)}"
     else:
@@ -797,6 +918,11 @@ while bezi: # Hlavní cyklus hry
     pygame.draw.rect(game_surf, (200, 150, 50), prestige_btn_rect)
     prestige_btn_text = pismo.render("Prestige", True, BILA)
     game_surf.blit(prestige_btn_text, (prestige_btn_rect.x + 12, prestige_btn_rect.y + 5))
+
+    # Tlačítko pro Periodic Table
+    pygame.draw.rect(game_surf, (50, 200, 200), periodic_btn_rect)
+    periodic_btn_text = small_pismo.render("Elements", True, CERNA)
+    game_surf.blit(periodic_btn_text, (periodic_btn_rect.x + 20, periodic_btn_rect.y + 7))
 
     # Pokud je shop otevřený, vykreslíme upgrade tlačítka
     if shop_open:
@@ -1061,7 +1187,13 @@ while bezi: # Hlavní cyklus hry
             (2, "Zisk Rebirth bodů je zvýšen 5x"),
             (3, "Pasivní příjem bodů je zvýšen 10x"),
             (4, "Po každém dalším resetu začínáte s 1,000,000 skóre"),
-            (5, "Globální Multiplikátor skóre zvýšen 100x")
+            (5, "Globální Multiplikátor skóre zvýšen 100x"),
+            (6, "Zisk Rebirth bodů je zvýšen 10x (na celkem 50x)"),
+            (7, "Pasivní příjem bodů je zvýšen 100x (na 1000x)"),
+            (8, "Zeď vždy dává základ +1000 damage navíc"),
+            (10, "Začínáte s 1,000,000,000 skóre"),
+            (12, "Globální Multiplikátor skóre zvýšen 10000x"),
+            (15, "Zisk Rebirth bodů je zvýšen dalších 100x (na 5000x)")
         ]
         
         for m_req, m_desc in milestones:
@@ -1070,6 +1202,87 @@ while bezi: # Hlavní cyklus hry
             status_char = "✓" if prestige_points >= m_req else "✗"
             m_surf = pismo.render(f"{status_char} [{m_req} Prestige]: {m_desc}", True, m_col)
             game_surf.blit(m_surf, (SIRKA//2 - 300, miles_y))
+
+    # Vykreslení Periodic Table menu
+    if periodic_table_open:
+        overlay = pygame.Surface((SIRKA, VYSKA))
+        overlay.set_alpha(245)
+        overlay.fill((5, 10, 15))
+        game_surf.blit(overlay, (0, 0))
+
+        title = pismo.render("★  PERIODIC TABLE OF ELEMENTS  ★", True, (100, 255, 255))
+        game_surf.blit(title, (SIRKA//2 - title.get_width()//2, 30))
+        
+        info_txt = small_pismo.render(f"Vaše Rebirth Body: {rebirth_points}   |   Elements boostují pasiv a skóre podle Rebirths/Score", True, (200, 200, 200))
+        game_surf.blit(info_txt, (SIRKA//2 - info_txt.get_width()//2, 70))
+        
+        em_passive, em_global, em_wall = calculate_elements_multipliers(score, rebirth_points, prestige_upgrades)
+        mult_txt = small_pismo.render(f"Aktuální boost prvků: Pasiv x{em_passive:.2f}  |  Skóre x{em_global:.2f}  |  Wall x{em_wall:.2f}", True, (0, 255, 100))
+        game_surf.blit(mult_txt, (SIRKA//2 - mult_txt.get_width()//2, 95))
+
+        elem_keys = list(elements_db.keys())
+        box_size = 90
+        gap = 10
+        start_px = SIRKA // 2 - 250
+        start_py = VYSKA // 2 - 100
+
+        for i, key in enumerate(elem_keys):
+            row = i // 5
+            col = i % 5
+            px = start_px + col * (box_size + gap)
+            py = start_py + row * (box_size + gap)
+            rect = pygame.Rect(px, py, box_size, box_size)
+            
+            unlocked = elements_unlocked[key]
+            cost = elements_db[key]["cost"]
+            can_buy = rebirth_points >= cost
+            
+            if unlocked:
+                bg_col = (50, 200, 50)
+                border_col = (100, 255, 100)
+            elif can_buy:
+                bg_col = (50, 100, 150)
+                border_col = (100, 200, 255)
+            else:
+                bg_col = (40, 40, 50)
+                border_col = (80, 80, 90)
+
+            pygame.draw.rect(game_surf, bg_col, rect, border_radius=5)
+            pygame.draw.rect(game_surf, border_col, rect, 2, border_radius=5)
+
+            sym_surf = pismo.render(elements_db[key]["symbol"], True, BILA)
+            game_surf.blit(sym_surf, (px + box_size//2 - sym_surf.get_width()//2, py + 15))
+
+            if not unlocked:
+                cost_surf = tiny_pismo.render(f"C: {cost}", True, (200, 200, 200))
+                game_surf.blit(cost_surf, (px + box_size//2 - cost_surf.get_width()//2, py + 55))
+            else:
+                own_surf = tiny_pismo.render("VLASTNÍ", True, (255, 255, 100))
+                game_surf.blit(own_surf, (px + box_size//2 - own_surf.get_width()//2, py + 55))
+
+        # Tooltips = efekt elementu hover (najetí myší)
+        mouse_pos = pygame.mouse.get_pos()
+        for i, key in enumerate(elem_keys):
+            row = i // 5
+            col = i % 5
+            px = start_px + col * (box_size + gap)
+            py = start_py + row * (box_size + gap)
+            rect = pygame.Rect(px, py, box_size, box_size)
+            
+            if rect.collidepoint(mouse_pos):
+                desc_text = elements_db[key]["name"] + " - " + elements_db[key]["desc"]
+                if not elements_unlocked[key]:
+                    desc_text += f" (Stojí: {elements_db[key]['cost']} RB)"
+                tip_surf = small_pismo.render(desc_text, True, BILA)
+                
+                tip_w, tip_h = tip_surf.get_width() + 16, 30
+                tip_x = min(mouse_pos[0] + 15, SIRKA - tip_w - 5)
+                tip_y = min(mouse_pos[1] + 15, VYSKA - tip_h - 5)
+                
+                pygame.draw.rect(game_surf, (20, 30, 40), (tip_x, tip_y, tip_w, tip_h), border_radius=4)
+                pygame.draw.rect(game_surf, (100, 200, 255), (tip_x, tip_y, tip_w, tip_h), 1, border_radius=4)
+                game_surf.blit(tip_surf, (tip_x + 8, tip_y + 5))
+                break
 
     # Aktualizace displeje
     okno.blit(game_surf, (0, 0))
