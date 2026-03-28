@@ -95,7 +95,22 @@ elements_db = {
     "Cl": {"cost": 2584, "name": "Chlorine", "symbol": "Cl", "desc": "Pasivní a wall x10."},
     "Ar": {"cost": 4181, "name": "Argon", "symbol": "Ar", "desc": "Další x2 násobič na dřívější prvky."},
     "K": {"cost": 6765, "name": "Potassium", "symbol": "K", "desc": "Globální skóre x25."},
-    "Ca": {"cost": 10946, "name": "Calcium", "symbol": "Ca", "desc": "Ultimátní boost: x100 na všechno."}
+    "Ca": {"cost": 10946, "name": "Calcium", "symbol": "Ca", "desc": "Ultimátní boost: x100 na všechno."},
+    "Sc": {"cost": 20000, "name": "Scandium", "symbol": "Sc", "desc": "Základní skóre ze zdi x2."},
+    "Ti": {"cost": 35000, "name": "Titanium", "symbol": "Ti", "desc": "Pasivní gain x2."},
+    "V": {"cost": 55000, "name": "Vanadium", "symbol": "V", "desc": "Rebirth body x3."},
+    "Cr": {"cost": 85000, "name": "Chromium", "symbol": "Cr", "desc": "Skóre po prestiži x5."},
+    "Mn": {"cost": 130000, "name": "Manganese", "symbol": "Mn", "desc": "Globální skóre x10."},
+    "Fe": {"cost": 200000, "name": "Iron", "symbol": "Fe", "desc": "Pasivní a zeď x5."},
+    "Co": {"cost": 320000, "name": "Cobalt", "symbol": "Co", "desc": "Rebirth body x5."},
+    "Ni": {"cost": 500000, "name": "Nickel", "symbol": "Ni", "desc": "Každý odemčený element přidá globální 1.5x boost."},
+    "Cu": {"cost": 800000, "name": "Copper", "symbol": "Cu", "desc": "Zvyšuje pasivní příjem na základě počtu Quarků."},
+    "Zn": {"cost": 1300000, "name": "Zinc", "symbol": "Zn", "desc": "Globální multiplikátor x15."},
+    "Ga": {"cost": 2000000, "name": "Gallium", "symbol": "Ga", "desc": "Pasivní gain x25."},
+    "Ge": {"cost": 3200000, "name": "Germanium", "symbol": "Ge", "desc": "Další x2 násobič na dřívější prvky."},
+    "As": {"cost": 5000000, "name": "Arsenic", "symbol": "As", "desc": "Zeď damage x50."},
+    "Se": {"cost": 8000000, "name": "Selenium", "symbol": "Se", "desc": "Rebirth body x25."},
+    "Br": {"cost": 13000000, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
 }
 # Status vlastnění prvků - ukládáme jako slovník True/False
 elements_unlocked = {sym: False for sym in elements_db}
@@ -238,6 +253,47 @@ def calculate_elements_multipliers(current_score, rebirth_pts, upgrades=None):
         em_wall *= 100.0
         em_rebirth *= 100.0
         
+    # Kaskádové bonusy pro nové prvky
+    ge_bonus = 2.0 if elements_unlocked["Ge"] else 1.0
+    
+    if elements_unlocked["Sc"]:
+        em_wall *= (2.0 * ge_bonus)
+    if elements_unlocked["Ti"]:
+        em_passive *= (2.0 * ge_bonus)
+    if elements_unlocked["V"]:
+        em_rebirth *= (3.0 * ge_bonus)
+    if elements_unlocked["Cr"]:
+        em_global *= (5.0 * ge_bonus)
+    if elements_unlocked["Mn"]:
+        em_global *= (10.0 * ge_bonus)
+    if elements_unlocked["Fe"]:
+        em_passive *= (5.0 * ge_bonus)
+        em_wall *= (5.0 * ge_bonus)
+    if elements_unlocked["Co"]:
+        em_rebirth *= (5.0 * ge_bonus)
+    if elements_unlocked["Ni"]:
+        unlocked_count2 = sum(1 for v in elements_unlocked.values() if v)
+        ni_boost = 1.5 ** unlocked_count2
+        em_global *= ni_boost
+    if elements_unlocked["Cu"]:
+        import math
+        cu_boost = 1.0 + (math.log10(max(quarks + 1, 10)) * 5)
+        em_passive *= (cu_boost * ge_bonus)
+    if elements_unlocked["Zn"]:
+        em_global *= (15.0 * ge_bonus)
+    if elements_unlocked["Ga"]:
+        em_passive *= (25.0 * ge_bonus)
+    # Ge bonus se aplikuje výše
+    if elements_unlocked["As"]:
+        em_wall *= (50.0 * ge_bonus)
+    if elements_unlocked["Se"]:
+        em_rebirth *= (25.0 * ge_bonus)
+    if elements_unlocked["Br"]:
+        em_passive *= 500.0
+        em_global *= 500.0
+        em_wall *= 500.0
+        em_rebirth *= 500.0
+        
     return em_passive, em_global, em_wall, em_rebirth
 # Prestige Upgrade Tree - komplexní systém inspirovaný The Ultimate Upgrade Tree
 prestige_upgrades = {
@@ -245,6 +301,10 @@ prestige_upgrades = {
     "Automation (Passive Gain)": {"cost": 8,     "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 20},
     "Score Booster":             {"cost": 5,     "prereq": [], "unlocked": False, "level": 0, "max_level": 15},
     "Point Multiplier":          {"cost": 10,    "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 10},
+    # Quark gain větev
+    "Quark Extractor":           {"cost": 50,    "prereq": ["Point Multiplier"], "unlocked": False, "level": 0, "max_level": 10},
+    "Quark Collector":           {"cost": 200,   "prereq": ["Quark Extractor"], "unlocked": False, "level": 0, "max_level": 8},
+    "Quark Generator":           {"cost": 750,   "prereq": ["Quark Collector"], "unlocked": False, "level": 0, "max_level": 5},
     # Self-boost větev - Points boost themselves
     "Score Momentum":            {"cost": 12,    "prereq": ["Score Booster"], "unlocked": False, "level": 0, "max_level": 10},
     "Momentum Amplifier":        {"cost": 35,    "prereq": ["Score Momentum"], "unlocked": False, "level": 0, "max_level": 7},
@@ -601,6 +661,10 @@ UPGRADE_TIERS = {
     # Self-boost větev (pod Score Boosterem) - stejný tier jako Tier1
     "Score Momentum":            "Tier1",
     "Momentum Amplifier":        "Tier1",
+    # Quark větev
+    "Quark Extractor":           "Alt",
+    "Quark Collector":           "Alt",
+    "Quark Generator":           "Alt",
     # Tick-speed větev (pravá strana) - orůžová barva
     "Tick Booster":              "Tick",
     "Rapid Tick":                "Tick",
@@ -619,6 +683,11 @@ UPGRADE_POSITIONS = {
     # TIER 1 - Ostatní větve (Point Multiplier nalevo, Automation napravo)
     "Point Multiplier":          (_cx - 300 - 70,  210),
     "Automation (Passive Gain)": (_cx + 300 - 70,  210),
+
+    # QUARK větev (Pod Point Multiplierem směřující blíž ke středu)
+    "Quark Extractor":           (_cx - 150 - 70,  210),
+    "Quark Collector":           (_cx - 150 - 70,  300),
+    "Quark Generator":           (_cx - 150 - 70,  390),
 
     # TIER 2 a přidružené středové uzly
     "Efficiency Boost":          (_cx - 300 - 70,  300),
@@ -651,6 +720,9 @@ UPGRADE_EFFECTS = {
     "Score Booster":             "+5% skóre za level (1.05^lvl)",
     "Automation (Passive Gain)": "Odemkne pasivní příjem bodů/s",
     "Point Multiplier":          "+8% skóre za level (1.08^lvl)",
+    "Quark Extractor":           "+20% Quarků z prestiže/level",
+    "Quark Collector":           "+30% Quarků z prestiže/level",
+    "Quark Generator":           "+50% Quarků z prestiže/level",
     "Score Momentum":            "log10(score)*0.0005*lvl boost/s",
     "Momentum Amplifier":        "x1.3^lvl na Score Momentum",
     "Passive Amplifier":         "+10% pasivní příjem za level",
@@ -760,7 +832,15 @@ while bezi: # Hlavní cyklus hry
                 p_button = pygame.Rect(SIRKA//2 - 150, 110, 300, 50)
                 if p_button.collidepoint(event.pos) and rebirth_points >= prestige_requirement:
                     # PROVEĎ PRESTIGE
-                    quarks_zisk = max(1, rebirth_points // prestige_requirement)
+                    quark_multiplier = 1.0
+                    if "Quark Extractor" in prestige_upgrades:
+                        quark_multiplier += (0.20 * prestige_upgrades["Quark Extractor"]["level"])
+                    if "Quark Collector" in prestige_upgrades:
+                        quark_multiplier += (0.30 * prestige_upgrades["Quark Collector"]["level"])
+                    if "Quark Generator" in prestige_upgrades:
+                        quark_multiplier += (0.50 * prestige_upgrades["Quark Generator"]["level"])
+
+                    quarks_zisk = max(1, int((rebirth_points // prestige_requirement) * quark_multiplier))
                     quarks += quarks_zisk
                     prestige_points += 1
                     rebirth_points = 0
@@ -1384,6 +1464,11 @@ while bezi: # Hlavní cyklus hry
             "Automation (Passive Gain)": (SIRKA//2 - 250, VYSKA//2 - 135),
             "Score Booster": (SIRKA//2 - 70, VYSKA//2 - 175),
             "Point Multiplier": (SIRKA//2 + 110, VYSKA//2 - 135),
+            
+            # QUARK branch
+            "Quark Extractor": (SIRKA//2 + 250, VYSKA//2 - 135),
+            "Quark Collector": (SIRKA//2 + 250, VYSKA//2 - 65),
+            "Quark Generator": (SIRKA//2 + 250, VYSKA//2 + 10),
             
             # TIER 2 - Mid-game (druhá řada)
             "Passive Amplifier": (SIRKA//2 - 250, VYSKA//2 - 65),
