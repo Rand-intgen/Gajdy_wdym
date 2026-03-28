@@ -18,7 +18,9 @@ Program se skládá z těchto hlavních technických částí:
 - **Systém pasivního příjmu:** Po odemknutí prestiže se body generují automaticky každou sekundu (vzorec: `(score/100)^0.6 × 0.1 × (1.2^level) × (5^(level // 10))`).
 - **Prestige & Rebirth systém:** Po nashromáždění rebirth bodů může hráč provedět „rebirth" – resetuje základní progres, ale odemyká stromové prestige upgrady, které trvale znásobují příjem.
 - **Prestige Upgrade Tree:** Strom 15 upgradů rozdělených do 4 úrovní (Tier 1–4) s prerekvizitami. Každý upgrade má jiný efekt a maximální počet úrovní.
-- **Prestige (Milestones) systém:** Nadstavba nad Rebirth systémem. Jakmile hráč získá 100 000 Rebirth bodů, může provést "Prestige". Tím se resetuje celý postup včetně Rebirth stromu, ale získá trvalé milníky (např. automatických 1 000 000 skóre, 100x globální násobič, pasivní boost), které masivně zrychlují další hraní.
+- **Prestige (Milestones) systém:** Nadstavba nad Rebirth systémem. Jakmile hráč získá 100 000 Rebirth bodů, může provést "Prestige". Tím se resetuje celý postup včetně Rebirth stromu, ale získá trvalé milníky (např. automatických 1 000 000 skóre, 100x globální násobič, pasivní boost), které masivně zrychlují další hraní. Zároveň hráč obdrží end-game měnu **Quarks**.
+- **Specializované Prestige Upgrady:** Ve stromu prestiže se nachází mimo jiné i speciální větev pro zvyšování zisku Quarků (Quark Extractor, Collector, Generator).
+- **Periodic Table (Elements):** Za získané Quarky může hráč nakupovat chemické prvky (aktuálně 35 prvků od Vodíku po Brom). Každý prvek poskytuje obrovské endgame boosty a kaskádové multiplikátory pro pasivní příjem, sílu nárazu i globální skóre.
 - **Formátování velkých čísel:** Funkce `format_large_number()` zobrazuje čísla ve vědecké notaci, nebo při odemknutí „Break Infinity" upgradu v rozšířené Break Infinity notaci (`1ee12`).
 
 ## Technická část
@@ -63,6 +65,7 @@ hra.py
 ├── Výpočetní funkce
 │   ├── calculate_*_cost()       – ceny upgradů
 │   ├── calculate_*_damage()     – efekty
+│   ├── calculate_elements_multipliers() – výpočet boostů z prvků
 │   ├── calculate_passive_gain_per_second()
 │   ├── calculate_prestige_multiplier()
 │   └── format_large_number()    – notace čísel
