@@ -15,7 +15,7 @@ VYSKA = 960  # Výška herního okna
 okno = pygame.display.set_mode((SIRKA, VYSKA)) # Windowed 1280x720
 game_surf = pygame.Surface((SIRKA, VYSKA)) # Herní plocha (rendering sem, pak scale na okno)
 
-pygame.display.set_caption("Gajdy_wdym - Idle Arcade") # Nastaví titulek okna
+pygame.display.set_caption("Gajdy_wdym - Point incremental") # Nastaví titulek okna
 
 # Barvy
 CERNA = (0, 0, 0) # Definuje černou barvu
