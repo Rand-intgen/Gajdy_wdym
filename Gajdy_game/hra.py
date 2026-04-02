@@ -884,9 +884,9 @@ while bezi: # Hlavní cyklus hry
                 # Obdelníky logiky nákupu vykreslujeme v render_periodic_table. Můžeme je tu re-kalkulovat.
                 elem_keys = list(elements_db.keys())
                 for i, key in enumerate(elem_keys):
-                    row = i // 5
-                    col = i % 5
-                    rect = pygame.Rect((SIRKA // 2 - 250) + col * 100, (VYSKA // 2 - 100) + row * 100, 90, 90)
+                    row = i // 7
+                    col = i % 7
+                    rect = pygame.Rect((SIRKA // 2 - 350) + col * 100, (VYSKA // 2 - 200) + row * 100, 90, 90)
                     if rect.collidepoint(event.pos):
                         if not elements_unlocked[key]:
                             if quarks >= elements_db[key]["cost"]:
@@ -1374,12 +1374,12 @@ while bezi: # Hlavní cyklus hry
         elem_keys = list(elements_db.keys())
         box_size = 90
         gap = 10
-        start_px = SIRKA // 2 - 250
-        start_py = VYSKA // 2 - 150
+        start_px = SIRKA // 2 - 350
+        start_py = VYSKA // 2 - 200
 
         for i, key in enumerate(elem_keys):
-            row = i // 5
-            col = i % 5
+            row = i // 7
+            col = i % 7
             px = start_px + col * (box_size + gap)
             py = start_py + row * (box_size + gap)
             rect = pygame.Rect(px, py, box_size, box_size)
@@ -1414,8 +1414,8 @@ while bezi: # Hlavní cyklus hry
         # Tooltips = efekt elementu hover (najetí myší)
         mouse_pos = pygame.mouse.get_pos()
         for i, key in enumerate(elem_keys):
-            row = i // 5
-            col = i % 5
+            row = i // 7
+            col = i % 7
             px = start_px + col * (box_size + gap)
             py = start_py + row * (box_size + gap)
             rect = pygame.Rect(px, py, box_size, box_size)
