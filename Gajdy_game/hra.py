@@ -112,6 +112,15 @@ elements_db = {
     "Se": {"cost": 8000000, "name": "Selenium", "symbol": "Se", "desc": "Rebirth body x25."},
     "Br": {"cost": 13000000, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
 }
+# Pozice prvků na skutečné periodické tabulce (row, col) - max 18 sloupců
+PT_COORDS = {
+    "H": (0, 0), "He": (0, 17),
+    "Li": (1, 0), "Be": (1, 1),
+    "B": (1, 12), "C": (1, 13), "N": (1, 14), "O": (1, 15), "F": (1, 16), "Ne": (1, 17),
+    "Na": (2, 0), "Mg": (2, 1),
+    "Al": (2, 12), "Si": (2, 13), "P": (2, 14), "S": (2, 15), "Cl": (2, 16), "Ar": (2, 17),
+    "K": (3, 0), "Ca": (3, 1), "Sc": (3, 2), "Ti": (3, 3), "V": (3, 4), "Cr": (3, 5), "Mn": (3, 6), "Fe": (3, 7), "Co": (3, 8), "Ni": (3, 9), "Cu": (3, 10), "Zn": (3, 11), "Ga": (3, 12), "Ge": (3, 13), "As": (3, 14), "Se": (3, 15), "Br": (3, 16)
+}
 # Status vlastnění prvků - ukládáme jako slovník True/False
 elements_unlocked = {sym: False for sym in elements_db}
 
@@ -883,10 +892,12 @@ while bezi: # Hlavní cyklus hry
             if periodic_table_open:
                 # Obdelníky logiky nákupu vykreslujeme v render_periodic_table. Můžeme je tu re-kalkulovat.
                 elem_keys = list(elements_db.keys())
+                box_size, gap = 75, 5
+                start_px = SIRKA // 2 - (18 * (box_size + gap)) // 2
+                start_py = VYSKA // 2 - (6 * (box_size + gap)) // 2  # Vycentrování na výšku
                 for i, key in enumerate(elem_keys):
-                    row = i // 7
-                    col = i % 7
-                    rect = pygame.Rect((SIRKA // 2 - 350) + col * 100, (VYSKA // 2 - 200) + row * 100, 90, 90)
+                    row, col = PT_COORDS.get(key, (0, 0))
+                    rect = pygame.Rect(start_px + col * (box_size + gap), start_py + row * (box_size + gap), box_size, box_size)
                     if rect.collidepoint(event.pos):
                         if not elements_unlocked[key]:
                             if quarks >= elements_db[key]["cost"]:
@@ -1372,14 +1383,13 @@ while bezi: # Hlavní cyklus hry
         game_surf.blit(mult_txt, (SIRKA//2 - mult_txt.get_width()//2, 95))
 
         elem_keys = list(elements_db.keys())
-        box_size = 90
-        gap = 10
-        start_px = SIRKA // 2 - 350
-        start_py = VYSKA // 2 - 200
+        box_size = 75
+        gap = 5
+        start_px = SIRKA // 2 - (18 * (box_size + gap)) // 2
+        start_py = VYSKA // 2 - (6 * (box_size + gap)) // 2
 
         for i, key in enumerate(elem_keys):
-            row = i // 7
-            col = i % 7
+            row, col = PT_COORDS.get(key, (0, 0))
             px = start_px + col * (box_size + gap)
             py = start_py + row * (box_size + gap)
             rect = pygame.Rect(px, py, box_size, box_size)
@@ -1414,8 +1424,7 @@ while bezi: # Hlavní cyklus hry
         # Tooltips = efekt elementu hover (najetí myší)
         mouse_pos = pygame.mouse.get_pos()
         for i, key in enumerate(elem_keys):
-            row = i // 7
-            col = i % 7
+            row, col = PT_COORDS.get(key, (0, 0))
             px = start_px + col * (box_size + gap)
             py = start_py + row * (box_size + gap)
             rect = pygame.Rect(px, py, box_size, box_size)
