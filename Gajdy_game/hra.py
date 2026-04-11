@@ -23,7 +23,7 @@ BILA = (255, 255, 255) # Definuje bílou barvu
 CERVENA = (255, 0, 0) # Definuje červenou barvu
 
 # Nastavení objektu (čtverec)
-velikost_ctverce = 50 # Nastaví velikost čtverce
+velikost_ctverce = 75 # Nastaví velikost čtverce
 start_x = SIRKA // 2 - velikost_ctverce // 2 # Vycentruje X souřadnici
 start_y = VYSKA // 2 - velikost_ctverce // 2 # Vycentruje Y souřadnici
 rychlost = 5 # Nastaví rychlost pohybu
