@@ -37,11 +37,12 @@ prev_colliding = [False]
 score = 0
 
 # Nastavení písma pro zobrazení souřadnic a skóre
-pismo = pygame.font.SysFont("Arial", 24) # Nastaví písmo Arial velikost 24
+pismo = pygame.font.SysFont("Segoe UI", 24, bold=True) # Modernější, robustnější hlavní písmo
+menu_pismo = pygame.font.SysFont("Segoe UI", 16, bold=True) # Speciálně pro tlačítka v horním menu
 # Menší písmo pro settings popisky
-small_pismo = pygame.font.SysFont("Arial", 16)
+small_pismo = pygame.font.SysFont("Segoe UI", 14) # Zmenšeno (Segoe UI je širší)
 # Velmi malé písmo pro upgrade tree tlačítka
-tiny_pismo = pygame.font.SysFont("Arial", 10)
+tiny_pismo = pygame.font.SysFont("Segoe UI", 9) # Zmenšeno na 9, aby se dlouhé texty vlezly do 140px
 
 # Hlavní smyčka
 bezi = True # Nastaví pro smyčku
@@ -632,7 +633,7 @@ def calculate_score_self_boost(current_score, prestige_upgrades):
         return 0.0
     import math
     log_base = math.log10(max(current_score + 1, 10))
-    boost = log_base * 0.0005 * momentum_lvl * (1.15 ** momentum_lvl) * (1.3 ** amplifier_lvl)
+    boost = log_base * 0.002 * momentum_lvl * (1.15 ** momentum_lvl) * (1.3 ** amplifier_lvl)
     return boost
 
 # === UPGRADE TREE LAYOUT - konstanty pro pozice a barvy ===
@@ -732,7 +733,7 @@ UPGRADE_EFFECTS = {
     "Quark Extractor":           "+20% Quarků z prestiže/level",
     "Quark Collector":           "+30% Quarků z prestiže/level",
     "Quark Generator":           "+50% Quarků z prestiže/level",
-    "Score Momentum":            "log10(score)*0.0005*lvl boost/s",
+    "Score Momentum":            "log10(score)*0.002*lvl boost/s",
     "Momentum Amplifier":        "x1.3^lvl na Score Momentum",
     "Passive Amplifier":         "+10% pasivní příjem za level",
     "Efficiency Boost":          "+6% skóre za level (1.06^lvl)",
@@ -1052,28 +1053,28 @@ while bezi: # Hlavní cyklus hry
 
     # Tlačítko pro settings
     pygame.draw.rect(game_surf, (100, 100, 100), settings_button_rect)
-    settings_text = pismo.render("Settings", True, BILA)
-    game_surf.blit(settings_text, (settings_button_rect.x + 8, settings_button_rect.y + 5))
+    settings_text = menu_pismo.render("Settings", True, BILA)
+    game_surf.blit(settings_text, (settings_button_rect.x + settings_button_rect.width//2 - settings_text.get_width()//2, settings_button_rect.y + settings_button_rect.height//2 - settings_text.get_height()//2))
 
     # Tlačítko pro shop
     pygame.draw.rect(game_surf, (100, 100, 100), shop_button_rect)
-    btn_text = pismo.render("Upgrades", True, BILA)
-    game_surf.blit(btn_text, (shop_button_rect.x + 8, shop_button_rect.y + 5))
+    btn_text = menu_pismo.render("Upgrades", True, BILA)
+    game_surf.blit(btn_text, (shop_button_rect.x + shop_button_rect.width//2 - btn_text.get_width()//2, shop_button_rect.y + shop_button_rect.height//2 - btn_text.get_height()//2))
     
     # Tlačítko pro rebirth
     pygame.draw.rect(game_surf, (150, 50, 50), rebirth_button_rect)
-    rebirth_text = pismo.render("Rebirth", True, BILA)
-    game_surf.blit(rebirth_text, (rebirth_button_rect.x + 18, rebirth_button_rect.y + 5))
+    rebirth_text = menu_pismo.render("Rebirth", True, BILA)
+    game_surf.blit(rebirth_text, (rebirth_button_rect.x + rebirth_button_rect.width//2 - rebirth_text.get_width()//2, rebirth_button_rect.y + rebirth_button_rect.height//2 - rebirth_text.get_height()//2))
 
     # Tlačítko pro prestige
     pygame.draw.rect(game_surf, (200, 150, 50), prestige_btn_rect)
-    prestige_btn_text = pismo.render("Prestige", True, BILA)
-    game_surf.blit(prestige_btn_text, (prestige_btn_rect.x + 12, prestige_btn_rect.y + 5))
+    prestige_btn_text = menu_pismo.render("Prestige", True, BILA)
+    game_surf.blit(prestige_btn_text, (prestige_btn_rect.x + prestige_btn_rect.width//2 - prestige_btn_text.get_width()//2, prestige_btn_rect.y + prestige_btn_rect.height//2 - prestige_btn_text.get_height()//2))
 
     # Tlačítko pro Periodic Table
     pygame.draw.rect(game_surf, (50, 200, 200), periodic_btn_rect)
-    periodic_btn_text = small_pismo.render("Elements", True, CERNA)
-    game_surf.blit(periodic_btn_text, (periodic_btn_rect.x + 20, periodic_btn_rect.y + 7))
+    periodic_btn_text = menu_pismo.render("Elements", True, CERNA)
+    game_surf.blit(periodic_btn_text, (periodic_btn_rect.x + periodic_btn_rect.width//2 - periodic_btn_text.get_width()//2, periodic_btn_rect.y + periodic_btn_rect.height//2 - periodic_btn_text.get_height()//2))
 
     # Pokud je shop otevřený, vykreslíme upgrade tlačítka
     if shop_open:
