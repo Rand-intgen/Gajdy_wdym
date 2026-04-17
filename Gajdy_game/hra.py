@@ -351,7 +351,6 @@ passive_gain_level = 0  # Úroveň passive gain upgradu
 wall_bonus_level = 0  # Úroveň wall bonus upgradu
 multi_base_gain_level = 0  # Úroveň multi base gain upgradu (násobí pasivní gain)
 rebirth_requirement = 10000  # Kolik skóre je potřeba na rebirth
-rebirth_requirement = 10000  # Kolik rebirth pointů je potřeba na rebirth
 
 def calculate_passive_gain_cost(level):
     """Vypočítá cenu pro nákup passive gain upgradu.
@@ -1117,17 +1116,7 @@ while bezi: # Hlavní cyklus hry
             multi_color = (255, 0, 0)
         multi_label = pismo.render(multi_text, True, multi_color)
         game_surf.blit(multi_label, (SIRKA//2 - 240, VYSKA//2 + 20))
-        
-        # Multi Base Gain upgrade
-        multi_cost = calculate_multi_base_gain_cost(multi_base_gain_level)
-        multi_mult = calculate_multi_base_gain_multiplier(multi_base_gain_level)
-        multi_text = f"Multi Base Gain (x{multi_mult:.2f}): Cost {multi_cost}pts (Lvl {multi_base_gain_level})"
-        if score >= multi_cost:
-            multi_color = (0, 255, 0)
-        else:
-            multi_color = (255, 0, 0)
-        multi_label = pismo.render(multi_text, True, multi_color)
-        okno.blit(multi_label, (SIRKA//2 - 240, VYSKA//2 + 20))
+
         
         # Info text
         info_text = pismo.render("Click on upgrade to buy", True, (200, 200, 200))
@@ -1445,123 +1434,6 @@ while bezi: # Hlavní cyklus hry
                 game_surf.blit(tip_surf, (tip_x + 8, tip_y + 5))
                 break
 
-    # Pokud je rebirth menu otevřené, vykreslíme upgrade tree
-    if rebirth_open:
-        overlay = pygame.Surface((1000, 750))
-        overlay.set_alpha(230)
-        overlay.fill((30, 30, 30))
-        okno.blit(overlay, (SIRKA//2 - 500, VYSKA//2 - 300))
-        
-        rebirth_title = pismo.render("Prestige - Ultimate Upgrade Tree", True, BILA)
-        okno.blit(rebirth_title, (SIRKA//2 - 150, VYSKA//2 - 275))
-        
-        # Rebirth button
-        rebirth_button = pygame.Rect(SIRKA//2 - 100, VYSKA//2 - 235, 200, 40)
-        needed_rebirth = max(0, rebirth_requirement - rebirth_points)
-        pygame.draw.rect(okno, (100, 50, 50), rebirth_button)
-        if needed_rebirth > 0:
-            rebirth_btn_text = pismo.render(f"REBIRTH ({needed_rebirth} more)", True, BILA)
-        else:
-            rebirth_btn_text = pismo.render(f"REBIRTH Ready!", True, (0, 255, 0))
-        okno.blit(rebirth_btn_text, (rebirth_button.x + 10, rebirth_button.y + 8))
-        
-        # Upgrade tree positions - malá tlačítka v tree struktuře
-        button_width = 130
-        button_height = 40
-        
-        upgrade_positions = {
-            # TIER 1 - Basis (horní řada)
-            "Automation (Passive Gain)": (SIRKA//2 - 250, VYSKA//2 - 135),
-            "Score Booster": (SIRKA//2 - 70, VYSKA//2 - 175),
-            "Point Multiplier": (SIRKA//2 + 110, VYSKA//2 - 135),
-            
-            # QUARK branch
-            "Quark Extractor": (SIRKA//2 + 250, VYSKA//2 - 135),
-            "Quark Collector": (SIRKA//2 + 250, VYSKA//2 - 65),
-            "Quark Generator": (SIRKA//2 + 250, VYSKA//2 + 10),
-            
-            # TIER 2 - Mid-game (druhá řada)
-            "Passive Amplifier": (SIRKA//2 - 250, VYSKA//2 - 65),
-            "Efficiency Boost": (SIRKA//2 - 70, VYSKA//2 - 105),
-            "Greater Infinity I": (SIRKA//2 + 110, VYSKA//2 - 65),
-            
-            # TIER 3 - Advanced (třetí řada)
-            "Super Charge": (SIRKA//2 - 180, VYSKA//2 + 10),
-            "Infinity Engine": (SIRKA//2 - 40, VYSKA//2 - 30),
-            "Quantum Leap": (SIRKA//2 + 110, VYSKA//2 + 10),
-            
-            # TIER 4 - Elite (čtvrtá řada)
-            "Break Infinity": (SIRKA//2 - 180, VYSKA//2 + 85),
-            "Ultimate Power": (SIRKA//2 - 40, VYSKA//2 + 45),
-            "Rebirth Mastery": (SIRKA//2 + 110, VYSKA//2 + 85),
-            
-            # ALTERNATIVE PATH (spodní větev)
-            "Speed Demon": (SIRKA//2 - 250, VYSKA//2 + 160),
-            "Wealth Generator": (SIRKA//2 - 70, VYSKA//2 + 120),
-            "Time Warp": (SIRKA//2 + 110, VYSKA//2 + 160)
-        }
-        
-        # Nejdříve vykreslíme čáry mezi upgradama (prerekvizity)
-        for upgrade_name, upgrade_info in prestige_upgrades.items():
-            if upgrade_name in upgrade_positions and upgrade_info["prereq"]:
-                from_x, from_y = upgrade_positions[upgrade_name]
-                from_center = (from_x + button_width // 2, from_y + button_height // 2)
-                
-                # Nakresli čáru k všem prerequisitům
-                for prereq in upgrade_info["prereq"]:
-                    if prereq in upgrade_positions:
-                        to_x, to_y = upgrade_positions[prereq]
-                        to_center = (to_x + button_width // 2, to_y + button_height // 2)
-                        
-                        # Čára v bílé barvě s nižší opacitou - začíná od spodku prereq, končí na vrchu aktuálního
-                        line_color = (150, 150, 150)
-                        pygame.draw.line(okno, line_color, to_center, from_center, 2)
-        
-        # Pak vykreslíme tlačítka upgradů
-        for upgrade_name, upgrade_info in prestige_upgrades.items():
-            if upgrade_name in upgrade_positions:
-                pos_x, pos_y = upgrade_positions[upgrade_name]
-                
-                # Zkontroluj prerekvizity
-                prerequisites_met = all(prestige_upgrades[prereq]["level"] > 0 for prereq in upgrade_info["prereq"])
-                is_available = prerequisites_met or len(upgrade_info["prereq"]) == 0
-                
-                upgrade_rect = pygame.Rect(pos_x, pos_y, button_width, button_height)
-                cost = upgrade_info["cost"]
-                level = upgrade_info["level"]
-                max_level = upgrade_info["max_level"]
-                
-                if is_available:
-                    # Barva podle dostupnosti
-                    if rebirth_points >= cost and level < max_level:
-                        button_color = (50, 150, 50)  # Zelená - koupitelné
-                    elif level >= max_level:
-                        button_color = (100, 100, 100)  # Šedá - maxed
-                    else:
-                        button_color = (100, 50, 50)  # Červená - nemůžete si koupit
-                else:
-                    button_color = (40, 40, 40)  # Černá - locked
-                
-                # Tlačítko
-                pygame.draw.rect(okno, button_color, upgrade_rect)
-                pygame.draw.rect(okno, (200, 200, 200), upgrade_rect, 1)  # Border
-                
-                # Text - celý název a level
-                if level >= max_level:
-                    status_text = "MAX"
-                else:
-                    status_text = f"L{level}"
-                
-                # Vykresli text - název a level
-                name_line = tiny_pismo.render(upgrade_name, True, BILA)
-                level_line = tiny_pismo.render(status_text, True, (200, 200, 200))
-                
-                okno.blit(name_line, (upgrade_rect.x + 5, upgrade_rect.y + 5))
-                okno.blit(level_line, (upgrade_rect.x + 5, upgrade_rect.y + 22))
-        
-        # Přidej info text s rebirth pointy a multiplikátorem
-        info_text = small_pismo.render(f"Rebirth Points: {rebirth_points}    Multiplier: x{prestige_multiplier:.2f}", True, (200, 200, 200))
-        okno.blit(info_text, (SIRKA//2 - 480, VYSKA//2 + 300))
 
     # Aktualizace displeje
     okno.blit(game_surf, (0, 0))
