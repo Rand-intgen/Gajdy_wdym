@@ -360,7 +360,7 @@ def calculate_passive_gain_cost(level):
     - Cíl: Kontrolovat inflaci dostatečně vysokými cenami
     - Př: level 0 = 10 bodů, level 5 = 76 bodů, level 10 = 576 bodů
     """
-    return int(10 * (1.5 ** level))
+    return int(10 * (1.45 ** level))
 
 def calculate_wall_bonus_cost(level):
     """Vypočítá cenu pro nákup wall bonus upgradu.
@@ -370,7 +370,7 @@ def calculate_wall_bonus_cost(level):
     - Více dostupné pro hráče začátečníky
     - Př: level 0 = 5 bodů, level 10 = 56 bodů, level 20 = 628 bodů
     """
-    return int(5 * (1.4 ** level))
+    return int(5 * (1.5 ** level))
 
 def calculate_multi_base_gain_cost(level):
     """Vypočítá cenu pro nákup multi base gain upgradu.
