@@ -332,12 +332,12 @@ prestige_upgrades = {
     # Elite upgrady (Tier 4) - endgame (10k-50k)
     "Break Infinity":            {"cost": 25000, "prereq": ["Infinity Engine", "Quantum Leap"], "unlocked": False, "level": 0, "max_level": 1},
     "Ultimate Power":            {"cost": 10000, "prereq": ["Quantum Leap"], "unlocked": False, "level": 0, "max_level": 3},
-    "Rebirth Mastery":           {"cost": 50000, "prereq": ["Break Infinity"], "unlocked": False, "level": 0, "max_level": 1},
+    "Rebirth Mastery":           {"cost": 50009, "prereq": ["Break Infinity"], "unlocked": False, "level": 0, "max_level": 1},
 
     # Alternativní větve - LEVO (ekonomické)
     "Speed Demon":               {"cost": 30,    "prereq": ["Efficiency Boost"], "unlocked": False, "level": 0, "max_level": 8},
     "Wealth Generator":          {"cost": 45,    "prereq": ["Speed Demon"], "unlocked": False, "level": 0, "max_level": 6},
-    "Time Warp":                 {"cost": 75,    "prereq": ["Wealth Generator"], "unlocked": False, "level": 0, "max_level": 4},
+    "Time Warp":                 {"cost": 80,    "prereq": ["Wealth Generator"], "unlocked": False, "level": 0, "max_level": 4},
 
     # Alternativní větve - PRAVO (tick speed) - ceny 1k-15k
     "Tick Booster":              {"cost": 1000,  "prereq": ["Automation (Passive Gain)"], "unlocked": False, "level": 0, "max_level": 10},
