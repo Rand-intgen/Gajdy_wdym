@@ -51,6 +51,9 @@ hodiny = pygame.time.Clock() # Vytvoří hodiny pro řízení FPS
 # Seznam pro poletující texty
 floating_texts = []
 
+# Seznam pro částice (particles) při nárazu
+particles = []
+
 # Shop / upgrades
 shop_open = False
 shop_button_rect = pygame.Rect(SIRKA - 110, 10, 100, 30)
@@ -990,6 +993,19 @@ while bezi: # Hlavní cyklus hry
                 'color': (255, 200, 50)
             })
 
+            # Vytvoření odletujících částic
+            import random
+            for _ in range(12):
+                particles.append({
+                    'x': sq['x'] + sq['size'] // 2,
+                    'y': sq['y'] + sq['size'] // 2,
+                    'vx': random.uniform(-6, 6),
+                    'vy': random.uniform(-6, 6),
+                    'life': random.randint(20, 40),
+                    'max_life': 40,
+                    'color': (random.randint(200, 255), random.randint(50, 150), 0)
+                })
+
             # Označ čtverec k odstranění (nový se vytvoří později)
             to_remove.append(i)
 
@@ -1017,6 +1033,18 @@ while bezi: # Hlavní cyklus hry
 
     # Vykreslení
     game_surf.fill(CERNA) # Vyčistí okno černou barvou
+
+    # Vykreslení částic
+    popping_particles = []
+    for p in particles:
+        p['x'] += p['vx']
+        p['y'] += p['vy']
+        p['life'] -= 1
+        if p['life'] > 0:
+            popping_particles.append(p)
+            size = max(2, int(10 * (p['life'] / p['max_life'])))
+            pygame.draw.rect(game_surf, p['color'], (p['x'] - size//2, p['y'] - size//2, size, size))
+    particles = popping_particles
 
     # Vykreslení všech čtverců
     for sq in squares:
