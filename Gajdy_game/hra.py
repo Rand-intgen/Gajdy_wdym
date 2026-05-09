@@ -48,6 +48,9 @@ tiny_pismo = pygame.font.SysFont("Segoe UI", 9) # Zmenšeno na 9, aby se dlouhé
 bezi = True # Nastaví pro smyčku
 hodiny = pygame.time.Clock() # Vytvoří hodiny pro řízení FPS
 
+# Seznam pro poletující texty
+floating_texts = []
+
 # Shop / upgrades
 shop_open = False
 shop_button_rect = pygame.Rect(SIRKA - 110, 10, 100, 30)
@@ -977,6 +980,16 @@ while bezi: # Hlavní cyklus hry
             wall_damage *= (m_global * em_global * em_wall)
             
             score += wall_damage
+            
+            # Přidání flying textu
+            floating_texts.append({
+                'x': sq['x'] + sq['size'] // 2,
+                'y': sq['y'] + sq['size'] // 2,
+                'text': f"+{int(wall_damage) if wall_damage == int(wall_damage) else f'{wall_damage:.1f}'}",
+                'life': 60,
+                'color': (255, 200, 50)
+            })
+
             # Označ čtverec k odstranění (nový se vytvoří později)
             to_remove.append(i)
 
@@ -1008,6 +1021,19 @@ while bezi: # Hlavní cyklus hry
     # Vykreslení všech čtverců
     for sq in squares:
         pygame.draw.rect(game_surf, CERVENA, (sq['x'], sq['y'], sq['size'], sq['size']))
+
+    # Vykreslení floating textů
+    popping_texts = []
+    for ft in floating_texts:
+        ft['y'] -= 1.5 # letí nahoru
+        ft['life'] -= 1
+        if ft['life'] > 0:
+            popping_texts.append(ft)
+            alpha = max(0, int((ft['life'] / 60) * 255))
+            ft_surf = small_pismo.render(ft['text'], True, ft['color'])
+            ft_surf.set_alpha(alpha)
+            game_surf.blit(ft_surf, (ft['x'] - ft_surf.get_width()//2, ft['y'] - ft_surf.get_height()//2))
+    floating_texts = popping_texts
 
     # Zobrazení skóre a počtu čtverců + bodů za zásah + pasivní gain
     # Přepočítej pasivní gain pro zobrazení (stejně jako pro herní logiku)
