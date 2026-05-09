@@ -401,7 +401,7 @@ def calculate_wall_bonus_damage(level):
     - Cíl: Poskytnout hráčům dramatické zlepšení po dosažení milníků
     """
     _, _, _, _, start_wall = get_milestone_multipliers()
-    return (1 + level) * (2 ** (level // 5)) + start_wall
+    return (1 + level) * (1.9 ** (level // 5)) + start_wall
 
 def calculate_passive_gain_per_second(current_score, level):
     """Vypočítá pasivní gain za sekundu na základě aktuálního skóre a úrovně upgradu.
@@ -536,7 +536,7 @@ def calculate_prestige_multiplier(prestige_upgrades):
 def calculate_passive_gain_multiplier_from_prestige(prestige_upgrades):
     """Vypočítá multiplikátor speciálně pro pasivní gain z prestige upgradů.
     
-    - Automation: +15% za level (základní efekt pro pasivní gain)
+    - Automation: +20% za level (základní efekt pro pasivní gain)
     - Passive Amplifier: +10% za level
     - Super Charge: +12% za level (bonus pro pasivní gain)
     - Infinity Engine: +8% za level
@@ -549,7 +549,7 @@ def calculate_passive_gain_multiplier_from_prestige(prestige_upgrades):
     
     # Automation (Passive Gain) effect - základní
     if "Automation (Passive Gain)" in prestige_upgrades and prestige_upgrades["Automation (Passive Gain)"]["level"] > 0:
-        multiplier *= (1.15 ** prestige_upgrades["Automation (Passive Gain)"]["level"])
+        multiplier *= (1.20 ** prestige_upgrades["Automation (Passive Gain)"]["level"])
     
     # Passive Amplifier effect
     if "Passive Amplifier" in prestige_upgrades:
