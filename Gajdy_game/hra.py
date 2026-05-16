@@ -237,7 +237,7 @@ def calculate_elements_multipliers(current_score, rebirth_pts, upgrades=None):
 
     # Al: Wall damage x5
     if elements_unlocked["Al"]:
-        em_wall *= (5.0 * argon_bonus)
+        em_wall *= (4.9 * argon_bonus)
 
     # Si: Pasivní boost z Quarků
     if elements_unlocked["Si"]:
