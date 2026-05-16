@@ -26,7 +26,7 @@ CERVENA = (255, 0, 0) # Definuje červenou barvu
 velikost_ctverce = 75 # Nastaví velikost čtverce
 start_x = SIRKA // 2 - velikost_ctverce // 2 # Vycentruje X souřadnici
 start_y = VYSKA // 2 - velikost_ctverce // 2 # Vycentruje Y souřadnici
-rychlost = 5 # Nastaví rychlost pohybu
+rychlost = 7 # Nastaví rychlost pohybu
 
 # Seznam čtverců (každý čtverec je slovník s pozicí a velikostí)
 squares = [{'x': start_x, 'y': start_y, 'size': velikost_ctverce}]
