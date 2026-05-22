@@ -117,7 +117,7 @@ elements_db = {
     "Ge": {"cost": 1000000, "name": "Germanium", "symbol": "Ge", "desc": "Další x2 násobič na dřívější prvky."},
     "As": {"cost": 1500000, "name": "Arsenic", "symbol": "As", "desc": "Zeď damage x50."},
     "Se": {"cost": 2200000, "name": "Selenium", "symbol": "Se", "desc": "Rebirth body x25."},
-    "Br": {"cost": 3500000, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
+    "Br": {"cost": 6942067, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
 }
 # Pozice prvků na skutečné periodické tabulce (row, col) - max 18 sloupců
 PT_COORDS = {
