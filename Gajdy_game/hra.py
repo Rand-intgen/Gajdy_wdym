@@ -102,7 +102,7 @@ elements_db = {
     "Cl": {"cost": 2584, "name": "Chlorine", "symbol": "Cl", "desc": "Pasivní a wall x10."},
     "Ar": {"cost": 4181, "name": "Argon", "symbol": "Ar", "desc": "Další x2 násobič na dřívější prvky."},
     "K": {"cost": 6765, "name": "Potassium", "symbol": "K", "desc": "Globální skóre x25."},
-    "Ca": {"cost": 10946, "name": "Calcium", "symbol": "Ca", "desc": "Ultimátní boost: x100 na všechno."},
+    "Ca": {"cost": 1094, "name": "Calcium", "symbol": "Ca", "desc": "Ultimátní boost: x100 na všechno."},
     "Sc": {"cost": 15000, "name": "Scandium", "symbol": "Sc", "desc": "Základní skóre ze zdi x2."},
     "Ti": {"cost": 22000, "name": "Titanium", "symbol": "Ti", "desc": "Pasivní gain x2."},
     "V": {"cost": 32000, "name": "Vanadium", "symbol": "V", "desc": "Rebirth body x3."},
@@ -117,7 +117,7 @@ elements_db = {
     "Ge": {"cost": 1000000, "name": "Germanium", "symbol": "Ge", "desc": "Další x2 násobič na dřívější prvky."},
     "As": {"cost": 1500000, "name": "Arsenic", "symbol": "As", "desc": "Zeď damage x50."},
     "Se": {"cost": 2200000, "name": "Selenium", "symbol": "Se", "desc": "Rebirth body x25."},
-    "Br": {"cost": 6942067, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
+    "Br": {"cost": 6942069, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
 }
 # Pozice prvků na skutečné periodické tabulce (row, col) - max 18 sloupců
 PT_COORDS = {
