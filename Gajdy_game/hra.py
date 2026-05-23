@@ -116,7 +116,7 @@ elements_db = {
     "Ga": {"cost": 700000, "name": "Gallium", "symbol": "Ga", "desc": "Pasivní gain x25."},
     "Ge": {"cost": 1000000, "name": "Germanium", "symbol": "Ge", "desc": "Další x2 násobič na dřívější prvky."},
     "As": {"cost": 1500000, "name": "Arsenic", "symbol": "As", "desc": "Zeď damage x50."},
-    "Se": {"cost": 2200000, "name": "Selenium", "symbol": "Se", "desc": "Rebirth body x25."},
+    "Se": {"cost": 2200069, "name": "Selenium", "symbol": "Se", "desc": "Rebirth body x25."},
     "Br": {"cost": 6942069, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
 }
 # Pozice prvků na skutečné periodické tabulce (row, col) - max 18 sloupců
