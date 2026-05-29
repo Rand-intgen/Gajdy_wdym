@@ -1494,7 +1494,7 @@ while bezi: # Hlavní cyklus hry
     pygame.display.flip() # Zobrazí změny na obrazovce
 
     # Omezení FPS
-    hodiny.tick(60) # Omezí rychlost na 60 FPS
+    hodiny.tick(75) # Omezí rychlost na 60 FPS
 
 pygame.quit() # Ukončí Pygame
 sys.exit() # Ukončí program
