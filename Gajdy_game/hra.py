@@ -114,7 +114,7 @@ elements_db = {
     "Cu": {"cost": 320000, "name": "Copper", "symbol": "Cu", "desc": "Zvyšuje pasivní příjem na základě počtu Quarků."},
     "Zn": {"cost": 480000, "name": "Zinc", "symbol": "Zn", "desc": "Globální multiplikátor x15."},
     "Ga": {"cost": 700000, "name": "Gallium", "symbol": "Ga", "desc": "Pasivní gain x25."},
-    "Ge": {"cost": 1000000, "name": "Germanium", "symbol": "Ge", "desc": "Další x2 násobič na dřívější prvky."},
+    "Ge": {"cost": 10000, "name": "Germanium", "symbol": "Ge", "desc": "Další x2 násobič na dřívější prvky."},
     "As": {"cost": 1500000, "name": "Arsenic", "symbol": "As", "desc": "Zeď damage x50."},
     "Se": {"cost": 2200069, "name": "Selenium", "symbol": "Se", "desc": "Rebirth body x25."},
     "Br": {"cost": 6942069, "name": "Bromine", "symbol": "Br", "desc": "Ultimátní endgame boost: x500 na všechno."}
