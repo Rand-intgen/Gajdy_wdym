@@ -146,7 +146,7 @@ def get_milestone_multipliers():
     if prestige_points >= 3:
         m_passive *= 10
     if prestige_points >= 4:
-        start_score += 1000000
+        start_score += 10000000
     if prestige_points >= 5:
         m_global *= 100
     if prestige_points >= 6:
