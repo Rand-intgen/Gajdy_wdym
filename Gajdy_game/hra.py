@@ -140,7 +140,7 @@ def get_milestone_multipliers():
     start_wall = 0
     
     if prestige_points >= 1:
-        start_wall += 150
+        start_wall += 1500
     if prestige_points >= 2:
         m_rebirth *= 5
     if prestige_points >= 3:
