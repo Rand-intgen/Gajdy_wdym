@@ -134,7 +134,7 @@ elements_unlocked = {sym: False for sym in elements_db}
 def get_milestone_multipliers():
     """Vrací bonusy podle počtu prestiží: rebirth_mult, passive_mult, global_mult, start_score, start_wall"""
     m_rebirth = 1
-    m_passive = 1
+    m_passive = 5
     m_global = 1
     start_score = 0
     start_wall = 0
