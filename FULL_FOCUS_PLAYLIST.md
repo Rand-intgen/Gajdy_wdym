@@ -25,9 +25,9 @@ Přesně tyto tracky tě drží v absolutním **flow statu bez zbytečného vzte
 | Track | Interpret | Styl / Proč to funguje na SoloQ |
 | :--- | :--- | :--- |
 | **`Sex, Drugs & Frenchcore`** | **Mr. Bassmeister** | Ikonický bouncy kick, obrovská energie na rozjezd hry a dominanci na lince. |
-| **`Killed Inside`** | *Euphoric Frenchcore* | Emoční melodie + čistý rolling kick; zabraňuje tiltu, když se hra nedaří. |
-| **`In My Mind`** | *Euphoric Frenchcore Remix* | Legendární melodie v uších, která ti drží skvělou náladu a přesné tempo kliků. |
-| **`Flying High`** | **Jonski** | Absolutní vrchol euforického Frenchcoru. Nádherný vzletný synth, housle/piáno a čistá motivace na Spaceglide. |
+| **`4GET / Killed Inside`** | [**sghenny**](https://soundcloud.com/sghennyy/sghenny-4get-killed-inside) | Emoční melodie + čistý rolling kick; SoundCloud banger, co zabraňuje tiltu, když se hra nedaří. |
+| **`In My Mind`** | **Jonski** | Jonskiho neskutečný euphoric frenchcore remix legendárního tracku; čistá radost a přesné tempo kliků. |
+| **`Flying High`** | **Jonski** | Absolutní vrchol euforického Frenchcoru. Nádherný vzletný synth, melodie a čistá motivace na Spaceglide. |
 
 
 ---
