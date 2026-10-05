@@ -18,6 +18,20 @@ Tyto 4 tracky tvoří základní pilíř tvého kitingu a flow:
 
 ---
 
+## 🚀 1.1 Tvoje osobní srdcovky: Euphoric Frenchcore God-Tier
+
+Přesně tyto tracky tě drží v absolutním **flow statu bez zbytečného vzteku**:
+
+| Track | Interpret | Styl / Proč to funguje na SoloQ |
+| :--- | :--- | :--- |
+| **`Sex, Drugs & Frenchcore`** | **Mr. Bassmeister** | Ikonický bouncy kick, obrovská energie na rozjezd hry a dominanci na lince. |
+| **`Killed Inside`** | *Euphoric Frenchcore* | Emoční melodie + čistý rolling kick; zabraňuje tiltu, když se hra nedaří. |
+| **`In My Mind`** | *Euphoric Frenchcore Remix* | Legendární melodie v uších, která ti drží skvělou náladu a přesné tempo kliků. |
+| **`Flying High`** | **Jonski** | Absolutní vrchol euforického Frenchcoru. Nádherný vzletný synth, housle/piáno a čistá motivace na Spaceglide. |
+
+
+---
+
 ## 🎚️ 2. Zlaté nastavení zvuku (Audio Balance)
 
 Aby hudba pomáhala a neprohrávala hry, musíš mít v LoL clientu přesně tento poměr:
