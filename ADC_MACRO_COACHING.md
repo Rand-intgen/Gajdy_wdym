@@ -47,6 +47,37 @@ Na botu rozhoduje prvních 90 sekund hry o celém laning phase:
   * **Enemy jungler začal na topu?** V čase **3:15 – 3:30** je na tvém botu s double buffem a hledá gank nebo Scuttle craba.
   * **Obrana:** V čase **2:45** musí ležet warda v řece nebo v tri-bushi. Pokud warda chybí, nehraj za půlkou řeky.
 
+### 1.5 CS Benchmarks: Kolik přesně mít minionů v každé minutě
+
+V profesionálním LoLku je **CS = stabilní plat**, zatímco **killy = nejistý bonus**. 
+15 minionů má hodnotu 1 killu (cca 300 goldů). Pokud máš o 30 CS víc než soupeř, máš zadarmo náskok 2 killů, aniž bys musel riskovat život.
+
+#### 📊 Tabulka CS cílů pro ADC:
+
+| Herní čas | Teoretické maximum | Standard pro DIAMOND (Minimum) | Standard pro CHALLENGER / LEC | Poznámka k hernímu stavu |
+| :---: | :---: | :---: | :---: | :--- |
+| **05:00** | ~44 CS | **32 – 36 CS** | **38 – 42 CS** | První wave control + zisk levelu 4–5. |
+| **10:00** | ~107 CS | **75 – 82 CS** | **88 – 96 CS** | Po prvním recallu a dokončení prvního komponentu. |
+| **15:00** | ~170 CS | **115 – 125 CS** | **135 – 145 CS** | Konec early game; padají první věže. |
+| **20:00** | ~234 CS | **155 – 165 CS** | **180 – 195 CS** | Mid-game rotace (hra na midu + sběr bočních linek). |
+| **25:00** | ~297 CS | **195 – 215 CS** | **230 – 250 CS** | Power-spike 3 hotových itemů (Twitch/Kog decimují teamfighty). |
+| **30:00** | ~361 CS | **235 – 255 CS** | **280 – 300+ CS** | Late game / full build; kontrola Barona a Eldera. |
+
+---
+
+#### 🎯 Jak měřit svůj výkon (CS za minutu):
+* **Pod 6.5 CS/min:** *Platina / Gold úroveň.* Příliš mnoho bezcílného pobíhání po mapě, zbytečných smrtí a ignorování vln.
+* **7.5 – 8.2 CS/min:** **Cíl pro DIAMOND.** Solidní základ, který ti zajistí itemy včas na teamfighty.
+* **8.5 – 9.5 CS/min:** **Cíl pro MASTER / GRANDMASTER.** Umíš sbírat vlny, aniž bys chyběl na důležitých fightech.
+* **10.0+ CS/min:** **CHALLENGER & LEC ELITA.** Dokonalá optimalizace každého pohybu a farmení džungle za běhu.
+
+---
+
+#### 🛡️ 3 Pravidla, jak udržet 8+ CS/min i v prohrávající hře:
+1. **Pravidlo sběru bouncnuté vlny (Wave Bounce):** Pokud soupeř pushnul linku pod vaši Tier 2 věž, nespěchej do temné řeky. Počkej si, až se minioni zastaví u tvé věže. Tady je vyčisti v naprostém bezpečí.
+2. **Kradení vlastních i cizích kempů:** Pokud tvůj jungler hraje druhou stranu mapy a na botu/midu není vlna, okamžitě ber Grompa nebo Krugs (kamenné koblížky). Nenechávej kempy ležet ladem.
+3. **Zákaz ARAM syndromu na midu:** Pokud vidíš, že tvůj toplaner, midlaner i support stojí na midu a dělí se o jednu vlnu minionů, **okamžitě jdi sebrat boční linku**. Dělit se o 6 minionů ve 4 lidech znamená, že všichni hladovíte.
+
 ---
 
 ## ☀️ 2. MID GAME MACRO (14:00 – 25:00)
