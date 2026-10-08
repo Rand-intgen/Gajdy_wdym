@@ -131,13 +131,97 @@ Podívej se, jak snadné to je, když držíš disciplínu:
 
 ---
 
-## 🚨 Krizový manuál na prázdniny:
+---
 
-1. **Nikdy nehraj ranked po 18:30 večer o prázdninách.** Večer a v noci je queue plná opilých, tiltnutých a náhodných svátečních hráčů. Ranní a odpolední hry jsou o 50 % kvalitnější.
-2. **2 prohry = 1 hodina tvrdá pauza.** O prázdninách máš čas. Nemusíš spěchat to hned „vyhrát zpět“.
-3. **Pravidlo čerstvého vzduchu:** Minimálně 30 minut denně venku. Kdo nevyleze celý den z pokoje, má v 16:00 mozek v mlze a začne házet 10 úmrtí na hru.
+## ☀️ 5. Letní prázdniny 2027: „Operace Harvest“ (Rozhodující bitva před 18. narozeninami)
+
+> **Časový rámec:** Červenec – Srpen 2027 (60 dní nepřetržitého volna)  
+> **Kontext:** V říjnu 2027 máš 18. narozeniny. **Tohle je přesně to období, kdy se rozhodne o celé tvé kariéře a dohodě s rodiči.**
+
+V létě 2027 už nebudeš řešit, jak vylézt z Platiny. Do léta 2027 vstupuješ jako **Master hráč na EUW**, který jde zpeněžit svůj talent a probojovat se do **Grandmasteru / Challengeru**.
 
 ---
 
-> 🎯 **Závazek do 31. 12. 2026:**  
-> *„Využiju volné dny jako profesionální sportovec na soustředění. Do nového roku 2027 vstoupím jako DIAMOND hráč.“*
+### 💰 Kde v létě 2027 vybereš těch 30 000 – 50 000 Kč:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ LETNÍ SKLIZEŇ (ČERVENEC & SRPEN 2027)                       │
+├─────────────────────────────────────────────────────────────┤
+│ 1. HITPOINT MASTERS / CHALLENGERS (Summer Split 2027):      │
+│    └── Letní split běží přesně červen – srpen/září.         │
+│    └── Hráčské stipendium / smlouva: 5 000 – 8 000 Kč/měsíc │
+│    └── ZISK ZA LÉTO: 15 000 – 24 000 Kč                     │
+│                                                             │
+│ 2. LETNÍ COACHING PRO NÍZKÁ ELA (Špička poptávky):          │
+│    └── O prázdninách chtějí všichni studenti boostnout rank.│
+│    └── Cena: 300 – 400 Kč / hodina jako Master Twitch.      │
+│    └── 4 hodiny týdně × 8 týdnů                             │
+│    └── ZISK ZA LÉTO: 10 000 – 13 000 Kč                     │
+│                                                             │
+│ 3. LETNÍ LAN TURNAJE & MČR KVALIFIKACE:                     │
+│    └── Playzone Nightcupy, LanCraft, Red Bull Solo Q.       │
+│    └── ZISK ZA LÉTO: 5 000 – 10 000 Kč                      │
+├─────────────────────────────────────────────────────────────┤
+│ 💵 CELKOVÝ VÝTĚŽEK LÉTA: 30 000 – 47 000 Kč!                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 🏖️ Denní letní režim esportového sportovce (Zákaz vyhoření):
+
+Největší nebezpečí léta je sedět 60 dní v zatemněném pokoji v horku. To vede k depresi, pomalým reflexům a ztrátě motivace. 
+
+Profesionální atleti kombinují **fyzické zdraví a esport**:
+
+```
+┌──────────┬─────────────────────────────────────────────────────────┐
+│   ČAS    │   LETNÍ DENNÍ AKTIVITA                                  │
+├──────────┼─────────────────────────────────────────────────────────┤
+│ 08:30    │ 🔔 Vstávání, hydratace (v létě minimálně 2,5L vody denně)│
+│ 09:00 –  │ 🏊 SLUNCE & SPORT (Klíč k vysokému výkonu!)             │
+│ 11:30    │    Koupaliště, plavání, kolo, posilovna nebo běh.       │
+│          │    Tělo načerpá vitamín D, okysličí mozek a unaví svaly.│
+│          │                                                         │
+│ 11:30 –  │ 🍽️ Lehký oběd + sprcha + mentální příprava              │
+│ 12:30    │                                                         │
+│          │                                                         │
+│ 12:30 –  │ 🎮 WARM-UP & PRACTICE (30 min)                          │
+│ 13:00    │    Quaver, kiting drills, příprava na zápasy.           │
+│          │                                                         │
+│ 13:00 –  │ 🏆 BLOK 1: HIGH-ELO SOLOQ (3 hry, ~90 min)              │
+│ 14:30    │    Push z Masteru do Grandmasteru (400+ LP).             │
+│          │                                                         │
+│ 14:30 –  │ ☕ Pauza & Ledová káva / voda (30 min)                   │
+│ 15:00    │                                                         │
+│          │                                                         │
+│ 15:00 –  │ 👥 TÝMOVÉ SCRIMY / COACHING KLIENTI (2–3 hodiny)        │
+│ 18:00    │    • Pokud jsi v týmu: Scrimy proti ostatním CZ/SK týmům│
+│          │    • Pokud máš volno: 1–2 hodiny placeného coachingu     │
+│          │                                                         │
+│ 18:00 –  │ 🍽️ Večeře & Venkovní chill s kamarády (90 min)          │
+│ 19:30    │                                                         │
+│          │                                                         │
+│ 19:30 –  │ 🏆 BLOK 2: FINÁLNÍ EVENING SOLOQ (3 hry, ~90 min)       │
+│ 21:00    │    Soustředěný večerní push. Hubris ➔ Runaan ➔ IE.      │
+│          │                                                         │
+│ 21:00 –  │ 🎧 Volný čas, YouTube, seriál, chill                    │
+│ 23:00    │                                                         │
+│          │                                                         │
+│ 23:00    │ 😴 Spánek s otevřeným oknem (regenerace)                │
+└──────────┴─────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 🎯 Stav k 31. srpnu 2027 (Před 18. narozeninami):
+
+1. **Rank:** **Grandmaster (500+ LP) na EUW** (top 0,05 % hráčů).
+2. **Kariéra:** Odehraný letní split v Hitpoint lize, první medaile / trofeje.
+3. **Peníze:** **30 000 až 50 000 Kč reálně vydělaných** na bankovním účtu.
+
+> 🎂 **Moment pravdy (Říjen 2027 – 18. narozeniny):**  
+> Přijdeš za rodiči, položíš na stůl smlouvu s týmem, ukážeš výpis z účtu s 40 000 Kč a řekneš:  
+> *„Splnil jsem dohodu. Dokázal jsem, že na to mám. Teď jdu do Challengeru a LEC.“*  
+> A oni budou ti nejpyšnější rodiče na světě.
