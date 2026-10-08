@@ -183,9 +183,10 @@ graph LR
   * 💎 `Infinity Edge` (3. item) – Zesílení crit poškození. V kombinaci s Hubris AD buffem a Runaanem smažeš celý nepřátelský tým za 2 vteřiny.
   * 🛡️ `Lord Dominik's Regards` (4. item) – Armor penetration; v této fázi hry už roztavíš i heavy tanky (Ornn, Malphite, K'Sante).
   * 🩸 `Bloodthirster` (5. item) – Lifesteal + štít pro přežití v divokých teamfightech.
-  * 🏹 `Yun Tal Wildarrows` (6. legendární item – **Finisher**):
-    * Završí tvůj build na **garantovaných 100 % Critu** (Runaan 25 % + IE 25 % + LDR 25 % + Yun Tal 25 %).
-    * Všechny střely z Runaanu dávají crit $\to$ **Yun Tal bleed se aplikuje na 3 nepřátele současně!** V kombinaci s Deadly Venom pasivkou je to neuhasitelný plošný DoT.
+  * 🏹 `Yun Tal Wildarrows` / 🛡️ `Guardian Angel` / ⚡ `Fiendhunter Bolts` (6. legendární item – **Finisher podle situace**):
+    * **Nový Yun Tal (Rework – *Practice Makes Lethal* & *Flurry*):** Už nemá starý bleed! Místo toho trvale stackuje Crit šanci až do +25 % a dává Flurry Attack Speed burst. Skvělý na 100% crit cap a maximální AS.
+    * 🛡️ **`Guardian Angel`:** Nejlepší volba pro late-game bezpečí (druhá šance u Barona / Eldera).
+    * ⚡ **`Fiendhunter Bolts`:** Pokud chceš zkrátit cooldown ultimátky a mít posílené první 3 střely po stisknutí R.
 
 * **Runy (Hubris + Runaan setup – Celerity Speed & Scaling):**
   * 🟡 **Precision (Primary):**
