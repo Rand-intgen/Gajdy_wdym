@@ -26,14 +26,21 @@ Proto platí **ZÁKON VÁNOČNÍHO PROTOKOLU**:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ 🔴 24. PROSINCE (Štědrý den) & 25. PROSINCE:                │
+│ 🔴 24. & 25. PROSINCE: ŠTĚDRÝ DEN & 1. SVÁTEK VÁNOČNÍ        │
 │    └── ZÁKAZ RANKEDŮ!                                       │
-│    └── Buď 100% s rodinou, pomoz v kuchyni, jez cukroví.   │
+│    └── Buď 100% s rodinou, pomoz doma, jez cukroví.        │
 │    └── Rodiče uvidí, že máš priority srovnané.              │
 ├─────────────────────────────────────────────────────────────┤
-│ 🟢 26. – 31. PROSINCE: „ZLATÝ TÝDEN GRINDU"                 │
-│    └── Máš 6 dní plného soustředění a zelenou od rodičů!    │
-│    └── Tady se rozhoduje o Diamondu do konce roku.          │
+│ 🎁 26. PROSINCE: TVŮJ SVÁTEK (SVATÝ ŠTĚPÁN)                 │
+│    └── Přes den: Rodinný oběd (kachna), oslava jmenin, klid.│
+│    └── Podvečer (16:30 – 19:00): „ŠTĚPÁNSKÁ MINI-SESSION"   │
+│        Pouze 3 soustředěné hry. Narozeninový/jmeninový      │
+│        dárek v podobě +60 LP. Večer volno.                  │
+├─────────────────────────────────────────────────────────────┤
+│ 🟢 27. – 31. PROSINCE: „ZLATÝ TÝDEN GRINDU" (5 DNÍ FULL PUSH)│
+│    └── Máš 5 dní plného soustředění a zelenou od rodičů!    │
+│    └── Žádné rodinné návštěvy – jede se Anti-Zombie režim.  │
+│    └── Tady se rozhoduje o Diamondu do konce roku!          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -116,7 +123,7 @@ Podívej se, jak snadné to je, když držíš disciplínu:
 [17. LISTOPAD: 14. 11. – 17. 11.]      ──► CÍL: EMERALD 2 / EMERALD 1 (+200 LP)
      │
      ▼ (cca 12 výher v prosinci)
-[VÁNOČNÍ ZLATÝ TÝDEN: 26. – 31. 12.]   ──► CÍL: 🏆 DIAMOND 4 HITNUT! (+250 LP)
+[VÁNOČNÍ FINÁLE: 26. 12. (Svátek) + 27. – 31. 12.] ──► CÍL: 🏆 DIAMOND 4 HITNUT! (+250 LP)
      │
      ▼ (Bonusový stretch goal do 3. 1.)
 [NOVÝ ROK 2027: 1. – 3. 1.]            ──► CÍL: PUSH SMĚR DIAMOND 2 / MASTER!
