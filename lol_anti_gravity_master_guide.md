@@ -78,41 +78,88 @@ Pro stabilní climbing ve vyšších rancích (Emerald → Diamond → Master) j
 
 ---
 
-## 🐀 Twitch Setup & Build Architectures
+## 🐀 Twitch Setup & Build Architectures (Patch 26.20 – Worlds 2026)
 
 > [!NOTE]
-> Výběr správného buildu závisí na kompozici soupeře. **AD** je nejlepší proti tankům a v dlouhých fightech, **AP** je destruktivní proti křehkým (squishy) týmům a pro okamžitý burst z Q stealthu.
+> **Aktuální patch:** 26.20 (Worlds 2026 patch, vydán 7. října 2026).  
+> Runaan's Hurricane a Experimental Hexplate dostaly nerf. Meta se přesunula k vysokému burst critu.  
+> Výběr správného buildu závisí na kompozici soupeře. **AD** je nejlepší v dlouhých fightech a proti tankům, **AP** je destruktivní proti squishy týmům pro okamžitý burst z Q stealthu.
 
-### 1. ⚔️ AD Twitch (Standard Crit & Spaceglide DPS)
-*Nejlepší proti: Tankům, bruiserům a v klasických teamfightech.*
+### 1. ⚔️ AD Twitch – „Spaceglide Crit Burst" (Hlavní build – Highest WR)
+*Nejlepší proti: Většině kompozic. Dominantní v teamfightech s R.*
 
 ```mermaid
 graph LR
-    A[BORK / Kraken] --> B[Runaan's Hurricane]
-    B --> C[Infinity Edge]
-    C --> D[Lord Dominik / Mortal Reminder]
-    D --> E[Bloodthirster / GA]
+    A["🗡️ The Collector"] --> B["👟 Berserker's Greaves"]
+    B --> C["⚡ Fiendhunter Bolts"]
+    C --> D["💎 Infinity Edge"]
+    D --> E["🛡️ Situační Item"]
 ```
 
-* **Core Build:** `Blade of the Ruined King` ➔ `Berserker's Greaves` ➔ `Runaan's Hurricane` ➔ `Infinity Edge`
-* **Situacionální předměty:**
-  * 🛡️ `Lord Dominik's Regards` (proti heavy armoru)
-  * 🗡️ `Mortal Reminder` (proti heavy healingu – Soraka, Aatrox, Red Kayn)
-  * 🛡️ `Guardian Angel` / `Mercurial Scimitar` (proti point-and-click CC)
-* **Runy (AD):**
-  * 🟡 **Precision:** Lethal Tempo / Press the Attack ➔ Presence of Mind ➔ Legend: Alacrity ➔ Cut Down  
-  * 🔴 **Domination:** Taste of Blood ➔ Relentless Hunter  
+* **Core Build (1–3 itemy):**
+  * 🗡️ `The Collector` – První item. Lethality + execute pod 5 % HP = snowball z raného leadu.
+  * 👟 `Berserker's Greaves` – Základní boty pro attack speed.
+  * ⚡ `Fiendhunter Bolts` – **KLÍČOVÝ ITEM pro Twitche v patchi 26.20.** Poskytuje Attack Speed, Crit a **30 Ultimate Ability Haste** (výrazně zkrátí cooldown na Spray and Pray). Pasivní efekt *Opening Barrage* dává bonus AS a posílí první 3 útoky po použití ulti → perfektní synergie s R.
+  * 💎 `Infinity Edge` – Třetí hotový item. Obrovský damage spike díky zesílenému crit dmg.
+
+* **Situační 4. a 5. item (vyber podle draftu):**
+  * 🛡️ `Lord Dominik's Regards` – Soupeř má 2+ tanky s high armorem (Malphite, Ornn, Sejuani).
+  * 🩸 `Mortal Reminder` – Soupeř má heavy healing (Soraka, Aatrox, Red Kayn, Vladimir).
+  * 🛡️ `Guardian Angel` – Potřebuješ druhou šanci v klíčovém teamfightu (Baron/Elder).
+  * ⚔️ `Bloodthirster` – Potřebuješ lifesteal a shield pro přežití v dlouhých fightech.
+  * 🔓 `Mercurial Scimitar` – Soupeř má point-and-click CC (Malzahar R, Skarner R, Mordekaiser R).
+
+* **Runy (AD – Patch 26.20):**
+  * 🟡 **Precision (Primary):**
+    * **Keystone:** `Lethal Tempo` (standard pro sustained DPS a spaceglide)
+    * `Triumph` (heal po killu = přežití v teamfightech)
+    * `Legend: Alacrity` (bonus AS pro plynulejší kiting)
+    * `Cut Down` (bonus dmg proti HP stacking tankům)
+  * 🔴 **Domination (Secondary):**
+    * `Sudden Impact` (lethality bonus po vylezení ze stealthu Q – proc při každém otevření!)
+    * `Relentless Hunter` (bonus MS out-of-combat = rychlejší roamy a rotace)
+
+* **Summoner Spells:** `Flash` + `Ghost` (standardní pro spaceglide) NEBO `Flash` + `Cleanse` (proti Leona/Nautilus/Ashe heavy CC bot)
 
 ---
 
-### 2. 🧪 AP Twitch (Burst & Slow Zone Control)
-*Nejlepší proti: Squishy kompozicím bez tanků, kde potřebuješ okamžitý assassinate.*
+### 2. 🧪 AP Twitch – „Rat Assassin Burst" (Situační / Off-Meta)
+*Nejlepší proti: Full squishy týmům bez tanků, kde potřebuješ okamžitý burst z Q stealthu.*
 
-* **Core Build:** `Nashor's Tooth` ➔ `Ionian Boots of Lucidity` ➔ `Rabadon's Deathcap` ➔ `Shadowflame`
-* **Situacionální předměty:** `Riftmaker`, `Banshee's Veil`, `Zhonya's Hourglass`
-* **Runy (AP):**
-  * 🔴 **Domination:** Hail of Blades ➔ Sudden Impact ➔ Eyeball Collection ➔ Ultimate Hunter  
-  * 🔵 **Sorcery:** Absolute Focus ➔ Gathering Storm  
+```mermaid
+graph LR
+    A["🦷 Nashor's Tooth"] --> B["👟 Sorcerer's Shoes"]
+    B --> C["🎩 Rabadon's Deathcap"]
+    C --> D["💀 Shadowflame"]
+    D --> E["🛡️ Zhonya's / Void Staff"]
+```
+
+* **Core Build:**
+  * 🦷 `Nashor's Tooth` – První item. AS + on-hit magic dmg synergizuje s passive jedem.
+  * 👟 `Sorcerer's Shoes` – Magic Pen boty pro maximální burst.
+  * 🎩 `Rabadon's Deathcap` – Obrovský AP spike, masivně zvyšuje E (Contaminate) damage.
+  * 💀 `Shadowflame` – Burst multiplier pro squishy cíle.
+
+* **Situační itemy:**
+  * 🟣 `Void Staff` – Soupeř stackuje Magic Resist.
+  * ⏳ `Zhonya's Hourglass` – Přežití po otevření ze stealthu (použij po R combo).
+  * 📚 `Mejai's Soulstealer` – Riskantní, ale extrémně silný při snowballu.
+
+* **Runy (AP – Patch 26.20):**
+  * 🟡 **Precision (Primary):**
+    * **Keystone:** `Press the Attack` (burst z 3 auto-attacků po otevření z Q) NEBO `Lethal Tempo`
+    * `Presence of Mind` (mana sustain pro spam E)
+    * `Legend: Alacrity` (AS)
+    * `Cut Down` (bonus dmg)
+  * 🔵 **Sorcery (Secondary):**
+    * `Absolute Focus` (bonus AP při high HP = silnější opener ze stealthu)
+    * `Gathering Storm` (scaling AP pro late game)
+
+* **Summoner Spells:** `Flash` + `Ignite` (all-in burst) NEBO `Flash` + `Ghost`
+
+> [!WARNING]
+> **Kdy NEHRÁT AP Twitche:**  
+> Pokud soupeř má 2+ tanky (Malphite, Ornn, Sejuani, Cho'Gath), AP Twitch je prakticky k ničemu. V takovém draftu jdi VŽDY AD s Lord Dominik's Regards.
 
 ---
 
@@ -174,7 +221,7 @@ graph LR
 ## 🧠 High-Elo Game Plan Checklist
 
 - [ ] **Lvl 1–3:** Soustřeď se na farmu, neztrácej zbytečně HP za 1 minion.
-- [ ] **First Back:** Kup components na BORK / Nashor + Control Ward.
+- [ ] **First Back:** Kup components na The Collector (Serrated Dirk) / Nashor (AP) + Control Ward.
 - [ ] **Lvl 6 Power Spike:** Hledej Q roam na midlane nebo all-in na botu s ultimátkou.
 - [ ] **Mid Game:** Nebuď vidět na mapě! Tlak ze stealthu nutil soupeře hrát opatrně.
 - [ ] **Teamfights:** Počkej, až soupeř vypotřebuje klíčové CC (Malphite R, Nautilus R), pak se otevři z Q stealthu z bezpečné vzdálenosti a press R!
