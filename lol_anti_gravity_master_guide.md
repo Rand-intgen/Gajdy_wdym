@@ -109,17 +109,17 @@ graph LR
   * ⚔️ `Bloodthirster` – Potřebuješ lifesteal a shield pro přežití v dlouhých fightech.
   * 🔓 `Mercurial Scimitar` – Soupeř má point-and-click CC (Malzahar R, Skarner R, Mordekaiser R).
 
-* **Runy (AD – Patch 26.20):**
+* **Runy (AD – Spaceglide & Infinite Scaling):**
   * 🟡 **Precision (Primary):**
-    * **Keystone:** `Lethal Tempo` (standard pro sustained DPS a spaceglide)
-    * `Triumph` (heal po killu = přežití v teamfightech)
-    * `Legend: Alacrity` (bonus AS pro plynulejší kiting)
-    * `Cut Down` (bonus dmg proti HP stacking tankům)
-  * 🔴 **Domination (Secondary):**
-    * `Sudden Impact` (lethality bonus po vylezení ze stealthu Q – proc při každém otevření!)
-    * `Relentless Hunter` (bonus MS out-of-combat = rychlejší roamy a rotace)
+    * **Keystone:** `Lethal Tempo` (standard pro sustained DPS, překročení AS capu a spaceglide)
+    * `Triumph` (heal po killu = přežití v divokých teamfightech)
+    * `Legend: Alacrity` (bonus Attack Speed pro plynulejší kiting)
+    * `Cut Down` (bonus poškození proti tankům a high-HP cílům)
+  * 🔵 **Sorcery (Secondary – God Tier Scaling & Speed):**
+    * `Celerity` (zesiluje MS z Q stealthu, Ghostu a Runaanu – naprosto klíčové pro spacing a kite!)
+    * `Gathering Storm` (nekonečné škálování bonusového AD; v 30.+ minutě dostáváš celý item zdarma)
 
-* **Summoner Spells:** `Flash` + `Ghost` (standardní pro spaceglide) NEBO `Flash` + `Cleanse` (proti Leona/Nautilus/Ashe heavy CC bot)
+* **Summoner Spells:** `Flash` + `Ghost` (dokonalá synergie s Celerity pro maximální spaceglide) NEBO `Flash` + `Cleanse`
 
 ---
 
@@ -183,15 +183,15 @@ graph LR
   * 🛡️ `Lord Dominik's Regards` (4. item) – Armor penetration; v této fázi hry už roztavíš i heavy tanky (Ornn, Malphite, K'Sante).
   * 🩸 `Bloodthirster` / 🛡️ `Guardian Angel` (5. item) – Lifesteal + štít pro přežití, nebo druhá šance na oživení u Elder Draka.
 
-* **Runy (Hubris + Runaan setup):**
+* **Runy (Hubris + Runaan setup – Celerity Speed & Scaling):**
   * 🟡 **Precision (Primary):**
     * `Lethal Tempo` (v synergii s Runaanem překračuješ attack speed cap a kiting je čistý glide)
     * `Triumph` (heal po killu v teamfightu)
     * `Legend: Alacrity` (další attack speed)
     * `Cut Down` (bonus poškození proti tankům a bruiserům)
-  * 🔴 **Domination (Secondary):**
-    * `Sudden Impact` (lethality boost při každém vyskočení z Q stealthu)
-    * `Relentless Hunter` (MS na roamování a odchytávání nepřátel po mapě)
+  * 🔵 **Sorcery (Secondary):**
+    * `Celerity` (synergie s Runaan MS, Ghostem a Q – nepřátelé tě nedoběhnou)
+    * `Gathering Storm` (stackuje další permanentní AD k už tak obřímu Hubris poškození)
 
 ---
 
