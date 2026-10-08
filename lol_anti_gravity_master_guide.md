@@ -163,6 +163,44 @@ graph LR
 
 ---
 
+### 3. 👑 Hubris Snowball / Smurf Assassin (Full Lethality & AD Stacking)
+*Nejlepší proti: 5 squishy cílům, v zápasech, kde víš, že mechanicky přejedeš botlane a získáš 15+ killů (např. EUNE smurf).*
+
+```mermaid
+graph LR
+    A["👑 Hubris (Rush)"] --> B["👟 Berserker's Greaves"]
+    B --> C["🗡️ The Collector"]
+    C --> D["💎 Infinity Edge / LDR"]
+    D --> E["⚡ Fiendhunter Bolts / BT"]
+```
+
+* **Core Build:**
+  * 👑 `Hubris` – První rush item (60 AD, 18 Lethality, 15 AH). 
+    * **Pasivka Eminence & Fame:** Po killu dostaneš sochu (Ego stack) a získáš **15 (+2 za každý stack) bonusového AD na 90 sekund**.
+    * Ve hrách, kde máš 15–20 killů (jako tvých 22 a 30 killů na EUNE), ti Hubris dává **+50 až +80 bonusového AD navíc**! Každé Q + R otevření maže nepřátele na 3 auto-attacky.
+  * 👟 `Berserker's Greaves` – **NAPROSTO POVINNÉ hned po Hubrisu**, protože Hubris dává 0 Attack Speedu!
+  * 🗡️ `The Collector` – Zesílení lethality, crit šance a 5% execute.
+  * 💎 `Infinity Edge` nebo 🛡️ `Lord Dominik's Regards` – Masivní násobič poškození.
+
+* **Runy (Hubris Assassin):**
+  * 🟡 **Precision:** `Lethal Tempo` (dodá chybějící AS z itemů) NEBO `Press the Attack` (čistý one-shot burst) ➔ `Triumph` ➔ `Legend: Alacrity` ➔ `Cut Down`.
+  * 🔴 **Domination:** `Sudden Impact` (lethality po Q) ➔ `Treasure Hunter` (extra goldy na snowball) NEBO `Relentless Hunter`.
+
+---
+
+#### ⚖️ Hubris: Geniální zbraň, nebo smrtící past?
+
+| Kdy Hubris STAVĚT (Green Light) | Kdy je Hubris PAST (Red Light) |
+| :--- | :--- |
+| ✅ Soupeř má **0 tanků** (všichni jsou křehcí papíři). | ❌ Soupeř má **2+ tanky/bruisery** (Lethality má nulový efekt). |
+| ✅ Získáš **2 killy před 7. minutou** (snowball je garantovaný). | ❌ Prohráváš linku 0/2 (Hubris s 0 stacky je nejslabší item ve hře). |
+| ✅ Hraješ v nižším elu (Gold/Plat na EUNE), kde děláš 20+ killů. | ❌ V high elu (Diamond 1 / Master), kde se hrají koordinované teamfighty. |
+
+> 💡 **Zlaté pravidlo Hubrisu:**  
+> Hubris je tzv. *„Win-More“* předmět. Pokud vedeš, vyhraješ s ním hru za 18 minut. Pokud ale prohráváš a nemáš z čeho stackovat Ego, jsi bez attack speedu a bez damagce. Pokud si nejsi 100% jistý, standardní **Collector ➔ Fiendhunter ➔ IE** je konzistentnější.
+
+---
+
 ## ⚔️ Twitch Bot Lane Matchup Matrix
 
 ```
