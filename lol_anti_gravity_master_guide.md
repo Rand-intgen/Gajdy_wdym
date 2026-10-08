@@ -209,58 +209,99 @@ graph LR
 
 ---
 
-## ⚔️ Twitch Bot Lane Matchup Matrix
+## ⚔️ Twitch Bot Lane Matchup Matrix (ADC & APC)
 
 ```
- 🟢 SNADNÉ (Favored)      🟡 SKILL MATCHUP (Even)     🔴 TĚŽKÉ (Counter)
- ───────────────────      ───────────────────────     ───────────────────
- • Jhin                   • Vayne                     • Caitlyn
- • Ezreal                 • Kai'Sa                    • Draven
- • Kog'Maw                • Jinx                      • Samira
- • Aphelios               • Lucian                    • Tristana
+ 🟢 SNADNÉ (Favored)          🟡 SKILL MATCHUP (Even)         🔴 TĚŽKÉ (Counter)
+ ───────────────────          ───────────────────────         ───────────────────
+ • Jhin                       • Vayne                         • Caitlyn
+ • Ezreal                     • Kai'Sa                        • Draven
+ • Kog'Maw                    • Jinx                          • Samira
+ • Aphelios                   • Lucian                        • Tristana
+ • Ashe / Sivir               • Zeri / Varus                  • Nilah / Kalista
+ ────────────────────────────────────────────────────────────────────────────────
+ 🔮 APC: Karthus              🔮 APC: Seraphine / Brand       🔮 APC: Ziggs / Veigar / Swain
 ```
 
 <details>
-<summary>🔍 <b>Klikni pro detailní analýzu jednotlivých matchupů</b></summary>
+<summary>🔍 <b>Klikni pro detailní rozbor ADC matchupů</b></summary>
 
 ### 🟢 Snadné matchupy
-* **Jhin:** Nemá únik. Po 6. úrovni ho v Q stealthu snadno ustřílíš (all-in). Pozor na jeho 4. náboj a pasti.
-* **Ezreal:** Vyhýbej se jeho Q za miniony. Pokud spotřebuje své E (E-dash), okamžitě aktivuj Q a jdi do all-inu.
-* **Kog'Maw / Aphelios:** Jsou velmi zranitelní vůči stealth roamům a gankům. V duelu z překvapení vyhráváš.
+* **Jhin:** Nemá escape. Jakmile máš lvl 6 a Q stealth, je to volný kill při každém all-inu. Pozor jen na jeho 4. náboj a W root z dálky.
+* **Ezreal:** Stůj za miniony (blokuj jeho Q). Jakmile vyčerpá své E (Arcane Shift dash), okamžitě aktivuj Q ➔ Ghost ➔ R a zabij ho.
+* **Kog'Maw / Aphelios:** Imobilní terče. Z boku z neviditelnosti je přejedeš dřív, než stihnou zareagovat.
+* **Ashe:** Snadný duel 1v1, ALE pozor na její R (Enchanted Crystal Arrow). Pokud má Ashe 6, ber **Cleanse**!
+* **Sivir:** Její Spell Shield (E) zablokuje jen jedno tvé W nebo E, ale tvé auto-attacky z R jdou skrz něj.
 
 ### 🟡 Skill matchupy
-* **Kai'Sa:** Kdo dá první burst, ten vyhrává. Nenech ji izolovat Q na tebe.
-* **Vayne:** Vyhýbej se stěnám (E stun). Tvůj R má výrazně větší dosah v teamfightu než její kit.
-* **Lucian:** Má extrémně silný burst na úrovních 2 a 3. Hraj defenzivně, dokud nemáš první item.
+* **Kai'Sa:** Čistý závod v burstu. Nenech ji izolovat Q na tebe mezi miniony. V teamfightu ji out-rangeuješ svým R.
+* **Vayne:** Hlídej si stěny (Condemn E stun). Tvůj R má 850 range, její auto-attacky jen 550 – drž si maximální odstup (spacing).
+* **Jinx:** Kdo má lepší peel od supporta, ten vyhrává. V duelu z Q stealthu ji smažeš, ale v 5v5 teamfightu s pasivkou je nebezpečná.
+* **Lucian:** Má brutální burst na lvl 2–3. Hraj pasivně do 6. levelu, pak ho v all-inu s delším dosahem přetlačíš.
+* **Varus:** Uhýbej jeho Q a hlídej si jeho R root. V delším souboji s Lethal Tempem vyhráváš.
 
-### 🔴 Těžké matchupy (Hraj opatrně / vyžadují pomoc)
-* **Caitlyn:** Extrémní poke a dosah. Nenech se zatlačit pod věž a ztrácet HP. Čekej na gank nebo lvl 6 all-in.
-* **Draven:** Má vyšší raw damage na prvních úrovních. NIKDY s ním neobchoduj damage 1v1 na lvl 1–3.
-* **Samira:** Její W (Blade Whirl) zničí tvoji ultimátku (R projektily). Počkej, až pouští W, než zmáčkneš R.
-* **Tristana:** Má silný all-in na lvl 2/3. Pokud skočí, použij W pro zpomalení a ustup.
+### 🔴 Těžké matchupy (Hraj opatrně / vyžadují gank)
+* **Caitlyn:** Extrémní dosah (650) a pasti pod tvou věží. Hrozí, že ztratíš půlku HP jen při farmení. Hraj na freeze u věže a čekej na lvl 6 all-in nebo gank.
+* **Draven:** Má astronomický raw damage na sekerách. **NIKDY s ním netrejduj 1v1 na úrovních 1–3.** Nech ho pushovat a zabij ho až ze stealthu s výhodou.
+* **Samira:** Její W (Blade Whirl) **zničí tvé R projektily**! Nikdy nezapínej R, dokud Samira nepoužije W.
+* **Tristana:** All-in bomba v lvl 2/3 tě one-shotne. Pokud na tebe skočí, okamžitě W pod sebe, Ghost a ustup.
+* **Nilah:** Její W jí dává imunitu vůči auto-attackům! Musíš počkat, až jí W vyprší, a až pak začít střílet.
+
+</details>
+
+<details open>
+<summary>🔮 <b>Detailní rozbor APC matchupů (Mágové na botu)</b></summary>
+
+V moderní metě se na botu často objevují AP mágové. Pro Twitche mají specifická pravidla:
+
+| APC Mág | Obtížnost | Jak hrát a jak vyhrát |
+| :--- | :---: | :--- |
+| 💣 **Ziggs** | 🔴 TĚŽKÉ | **Nejhorší waveclear teror.** Neustále tě bude tlačit pod věž a ničit pláty svým W. **Jak hrát:** Nech vlnu spadnout, nestůj v minionech (aby tě netrefoval Qčkem zadarmo). Po 6. levelu ho v Q stealthu snadno zabiješ – Ziggs nemá žádný bodový armor ani HP. |
+| 🧙‍♂️ **Veigar** | 🔴 TĚŽKÉ | **Jeho E (Event Horizon klec) je noční můra pro Spaceglide.** Pokud tě zavře do klece, nemůžeš kitingovat a dostaneš W+R one-shot. **Jak hrát:** Počkej, až vyplýtvá E klec na tvého supporta. Teprve pak vylez ze stealthu. Zvaž **Cleanse** nebo **Edge of Night / QSS**. |
+| 🦅 **Swain** | 🔴 TĚŽKÉ | Drain-tank s masivním healením. **Jak hrát:** Uhýbej jeho E (Nevermove návratu). Jakmile zapne své R (Demonic Ascension), **nebojuj s ním zblízka**! Ustup s Ghostem, počkej, až mu R vyprší. **Povinnost:** Rychle koupit `Executioner's Calling` ➔ `Mortal Reminder`. |
+| 💀 **Karthus** | 🟢 SNADNÉ | Karthus na botu spoléhá na trefování izolovaného Q. **Jak hrát:** Díky vysokému Movement Speedu z Celerity a Ghostu jeho Q snadno prodancuješ. Ze stealthu ho s Hubrisem smažeš za 2 vteřiny. Pozor na jeho pasivku po smrti a zvaž `Edge of Night` nebo `Maw of Malmortius` proti jeho R. |
+| 🎤 **Seraphine** | 🟡 STŘEDNÍ | Obrovský poke, shieldy a teamfight CC. **Jak hrát:** V laning fázi se vyhýbej jejímu E (slow/root). V teamfightu nestůj v řadě se spoluhráči, aby netrefila své R přes celý tým. Flankuj ji ze strany z neviditelnosti. |
+| 🔥 **Brand** | 🟡 STŘEDNÍ | Masivní % HP burn a AoE poškození. **Jak hrát:** Stůj za miniony (blokují jeho Q stun). Když zapne R (ohnivá koule), **okamžitě se rozestupte od supporta**, ať se mezi vámi neodráží! Brand je neuvěřitelně křehký – ze stealthu padá na 3 rány. |
+| 🐍 **Cassiopeia** | 🔴 TĚŽKÉ | Její W (Miasma jedovatá louže) ti dává **Grounded** (nemůžeš Flashnout ani použít mobilitu). **Jak hrát:** Nikdy se na ni nedívej čelem, když hrozí její R (Petrifying Gaze stun). Udržuj maximální dosah z R (850 range). |
+| 🎨 **Hwei** | 🟡 STŘEDNÍ | Dlouhý dosah spellů, ale nulová mobilita. **Jak hrát:** Vyhýbej se jeho lineárním skillshotům. Jakmile mine své E (Fear/Root), je bezbranný cíl pro Q stealth all-in. |
 
 </details>
 
 ---
 
-## 🤝 Support Synergies (S kým hrát & Koho se bát)
+## 🤝 Kompletní Support Průvodce (Synergie i Hrozby)
 
-### 💚 Nejlepší Supporti pro Twitche (God Tier Synergies)
+### 💚 Tvoji Supporti: S kým hraješ & Jak se přizpůsobit
 
-| Support | Proč funguje | Synergy Rating |
-| :--- | :--- | :---: |
-| 🐱 **Yuumi** | Poskytuje adaptivní staty, MS, heal a štít přímo při stealthu. | ⭐⭐⭐⭐⭐ |
-| 💜 **Lulu** | Pix dává extra AS, shield a Polymorph chrání před assassiny. | ⭐⭐⭐⭐⭐ |
-| 🪵 **Milio** | Extrémně zvyšuje dosah útoků (range) a poskytuje cleanse. | ⭐⭐⭐⭐☆ |
-| 🛡️ **Thresh / Pyke** | Skvělá kreator prostoru a možnost roamovat po mapě. | ⭐⭐⭐⭐☆ |
+Tvůj styl hraní na Twitchovi se musí 100% přizpůsobit tomu, jakého máš vedle sebe supporta:
 
-### 🚨 Nejnebezpečnější Supporti u Soupeře (Hard Engage / CC Threat)
+#### 1. ✨ Enchanters (Králové Synergie pro Twitche – God Tier)
+* 💜 **Lulu (S+ TIER):** Absolutní vrchol. Pix dává extra damage na každý výstřel, W dává Attack Speed a MS na spaceglide, a její polymorph vyřadí nepřátelského assassina. S Lulu hraješ hyper-agresivně.
+* 🐱 **Yuumi (S+ TIER):** Neviditelná Yuumi! Když zapneš Q, **Yuumi je neviditelná s tebou**. Dává adaptivní AD staty k tvému Hubrisu, nekonečný heal, shield a MS.
+* 🪵 **Milio (S TIER):** Jeho W ti **zvyšuje dosah útoků (range)** – tvé R má najednou dosah přes 950! Navíc jeho R poskytuje plošný Cleanse a heal.
+* 🌪️ **Janna (A+ TIER):** Pasivka dává bonusový Movement Speed pro celý tým (dokonalá synergie s tvou runou **Celerity**!). Její Q tornado a R Monsoon tě ochrání před jakýmkoliv divem.
+* 🌊 **Nami (A TIER):** Její E přidává magic damage a slow k tvým prvním třem auto-attackům z Q stealthu. Snadný kill v early game.
 
-> [!CAUTION]
-> Proti těmto supportům si kupuj **Cleanse** nebo **Quicksilver Sash (QSS)** a drž si odstup od keřů:
-> * ⚓ **Nautilus** (Point-and-click R, hook)
-> * 🦁 **Leona** (Chain CC, neprůstřelná)
-> * 🤖 **Blitzcrank** (Hook ruší stealth positioning)
+#### 2. ⚓ Engage & Hook Tankové (Tvoři prostoru a killů)
+* 🪝 **Thresh (S TIER):** Hook ti zaručí kill, Lucerna (W) je dokonalý únik pro bezeskokového Twitche. Skvělá synergie pro rychlé stackování Hubrisu.
+* ⚓ **Nautilus / 🦁 Leona (A TIER):** Brutální CC řetězec. **POZOR:** V levelu 1–2 na lince nemáš dostatek burstu na jejich all-in. Nenech je zbrkle skákat do 15 minionů. All-inujte až od levelu 3 nebo 6.
+* 🗡️ **Pyke (A TIER):** Sdílení zlaťáků z jeho R (Your Cut) extrémně urychluje tvůj build na Hubris a IE. Dva neviditelní zabijáci na lince.
+* 🪶 **Rakan (A+ TIER):** Extrémní mobilita a plošný charm. Když Rakan chytí 3 lidi do R+W, ty zapneš R a je po teamfightu.
+
+#### 3. 🔮 Mage Poke Supporti (Lux, Xerath, Zyra, Vel'Koz)
+* **Jak s nimi hrát:** Nech je tlačit a oslabovat soupeře z dálky. Nevstupuj do riskantních trejdů, dokud soupeř nemá pod 50 % HP. Pak zapni Q a seber kill.
+
+---
+
+### 🚨 Nepřátelští Supporti: Koho se bát & Jak proti nim přežít
+
+| Třída nepřítele | Šampioni | Hrozba pro Twitche | Jak hrát a jak je přechytračit |
+| :--- | :--- | :---: | :--- |
+| **Point-and-Click Lockdown** | ⚓ **Nautilus**, 🦁 **Leona**, 🌲 **Maokai** | 🔴 EXTRÉMNÍ | Nautilus R tě zaměří i ve stealthu a nejde mu vyhnout. **Řešení:** Ber **Cleanse**, nestůj v první linii a nevylézej z Q, dokud nepoužijí své ultimátky na tvůj tým. |
+| **Projektilový Hook** | 🤖 **Blitzcrank**, 🪝 **Thresh**, 💀 **Pyke** | 🟡 VYSOKÁ | Jeden hook = instantní smrt. **Řešení:** Stůj VŽDY za miniony. Pokud Blitz mine Q, má 18 vteřin cooldown – to je tvoje okno na all-in! |
+| **Anti-Twitch Štít** | 🛡️ **Braum** | 🔴 EXTRÉMNÍ | ⚠️ **SMRTELNÝ COUNTER:** Braumovo E (Unbreakable ledový štít) **kompletně zničí a pohltí všechny tvé R šípy**! Nikdy nestřílej ultinu do Braumova štítu. Obejdi ho z boku nebo počkej, až štít spadne. |
+| **Disengage Enchanters** | 🌪️ **Janna**, 💜 **Lulu**, ✨ **Soraka** | 🟡 STŘEDNÍ | **Lulu** ti dá Polymorph a tvá ultina vyprší. **Soraka** položí instantní E (Silence louži) přímo pod tvé nohy, jakmile vylezeš ze stealthu, takže nemůžeš střílet ani castit! **Řešení:** Focusni Soraku jako první cíl ze stealthu. |
+| **Poke Mágové** | ☀️ **Lux**, 👁️ **Vel'Koz**, 🌿 **Zyra** | 🟢 SNADNÁ KOŘIST | Na začátku tě otravují pokeem pod věží. Jakmile ale dosáhneš levelu 6, jsou pro tebe **chodící pytle na zlaťáky**. Zapni Q, seběhni za ně a smaž je dřív, než stihnou otočit kameru. |
 
 ---
 
