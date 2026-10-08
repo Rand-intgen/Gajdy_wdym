@@ -163,25 +163,29 @@ graph LR
 
 ---
 
-### 3. 👑 Hubris AoE Crit Shredder (Hubris ➔ Runaan ➔ IE ➔ LDR)
-*Nejznámější 1v9 SoloQ build (styl RATIRL). Spojuje brutální raw AD z Hubrisu s plošným teamfight shredem z Runaanu.*
+### 3. 👑 Hubris AoE Crit Shredder (7-Item Slot System)
+*Nejznámější 1v9 SoloQ build (styl RATIRL). Využívá **ADC Role Quest (7. dedikovaný slot na boty)** pro dosažení 100% Critu a maximálního plošného poškození.*
 
 ```mermaid
 graph LR
-    A["👑 Hubris (1. Rush)"] --> B["👟 Berserker's Greaves"]
-    B --> C["🏹 Runaan's Hurricane (2.)"]
-    C --> D["💎 Infinity Edge (3.)"]
-    D --> E["🛡️ Lord Dominik's Regards (4.)"]
-    E --> F["🩸 Bloodthirster / GA (5.)"]
+    Boot["👟 Berserker's (Boot Slot)"]
+    A["👑 Hubris (1.)"] --> B["🏹 Runaan's Hurricane (2.)"]
+    B --> C["💎 Infinity Edge (3.)"]
+    C --> D["🛡️ Lord Dominik's Regards (4.)"]
+    D --> E["🩸 Bloodthirster (5.)"]
+    E --> F["🏹 Yun Tal Wildarrows (6.)"]
 ```
 
-* **Core Build Order:**
+* **Core Build Order (7 slotů):**
+  * 👟 `Berserker's Greaves` (Dedicated Boot Slot z ADC Role Questu) – Rychlost a attack speed bez zabírání místa pro zbraně!
   * 👑 `Hubris` (1. item) – Masivní raw AD (60 AD), 18 Lethality a 15 AH. Za každý kill dostaneš sochu (Ego stack) a **15 (+2 za každý stack) bonusového AD na 90 sekund**.
-  * 👟 `Berserker's Greaves` – Okamžitý attack speed hned po dokončení Hubrisu.
-  * 🏹 `Runaan's Hurricane` (2. item) – **Klíčový most buildu.** Dokonale vykompenzuje absenci attack speedu z Hubrisu. Navíc boční střely (bolts) aplikují obří bonusové AD z Hubrisu na další 2 cíle v teamfightu!
+  * 🏹 `Runaan's Hurricane` (2. item) – **Klíčový most buildu.** Dokonale vykompenzuje absenci attack speedu z Hubrisu a aplikuje bonusové AD na další 2 cíle v teamfightu.
   * 💎 `Infinity Edge` (3. item) – Zesílení crit poškození. V kombinaci s Hubris AD buffem a Runaanem smažeš celý nepřátelský tým za 2 vteřiny.
   * 🛡️ `Lord Dominik's Regards` (4. item) – Armor penetration; v této fázi hry už roztavíš i heavy tanky (Ornn, Malphite, K'Sante).
-  * 🩸 `Bloodthirster` / 🛡️ `Guardian Angel` (5. item) – Lifesteal + štít pro přežití, nebo druhá šance na oživení u Elder Draka.
+  * 🩸 `Bloodthirster` (5. item) – Lifesteal + štít pro přežití v divokých teamfightech.
+  * 🏹 `Yun Tal Wildarrows` (6. legendární item – **Finisher**):
+    * Završí tvůj build na **garantovaných 100 % Critu** (Runaan 25 % + IE 25 % + LDR 25 % + Yun Tal 25 %).
+    * Všechny střely z Runaanu dávají crit $\to$ **Yun Tal bleed se aplikuje na 3 nepřátele současně!** V kombinaci s Deadly Venom pasivkou je to neuhasitelný plošný DoT.
 
 * **Runy (Hubris + Runaan setup – Celerity Speed & Scaling):**
   * 🟡 **Precision (Primary):**
