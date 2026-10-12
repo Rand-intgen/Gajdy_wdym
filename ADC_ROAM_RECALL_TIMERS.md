@@ -93,3 +93,28 @@ Polož si tuto otázku předtím, než opustíš linku:
 1. **Kde je vlna?** *(Pod jejich věží = MŮŽU jít. Uprostřed/u mě = ZÁKAZ!)*
 2. **Stihnu to za 30 sekund?** *(Pokud akce trvá déle než 30s, ztrácím vlnu).*
 3. **Mám vizi v řece?** *(Pokud nevím, kde je enemy jungler, jdu přes svou jungle, ne přes řeku).*
+
+---
+
+## 🗺️ 5. Mapa vize: Kde přesně kontrolovat wardy & Roam zóny
+
+![Mapa Vize a Kontroly Wardů](mapa_vize_wardy.png)
+
+### 📍 Legenda k mapě a jak jednotlivá místa kontrolovat:
+
+| Kód | Název místa | Kdy a jak kontrolovat | Proč je to kritické |
+| :---: | :--- | :--- | :--- |
+| **W1** | 🟡 **River Bush** | **Položit v čase 2:35 – 2:45.** | Chytá enemy junglera těsně před Scuttle Crabem v řece (2:55) nebo gankem na bot. |
+| **W2** | 🔴 **Tri-Bush** | **Control Ward (Pinka).** | Klíčové místo pro ochranu zad (Blue side) nebo agresivní odchyt enemy rotací (Red side). |
+| **W3** | 🟡 **Lane Bush** | **Minion Aggro Test.** | Zde se schovávají Hook supporti (Nautilus, Blitz, Pyke). **Pokud se minioni otočí za tebou do keře = JE TAM WARDA!** |
+| **W4** | 🟠 **Pixel Bush** | **Pozor při Roamu v Q!** | Malý keřík u midu. Žlutá warda tě nevidí, ale pokud tam enemy mid/jg položil **červenou Control Wardu**, odhalí tvůj stealth! |
+| **B1** | 🔵 **Dračí jáma** | **Blue Trinket (po lvl 9).** | Nikdy nechoď checkovat draka tělem (facecheck). Hoď modrý trinket ze vzdálenosti celé obrazovky. |
+| **B2** | 🔵 **Baron jáma** | **Blue Trinket (po lvl 9).** | Bezpečné odhalení Barona zpoza stěny na midlane. |
+| **F1** | 🟢 **Faelights (S26)** | **Kruh hub v řece.** | Warda položená do tohoto kruhu získá v sezóně 2026 obří bonus k dosahu vize! |
+| 🟣 | **Fialová trasa** | **Q Ambush Roam na Mid.** | Trasa pro gank v 7:30 po crashi kánonové vlny. Běh podél dračí jámy přímo za záda enemy midlanera. |
+
+---
+
+### 🕵️ Jak bezpečně zjistit, jestli v keři čeká nepřítel (Twitch Spells):
+1. **W (Venom Cask) Check:** Hoď Wčko naslepo do keře. Pokud tam někdo sedí, **uslyšíš zvuk zasažení a vteřinu na to naskočí 1 stack jedu**.
+2. **Q (Ambush) Warning Eye:** Přibliž se ke keři v Q stealthu. Pokud je v keři šampion nebo Control warda, nad hlavou ti blikne **žluté/červené varovné oko** $\to$ okamžitě ustup!
