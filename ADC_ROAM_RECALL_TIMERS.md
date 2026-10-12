@@ -11,14 +11,15 @@
 Tento rozvrh ti přesně řekne, na co máš v danou minutu myslet:
 
 ```
-[00:00 – 01:30] ──► Příprava na linku / Invade defense / Bush control
-[01:30 – 03:00] ──► Level 2 race (první vlna + 3 melee z druhé vlny)
-[03:15 – 03:45] ──► 🚨 POZOR: Jungle gank okno (Scuttle crab spawn)
-[04:00 – 05:00] ──► 1. CHEATER RECALL OKNO (Crash 3. vlny s kanónem)
+[00:00 – 00:30] ──► Příprava na linku / Invade defense / Bush control (spawn minionů z báze v 0:30!)
+[00:55]         ──► 🌲 Jungle camps spawn (buff spawnuje v 0:55)
+[01:00 – 02:15] ──► Level 2 race (1. vlna se potká kolem 1:00, Lvl 2 naskočí po 1. vlně + 3 melee)
+[02:40 – 03:00] ──► 🚨 POZOR: Jungle gank okno & Scuttle Crab spawn v řece (2:55!)
+[03:20 – 04:10] ──► 1. CHEATER RECALL OKNO (Crash 3. vlny s kanónem)
 [05:00]         ──► 🐉 Dragon spawn (první drak)
-[06:00 – 07:00] ──► Level 6 power spike (odemčení R – all-in / kill hrozba)
-[08:00 – 09:30] ──► 🪟 PRVNÍ ROAM OKNO NA MID (Fake Recall / Cannon crash)
-[10:00 – 14:00] ──► Tlak na věž, permanentní pláty (S16), druhý drak setup
+[05:30 – 06:15] ──► Level 6 power spike (odemčení R – all-in / kill hrozba)
+[07:00 – 08:30] ──► 🪟 PRVNÍ ROAM OKNO NA MID (Fake Recall / Cannon crash)
+[09:00 – 14:00] ──► Tlak na věž, permanentní pláty (S16), druhý drak setup
 [14:00+]        ──► 🔄 MID SWAP: Odchod z botu na midlane, sběr vln a objektivů
 [20:00]         ──► 👾 Baron Nashor spawn (držet se v bezpečí, 45s setup)
 ```
@@ -51,35 +52,37 @@ Největší důvod, proč hráči v Platině ztrácejí 2 levely a 40 CS, je **�
 Roam se nedělá náhodně. Roam je **matematická příprava**:
 
 ```
-[KROK 1: Příprava vlny (7:00)] 
+[KROK 1: Příprava vlny (6:30 – 7:00)] 
 └── Pomalý push (Slow push) – nech své miniony nakupit.
 
-[KROK 2: Tvrdý push (7:30)] 
+[KROK 2: Tvrdý push (7:00 – 7:30)] 
 └── Přijde kánonová vlna. Wčko + spamy auto-attacků + E. Vlna naráží do věže!
 
-[KROK 3: Fake Recall (7:45)] 
+[KROK 3: Fake Recall (7:30 – 7:45)] 
 └── Vlez do keře na botu. Enemy botlane si myslí, že dáváš B.
 └── Zmáčkni Q (Ambush) a vyběhni řekou směrem na MID!
 
-[KROK 4: Exekuce na Midu (8:00)] 
+[KROK 4: Exekuce na Midu (7:45 – 8:00)] 
 └── Vylez z Q za zády enemy midlanera. W pod nohy ➔ Ghost ➔ kill.
 └── Akce trvá MAX 10 sekund!
 
-[KROK 5: Návrat na Bot (8:20)] 
+[KROK 5: Návrat na Bot (8:00 – 8:20)] 
 └── Neber midové miniony! Běž zpět na bot, kde na tebe čeká odražená vlna.
 ```
 
 ---
 
-## ⏰ 4. Časovače na mapě (Objective Timers Checklist)
+## ⏰ 4. Časovače na mapě (Objective Timers Checklist – Season 2026)
 
 Jako ADC musíš mít v hlavě tyto přesné časy:
 
 | Objektiv / Událost | První spawn | Respawn čas | Kdy začít přípravu (Recall / Ward) |
 | :--- | :---: | :---: | :--- |
-| 🐉 **Drak (Dragon)** | **05:00** | **5:00 min** | **V čase 45s před spawnem:** Recall, nákup, příchod k řece. |
-| 🦀 **Scuttle Crab** | **03:30** | **2:30 min** | Hlídej river wardu kolem 3:15. |
-| 👾 **Baron Nashor** | **20:00** | **6:00 min** | **V čase 19:15:** Crash mid vlny, wardy kolem Barona. |
+| 👶 **Spawn Minionů z báze** | **00:30** | každých 30s | Být v pozici v keři / na lince v 0:45. |
+| 🌲 **Jungle kempy (Red/Blue)** | **00:55** | 2:15 min | Hlídej start enemy junglera (leash bot vs. leash top). |
+| 🦀 **Scuttle Crab v řece** | **02:55** | 2:30 min | 🚨 River warda v čase **2:35 – 2:45** (hlídá gank!). |
+| 🐉 **Drak (Dragon)** | **05:00** | 5:00 min | **V čase 4:15 (45s před spawnem):** Recall, nákup, příchod k řece. |
+| 👾 **Baron Nashor** | **20:00** | 6:00 min | **V čase 19:15:** Crash mid vlny, wardy kolem Barona. |
 | 🛡️ **Permanentní pláty (S16)** | **Celou hru** | Nepadají | Tlak na věž platí i po 14. minutě. |
 
 ---
