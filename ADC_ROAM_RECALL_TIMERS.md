@@ -11,17 +11,17 @@
 V sezóně 2026 minioni vycházejí z báze už v **00:30** a jungle kempy spawnují v **00:55**. Celá hra je posunuta dopředu:
 
 ```
-[00:00 – 00:30] ──► Příprava na linku / Invade defense / Bush control (spawn minionů z báze v 0:30!)
-[00:55]         ──► 🌲 Jungle camps spawn (buff spawnuje v 0:55)
-[01:00 – 02:15] ──► Level 2 race (1. vlna se potká kolem 1:00, Lvl 2 naskočí po 1. vlně + 3 melee)
-[02:40 – 03:00] ──► 🚨 POZOR: Jungle gank okno & Scuttle Crab spawn v řece (2:55!)
-[03:20 – 04:10] ──► 1. CHEATER RECALL OKNO (Crash 3. vlny s kanónem)
-[05:00]         ──► 🐉 Dragon spawn (první drak)
+[00:00 – 00:30] ──► Příprava na linku / Invade defense (spawn minionů z báze v 00:30!)
+[00:55]         ──► 🌲 Jungle camps spawn (Tier 1 buffy v 0:55, Tier 2 Gromp/Krugs v 1:07)
+[01:00 – 02:00] ──► Level 2 race (1. vlna se srazí v 0:55, Lvl 2 naskočí v 1:45 po 1. vlně + 3 melee)
+[02:35 – 02:55] ──► 🚨 POZOR: W1 river warda (2:35–2:45) & Scuttle Crab spawn v řece (02:55!)
+[03:20 – 04:00] ──► 1. CHEATER RECALL OKNO (Crash 3. vlny s kanónem)
+[05:00]         ──► 🐉 Dragon spawn (první drak v dračí jámě)
 [05:30 – 06:15] ──► Level 6 power spike (odemčení R – all-in / kill hrozba)
-[07:00 – 08:30] ──► 🪟 PRVNÍ ROAM OKNO NA MID (Fake Recall / Cannon crash)
-[09:00 – 14:00] ──► Tlak na věž, permanentní pláty (S16), druhý drak setup
-[14:00+]        ──► 🔄 MID SWAP: Odchod z botu na midlane, sběr vln a objektivů
-[20:00]         ──► 👾 Baron Nashor spawn (držet se v bezpečí, 45s setup)
+[07:00 – 08:00] ──► 🪟 PRVNÍ ROAM OKNO NA MID (Fake Recall / Cannon crash v 7:30)
+[09:00 – 12:00] ──► Tlak na věž, permanentní pláty (S16), druhý drak setup
+[12:00]         ──► 👾 Baron Nashor spawn (v S26 nahradil Heralda už v 12:00!)
+[14:00+]        ──► 🔄 MID SWAP: Odchod z botu na midlane, sběr vln a teamfighty
 ```
 
 ---
@@ -105,7 +105,7 @@ Jako ADC musíš mít v hlavě tyto přesné časy:
 | 🌲 **Jungle kempy (Red/Blue)** | **00:55** | 2:15 min | Hlídej start enemy junglera (leash bot vs. leash top). |
 | 🦀 **Scuttle Crab v řece** | **02:55** | 2:30 min | 🚨 River warda v čase **2:35 – 2:45** (hlídá gank!). |
 | 🐉 **Drak (Dragon)** | **05:00** | 5:00 min | **V čase 4:15 (45s před spawnem):** Recall, nákup, příchod k řece. |
-| 👾 **Baron Nashor** | **20:00** | 6:00 min | **V čase 19:15:** Crash mid vlny, wardy kolem Barona. |
+| 👾 **Baron Nashor** | **12:00** | 6:00 min | **V čase 11:15 (45s před spawnem):** Crash mid vlny, wardy kolem Barona. |
 | 🛡️ **Permanentní pláty (S16)** | **Celou hru** | Nepadají | Tlak na věž platí i po 14. minutě. |
 
 ---
