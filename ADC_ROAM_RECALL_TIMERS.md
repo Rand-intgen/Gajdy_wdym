@@ -1,14 +1,14 @@
 # ⏱️ MASTER ROAM, RECALL & TIMING MANUAL: ADC & Twitch Blueprint
 
 > **Hráč:** In the Dark#CHALL / Orbwalk#ONN  
-> **Účel:** Přesné časové osy, pravidla pro recall, roamovací okna a časovače cílů na mapě.  
+> **Účel:** Přesné časové osy, pravidla pro recall, roamovací okna, trasy návratu z báze a časovače cílů na mapě.  
 > **Základní pravidlo:** *Každý krok na mapě musí mít důvod. Náhodný pohyb = ztráta LP.*
 
 ---
 
-## 🕒 1. Časová osa zápasu (Co přesně dělat v každé minutě)
+## 🕒 1. Časová osa zápasu (Season 2026 – Zrychlené tempo)
 
-Tento rozvrh ti přesně řekne, na co máš v danou minutu myslet:
+V sezóně 2026 minioni vycházejí z báze už v **00:30** a jungle kempy spawnují v **00:55**. Celá hra je posunuta dopředu:
 
 ```
 [00:00 – 00:30] ──► Příprava na linku / Invade defense / Bush control (spawn minionů z báze v 0:30!)
@@ -26,9 +26,9 @@ Tento rozvrh ti přesně řekne, na co máš v danou minutu myslet:
 
 ---
 
-## 🔄 2. Zákony správného RECALLU (Kdy smíš zmáčknout „B“)
+## 🔄 2. Zákony správného RECALLU & Trasy návratu z báze
 
-Největší důvod, proč hráči v Platině ztrácejí 2 levely a 40 CS, je **špatný recall**.
+Největší důvod, proč hráči v Platině ztrácejí 2 levely a 40 CS, je **špatný recall a špatná trasa z báze zpět**.
 
 ### 🟢 Tři legální důvody pro Recall:
 1. **Cannon Wave Crash (Zlatý standard):**
@@ -44,6 +44,29 @@ Největší důvod, proč hráči v Platině ztrácejí 2 levely a 40 CS, je **�
 * ❌ Vlna je uprostřed linky a ty máš plné HP (daruješ nepříteli freeze).
 * ❌ Vlna se sune k tvé věži (ztratíš celou vlnu + pláty).
 * ❌ Drak spawnuje za 25 sekund a ty dáváš recall (tvůj tým bojuje 4v5).
+
+---
+
+### 🗺️ Návratové trasy z báze podle mapy (Blue Side vs. Red Side):
+
+Podívej se na šipky vycházející z bází na nové mapě:
+
+#### 🔵 KDYŽ HRAJEŠ BLUE SIDE (Modrá báze vlevo dole):
+* **Trasa A (Dolní modrá šipka – Přímý návrat na Bot):**
+  * Běh po spodní lince. Trvá **~23 sekund** s Berserker's Greaves.
+  * *Kdy použít:* Vlna se vrací pod tvou věž a potřebuješ zachránit každého miniona.
+* **Trasa B (Vnitřní modrá šipka přes Jungle – Tempo & Roam na Mid):**
+  * Běh z báze přes svou Red džungli směrem k řece/midu.
+  * Trvá jen **~17 sekund** k řece.
+  * *Kdy použít:* Crashnul jsi vlnu pod věž a enemy midlaner je overextended. Běžíš v Qčku rovnou ganknout mid a teprve potom sbíráš odraženou vlnu na botu!
+
+#### 🔴 KDYŽ HRAJEŠ RED SIDE (Červená báze vpravo nahoře):
+* **Trasa A (Pravá červená šipka – Přímý návrat na Bot):**
+  * Běh podél pravé stěny dolů na botlinku. Trvá **~23 sekund**.
+  * *Kdy použít:* Standardní návrat k obraně vlastní věže.
+* **Trasa B (Vnitřní červená šipka přes Blue Jungle – Dragon & Mid Control):**
+  * Běh z báze středem džungle přímo k dračí jámě a k řece.
+  * Umožňuje instantní flank na midlane z horní strany řeky nebo rychlou kontrolu draka s junglerem.
 
 ---
 
@@ -108,8 +131,8 @@ Polož si tuto otázku předtím, než opustíš linku:
 | **W2** | 🔴 **Tri-Bush** | **Control Ward (Pinka).** | Klíčové místo pro ochranu zad (Blue side) nebo agresivní odchyt enemy rotací (Red side). |
 | **W3** | 🟡 **Lane Bush** | **Minion Aggro Test.** | Zde se schovávají Hook supporti (Nautilus, Blitz, Pyke). **Pokud se minioni otočí za tebou do keře = JE TAM WARDA!** |
 | **W4** | 🟠 **Pixel Bush** | **Pozor při Roamu v Q!** | Malý keřík u midu. Žlutá warda tě nevidí, ale pokud tam enemy mid/jg položil **červenou Control Wardu**, odhalí tvůj stealth! |
-| **B1** | 🔵 **Dračí jáma** | **Blue Trinket (po lvl 9).** | Nikdy nechoď checkovat draka tělem (facecheck). Hoď modrý trinket ze vzdálenosti celé obrazovky. |
-| **B2** | 🔵 **Baron jáma** | **Blue Trinket (po lvl 9).** | Bezpečné odhalení Barona zpoza stěny na midlane. |
+| **B1** | 🔵 **Dračí jáma (Dragon)** | **Blue Trinket (po lvl 9).** | Nikdy nechoď checkovat draka tělem (facecheck). Hoď modrý trinket ze vzdálenosti celé obrazovky. |
+| **B2** | 🔵 **Baron jáma (Baron)** | **Blue Trinket (po lvl 9).** | Bezpečné odhalení Barona zpoza stěny na midlane. |
 | **F1** | 🟢 **Faelights (S26)** | **Kruh hub v řece.** | Warda položená do tohoto kruhu získá v sezóně 2026 obří bonus k dosahu vize! |
 | 🟣 | **Fialová trasa** | **Q Ambush Roam na Mid.** | Trasa pro gank v 7:30 po crashi kánonové vlny. Běh podél dračí jámy přímo za záda enemy midlanera. |
 
