@@ -17,35 +17,27 @@ Většina hráčů v Platině a Goldu dělá na levelu 1 tu nejhorší věc:
 
 ---
 
-## 🎯 3 KONKRÉTNÍ LEVEL 1 STRATEGIE PRO TWITCHE:
-
-### STRATEGIE A: Hluboká warda do Enemy Jungle (Jungle Tracking na 5 minut dopředu)
-* **Kdy:** Hned jak vyběhneš z báze v čase **00:15**.
-* **Trasa:** Běžíš přímo přes řeku do enemy jungle (na enemy Raptors nebo Blue buff).
-* **Čas položení:** V čase **00:40 – 00:45** položíš wardu přes zeď do kempu.
-* **Recall na bázi (00:48):**
-  * Okamžitě zmáčkneš recall $\to$ v bázi vyměníš žlutou wardu za **Red Trinket (Sweeper)** nebo si necháš žlutou a doplníš cooldown.
-  * Stíháš doběhnout na bot dřív, než dorazí první minioni (čas 00:55)!
-* **Výsledek:** Tvůj toplaner, midlaner i jungler přesně vědí, kde enemy jungler začíná, jaký kemp čistí a na jakou linku půjde gankovat v čase 03:00. Enemy jungler je kompletně zneškodněný.
+## ⏱️ DŮLEŽITÉ ČASOVÁNÍ V NOVÉ SEZÓNĚ (Minioni vybíhají v 00:30!):
+* **Minioni vybíhají z báze už v čase 00:30** (kolize na lince v 00:55).
+* **Jungle buffy spawnují v čase 00:55.**
+* To znamená: **Klasický dlouhý 5-man invade už v nové sezóně neexistuje**, protože bys ztratil celou první vlnu minionů!
+* **Wunnonův Level 1 musí být bleskový sprint v prvních 25 vteřinách hry!**
 
 ---
 
-### STRATEGIE B: "Toplane / Jungle Level 1 Cheese" (Wunnon Special)
-* **Kdy:** Když enemy toplaner hraje agresivního melee šampiona (Darius, Riven, Fiora), který stojí v river bushce a chce sýrovat tvého toplanera.
-* **Provedení:**
-  * Twitch vezme na levelu 1 **`Q` (Ambush)**.
-  * Běžíš na Top/Mid stranu řeky.
-  * Zapneš `Q` stealth $\to$ naběhnete s tvým toplanerem 2v1 do enemy toplanera.
-  * Otevřeš s bonusovým Attack Speedem + pasivka True Damage jed $\to$ enemy toplaner **musí flashnout, nebo odevzdá First Blood před 01:00 minutou!**
-  * Ty okamžitě recallneš a běžíš na Botlane. Tvůj toplaner má vyhranou celou linku.
+## 🎯 2 BLESKOVÉ STRATEGIE PRO NOVOU SEZÓNU:
 
----
+### STRATEGIE A: Blesková warda do řeky / na kemp (Čas 00:20 - 00:25)
+* Vyběhneš z báze s Homeguardem v čase 00:00.
+* Běžíš bleskově do řeky / k enemy vstupu do jungle.
+* V čase **00:20 – 00:25** položíš wardu a **OKAMŽITĚ se vracíš na linku**!
+* V čase **00:35** už stojíš ve svém křoví na botlane připravený na miniony.
 
-### STRATEGIE C: "Level 1 Botlane Tribush Trap" (Nejbezpečnější a nejúčinnější)
-* Pokud nechceš běhat na druhý konec mapy:
-  * V čase **00:30** jdete se supportem do **Enemy Tribushe** (nebo do spodního river křoví).
-  * Enemy ADC a support jdou pomoct svému junglerovi na buffu a v čase **01:10** se vracejí přes řeku/tribush.
-  * Nic nečekají. Ty stojíš v `Q` stealthu $\to$ vylezeš $\to$ nastackuješ jed $\to$ seberete jim oba Flashe dřív, než začne linka!
+### STRATEGIE B: "Level 1 Lane Bush Trap na Botu" (Nejlepší zbraň nové sezóny)
+* Protože minioni vybíhají v 00:30, nikdo nemá čas běhat na top.
+* V čase **00:25** se se supportem schováte do **prvního spodního křoví (Lane Bush)** na botlane.
+* Enemy botlane jde s miniony v 00:50.
+* Vylezeš z křoví s `Q` stealth dřív, než enemy ADC stihne první last-hit $\to$ okamžitá výhoda na levelu 1 a jistý Level 2 power-spike!
 
 ---
 
