@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320" width="100%" height="100%">
+  <!-- Solid Pure White Background -->
+  <rect width="1000" height="320" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- Target reticle circles -->
+  <circle cx="160" cy="160" r="110" fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="6 8" opacity="0.25"/>
+  <circle cx="160" cy="160" r="85" fill="none" stroke="#000000" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- Icon Section -->
+  <g transform="translate(10, 0)">
+    <!-- Left Wing (Solid Black) -->
+    <path d="M 150 55 L 70 175 L 138 155 L 150 245 Z" fill="#000000"/>
+    <!-- Right Wing (Facet / 50% Black) -->
+    <path d="M 150 55 L 230 175 L 162 155 L 150 245 Z" fill="#000000" opacity="0.55"/>
+    <!-- Center Spine (White cutout) -->
+    <polygon points="150,68 155,160 150,230 145,160" fill="#FFFFFF"/>
+    <!-- Center Reticle Ring -->
+    <polygon points="150,140 162,158 150,176 138,158" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+    <circle cx="150" cy="158" r="4" fill="#000000"/>
+  </g>
+
+  <!-- Typography: KITE (Solid Black) -->
+  <g transform="translate(300, 195)" fill="#000000">
+    <!-- Letter K -->
+    <polygon points="20,-105 55,-105 55,-40 100,-105 145,-105 90,-25 150,60 105,60 60,-5 55,2 55,60 20,60"/>
+    <!-- Letter I -->
+    <polygon points="180,-105 215,-105 215,60 180,60"/>
+    <polygon points="180,-122 215,-122 205,-110 180,-110"/>
+    <!-- Letter T -->
+    <polygon points="245,-105 350,-105 350,-75 315,-75 315,60 280,60 280,-75 245,-75"/>
+    <!-- Letter E -->
+    <polygon points="380,-105 470,-105 470,-75 415,-75 415,-38 460,-38 460,-10 415,-10 415,30 475,30 475,60 380,60"/>
+  </g>
+
+  <!-- Badge: COACHING (Black Outline & Text) -->
+  <g transform="translate(805, 110)">
+    <rect x="0" y="0" width="150" height="90" rx="12" fill="#F8FAFC" stroke="#000000" stroke-width="2.5"/>
+    <text x="75" y="42" font-family="'Segoe UI', Montserrat, Arial, sans-serif" font-size="20" font-weight="900" fill="#000000" text-anchor="middle" letter-spacing="4">COACH</text>
+    <text x="75" y="70" font-family="'Segoe UI', Montserrat, Arial, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle" letter-spacing="3">ACADEMY</text>
+  </g>
+</svg>

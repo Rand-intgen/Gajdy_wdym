@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="100%" height="100%">
+  <defs>
+    <linearGradient id="outGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#060910"/>
+      <stop offset="35%" stop-color="#0F172A"/>
+      <stop offset="80%" stop-color="#1E1035"/>
+      <stop offset="100%" stop-color="#060910"/>
+    </linearGradient>
+    <linearGradient id="oNeon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+  <!-- Rollup Stand Frame -->
+  <rect width="600" height="900" fill="#0B0F17"/>
+  <!-- Banner Canvas -->
+  <rect x="50" y="30" width="500" height="800" rx="12" fill="url(#outGrad)" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Stand feet -->
+  <rect x="30" y="830" width="540" height="20" rx="6" fill="#475569"/>
+  <rect x="250" y="850" width="100" height="15" rx="3" fill="#1E293B"/>
+
+  <!-- Banner Content -->
+  <g transform="translate(300, 140)">
+    <!-- Big Logo -->
+    <g transform="translate(-75, -50) scale(0.65)">
+      <path d="M 120 40 L 50 145 L 110 128 L 120 205 Z" fill="#00F0FF"/>
+      <path d="M 120 40 L 190 145 L 130 128 L 120 205 Z" fill="#EC4899"/>
+      <polygon points="120,52 125,130 120,195 115,130" fill="#FFFFFF"/>
+      <circle cx="120" cy="130" r="10" fill="#00F0FF"/>
+    </g>
+    <text x="0" y="150" font-family="'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="6">KITE</text>
+    <text x="0" y="185" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#00F0FF" text-anchor="middle" letter-spacing="4">ESPORTS COACHING</text>
+  </g>
+
+  <!-- Key Highlights -->
+  <g transform="translate(100, 420)">
+    <rect x="0" y="0" width="400" height="65" rx="10" fill="#0F172A" stroke="#00F0FF" stroke-width="1.5"/>
+    <text x="25" y="40" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">🎯 MECHANIKY &amp; SPACING DRILLY</text>
+  </g>
+  <g transform="translate(100, 505)">
+    <rect x="0" y="0" width="400" height="65" rx="10" fill="#0F172A" stroke="#EC4899" stroke-width="1.5"/>
+    <text x="25" y="40" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">🏆 HIGH-ELO VOD ANALÝZY</text>
+  </g>
+  <g transform="translate(100, 590)">
+    <rect x="0" y="0" width="400" height="65" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="25" y="40" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">⚡ Z PLATINY AŽ DO MASTERU</text>
+  </g>
+
+  <!-- Big Slogan & QR Code Box -->
+  <g transform="translate(300, 710)">
+    <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="900" fill="url(#oNeon)" text-anchor="middle" letter-spacing="5">OUTSPACE. OUTKITE. OUTCLIMB.</text>
+    <rect x="-60" y="20" width="120" height="40" rx="8" fill="#00F0FF"/>
+    <text x="0" y="46" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="900" fill="#0B0F17" text-anchor="middle">KITE-COACHING.GG</text>
+  </g>
+</svg>

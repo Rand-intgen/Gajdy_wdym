@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KITE Coaching — Brand Identity & Podklady pro Canvu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0E17;
+      --card-bg: #111827;
+      --card-border: #1E293B;
+      --primary-cyan: #00F0FF;
+      --primary-purple: #A855F7;
+      --accent-pink: #EC4899;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--primary-cyan);
+      color: var(--primary-cyan);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #00F0FF 0%, #EC4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 35px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary-cyan);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #0D131F;
+      border: 1px solid #243048;
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .color-swatch {
+      height: 100px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .svg-preview {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid #1E293B;
+      background: #000;
+      margin-top: 12px;
+      transition: transform 0.2s;
+    }
+    .svg-preview:hover {
+      transform: scale(1.01);
+    }
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #1E293B;
+      color: #38BDF8;
+      display: inline-block;
+      margin-right: 6px;
+      margin-top: 6px;
+    }
+    .slide-step {
+      background: #131D2E;
+      border-left: 4px solid var(--primary-cyan);
+      padding: 18px 24px;
+      margin-bottom: 16px;
+      border-radius: 0 12px 12px 0;
+    }
+    .slide-step h4 {
+      color: #38BDF8;
+      margin-bottom: 6px;
+    }
+    pre {
+      background: #070A10;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      color: #A5F3FC;
+      border: 1px solid #1E293B;
+    }
+    .canva-tip {
+      background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(236,72,153,0.1));
+      border: 1px solid rgba(0,240,255,0.3);
+      padding: 20px;
+      border-radius: 14px;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">BRAND IDENTITY &amp; E-SHOP DESIGN</div>
+    <h1>KITE COACHING</h1>
+    <p class="subtitle">Kompletní vizuální identita a podklady do Canvy pro League of Legends Master-tier coaching platformu</p>
+  </header>
+
+  <!-- Sekce A -->
+  <div class="section" id="sekce-a">
+    <div class="section-title"><span>a)</span> Název eshopu &amp; Představení nabídky</div>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color:#FFF; margin-bottom:10px;">Brand: <strong>KITE</strong> (Kite Coaching / Kite Esports)</h3>
+        <p style="color:var(--text-muted); margin-bottom:15px;">
+          Název <strong>KITE</strong> přímo vychází ze stěžejní mechaniky League of Legends – <em>kiting / orbwalking / stutter-stepping</em> (schopnost útočit na maximální range a plynule se pohybovat mezi jednotlivými auto-attacky). Zároveň evokuje rychlost, aerodynamiku a vzdušnou dominanci dravce.
+        </p>
+        <div class="tag">ADC Specializace</div>
+        <div class="tag">Master Tier Mentoring</div>
+        <div class="tag">Mechanics &amp; Spacing</div>
+      </div>
+      <div class="card">
+        <h3 style="color:#FFF; margin-bottom:10px;">Co e-shop / platforma prodává:</h3>
+        <ul style="padding-left:20px; color:var(--text-muted);">
+          <li><strong>Individuální 1v1 Live Coaching:</strong> Živé analýzy v reálném čase přes Discord, tracking myši a klikání.</li>
+          <li><strong>VOD Reviews:</strong> Hloubkový taktický rozbor prohraných zápasů zaměřený na tempo, wave management a spacing.</li>
+          <li><strong>KITE Masterclass PDF E-booky &amp; Cheatsheety:</strong> Přesné návody (Recall timery, 2. level spike, Jungle tracking 2:30–3:30).</li>
+          <li><strong>Branded Merch &amp; Mousepads:</strong> Speciální speed-podložky pod myš s vyznačeným spacing-gridem pro přesné pravé kliky.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sekce B -->
+  <div class="section" id="sekce-b">
+    <div class="section-title"><span>b)</span> Náčrty log, kombinace &amp; Vybraný koncept</div>
+    <div class="grid-3">
+      <div class="card">
+        <h4 style="color:#FFF; margin-bottom:8px;">Koncept 1: Attack-Move Reticle</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem;">
+          Založeno na ikoně "A-click" zaměřovače a kružnici maximálního dosahu (Attack Range). Čistě technické, analytické.
+        </p>
+      </div>
+      <div class="card">
+        <h4 style="color:#FFF; margin-bottom:8px;">Koncept 2: Aerodynamický šíp / Křídlo</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem;">
+          Geometrický kosočtverec ve tvaru draka (kite) / stealth letounu. Reprezentuje pohyb vpřed, rychlé úskoky a reflexy.
+        </p>
+      </div>
+      <div class="card" style="border-color:var(--primary-cyan);">
+        <h4 style="color:var(--primary-cyan); margin-bottom:8px;">★ Finální vybraná kombinace</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem;">
+          <strong>Fúze křídla a zaměřovače:</strong> Dvě dynamická aerodynamická křídla s kinetickým jádrem v attack-range kružnici. Symbolizuje perfektní spacing.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sekce C -->
+  <div class="section" id="sekce-c">
+    <div class="section-title"><span>c)</span> Barevná paleta</div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="color-swatch" style="background:#00F0FF; color:#000;">#00F0FF | RGB(0, 240, 255)</div>
+        <h4 style="color:#FFF;">Electric Cyan (Primární)</h4>
+        <p style="color:var(--text-muted); font-size:0.85rem;">Symbolizuje high-tech přesnost, rychlost reflexů a elektrizující energii.</p>
+      </div>
+      <div class="card">
+        <div class="color-swatch" style="background:#A855F7; color:#FFF;">#A855F7 | RGB(168, 85, 247)</div>
+        <h4 style="color:#FFF;">Master Violet (Akcentní)</h4>
+        <p style="color:var(--text-muted); font-size:0.85rem;">Odkaz na prestižní fialový odznak <strong>Master Tier</strong> v League of Legends.</p>
+      </div>
+      <div class="card">
+        <div class="color-swatch" style="background:#0B0E14; color:#FFF; border:1px solid #334155;">#0B0E14 | RGB(11, 14, 20)</div>
+        <h4 style="color:#FFF;">Void Obsidian (Pozadí)</h4>
+        <p style="color:var(--text-muted); font-size:0.85rem;">Hluboká esportová černá pro maximální kontrast a prémiový dark-mode styl.</p>
+      </div>
+      <div class="card">
+        <div class="color-swatch" style="background:#FFFFFF; color:#000; border:1px solid #334155;">#FFFFFF | RGB(255, 255, 255)</div>
+        <h4 style="color:#FFF;">Pure White (Neutrální tisk)</h4>
+        <p style="color:var(--text-muted); font-size:0.85rem;">Použití pro vizitky, světlé mockupy a vysokou čitelnost typografie.</p>
+      </div>
+      <div class="card">
+        <div class="color-swatch" style="background:#EC4899; color:#FFF;">#EC4899 | RGB(236, 72, 153)</div>
+        <h4 style="color:#FFF;">Neon Cyber Pink (Doplňková)</h4>
+        <p style="color:var(--text-muted); font-size:0.85rem;">CTA tlačítka, akční prvky, energetický gradient k Master fialové.</p>
+      </div>
+      <div class="card">
+        <div class="color-swatch" style="background:#94A3B8; color:#000;">#94A3B8 | RGB(148, 163, 184)</div>
+        <h4 style="color:#FFF;">Ice Slate (Sekundární text)</h4>
+        <p style="color:var(--text-muted); font-size:0.85rem;">Vyvážený neutrální tón pro podnadpisy, popisky a doplňující data.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sekce D & E -->
+  <div class="section" id="sekce-d-e">
+    <div class="section-title"><span>d &amp; e)</span> Vektorové varianty loga (SVG) &amp; Logo s heslem</div>
+    <div class="grid-2">
+      <div class="card">
+        <h4 style="color:#FFF;">Samostatné Logo (Primární horizontální)</h4>
+        <img src="kite_logo_primary.svg" class="svg-preview" alt="Primární logo">
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;">Uloženo jako: <code>brand_kite/kite_logo_primary.svg</code></p>
+      </div>
+      <div class="card">
+        <h4 style="color:#FFF;">Logo s heslem (Slogan Edition)</h4>
+        <img src="kite_logo_with_slogan.svg" class="svg-preview" alt="Logo s heslem">
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;">Heslo: <strong>OUTSPACE. OUTKITE. OUTCLIMB.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sekce F -->
+  <div class="section" id="sekce-f">
+    <div class="section-title"><span>f)</span> Barevné kombinace na neutrálním bílém a černém pozadí + Monochromatická verze</div>
+    <div class="grid-2">
+      <div class="card" style="background:#FFFFFF; color:#000;">
+        <h4 style="color:#0F172A; margin-bottom:8px;">1. Barevná verze pro bílé neutrální pozadí</h4>
+        <img src="kite_logo_light.svg" class="svg-preview" style="background:#FFF;" alt="Logo na bílém">
+        <p style="font-size:0.85rem; color:#64748B; margin-top:10px;">Optimalizované tmavé fonty (#0F172A) a sytější gradienty pro tisk.</p>
+      </div>
+      <div class="card">
+        <h4 style="color:#FFF; margin-bottom:8px;">2. Barevná verze pro tmavé pozadí</h4>
+        <img src="kite_logo_primary.svg" class="svg-preview" style="background:#090D16;" alt="Logo na černém">
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;">Plné neonové vyznění (Electric Cyan & Master Violet).</p>
+      </div>
+    </div>
+
+    <h3 style="color:#FFF; margin-top:30px; margin-bottom:15px;">Monochromatické varianty NA BÍLÉM POZADÍ (100% Black on White)</h3>
+    <div class="grid-2">
+      <div class="card" style="background:#F1F5F9; color:#000;">
+        <h4 style="color:#000000; margin-bottom:8px;">Monochrome logo na čistě bílém pozadí</h4>
+        <img src="kite_logo_monochrome_on_white.svg" class="svg-preview" style="background:#FFF;" alt="Monochrome on White">
+        <p style="font-size:0.85rem; color:#475569; margin-top:10px;"><code>brand_kite/kite_logo_monochrome_on_white.svg</code></p>
+      </div>
+      <div class="card" style="background:#F1F5F9; color:#000;">
+        <h4 style="color:#000000; margin-bottom:8px;">Monochrome logo s heslem na bílém pozadí</h4>
+        <img src="kite_logo_monochrome_with_slogan_on_white.svg" class="svg-preview" style="background:#FFF;" alt="Monochrome Slogan on White">
+        <p style="font-size:0.85rem; color:#475569; margin-top:10px;"><code>brand_kite/kite_logo_monochrome_with_slogan_on_white.svg</code></p>
+      </div>
+    </div>
+    <div style="max-width:380px; margin:20px auto 0 auto;">
+      <div class="card" style="background:#F1F5F9; color:#000; text-align:center;">
+        <h4 style="color:#000000; margin-bottom:8px;">Samostatná ikona na bílém podkladu</h4>
+        <img src="kite_logo_icon_monochrome_on_white.svg" class="svg-preview" style="background:#FFF; max-width:260px;" alt="Monochrome Icon on White">
+        <p style="font-size:0.85rem; color:#475569; margin-top:10px;"><code>brand_kite/kite_logo_icon_monochrome_on_white.svg</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sekce G -->
+  <div class="section" id="sekce-g">
+    <div class="section-title"><span>g)</span> Vizuální ukázky &amp; Mockupy v aplikacích</div>
+    
+    <div style="margin-bottom:30px;">
+      <h3 style="color:#FFF; margin-bottom:12px;">1. Web / E-shop platforma (Hero sekce)</h3>
+      <img src="mockup_website_hero.svg" class="svg-preview" alt="Web Mockup">
+    </div>
+
+    <div class="grid-2" style="margin-bottom:30px;">
+      <div>
+        <h3 style="color:#FFF; margin-bottom:12px;">2. Vizitky trenéra (Přední a zadní strana)</h3>
+        <img src="mockup_business_card.svg" class="svg-preview" alt="Business Card Mockup">
+      </div>
+      <div>
+        <h3 style="color:#FFF; margin-bottom:12px;">3. Sociální sítě (Twitch &amp; YouTube Banner)</h3>
+        <img src="mockup_social_banner.svg" class="svg-preview" alt="Social Banner Mockup">
+      </div>
+    </div>
+
+    <div>
+      <h3 style="color:#FFF; margin-bottom:12px;">4. Venkovní tabule / Roll-up banner pro esportové turnaje</h3>
+      <div style="max-width:550px; margin:0 auto;">
+        <img src="mockup_outdoor_board.svg" class="svg-preview" alt="Roll-up Banner Mockup">
+      </div>
+    </div>
+  </div>
+
+  <!-- Canva Guide -->
+  <div class="section">
+    <div class="section-title">Průvodce vytvořením v Canvě (Slide po Slide)</div>
+    <div class="slide-step">
+      <h4>Slide 1: Úvodní snímek (Titulka)</h4>
+      <p style="color:var(--text-muted);">Použijte tmavé pozadí (#0A0E17). Vložte soubor <code>kite_logo_with_slogan.svg</code> na střed. Podtitul: <em>"Kompletní brand identita esportové coaching platformy"</em>.</p>
+    </div>
+    <div class="slide-step">
+      <h4>Slide 2: a) Představení značky a produktů</h4>
+      <p style="color:var(--text-muted);">Rozdělení 50/50: Vlevo příběh názvu KITE (kiting/orbwalking), vpravo 4 dlaždice produktů (1v1 Coaching, VOD Review, Masterclass Guides, Custom Speed-Mousepads).</p>
+    </div>
+    <div class="slide-step">
+      <h4>Slide 3: b) Vývoj a skici loga</h4>
+      <p style="color:var(--text-muted);">Zobrazení 3 konceptů vedle sebe (Zaměřovač, Šíp, Finální fúze s attack-range kružnicí).</p>
+    </div>
+    <div class="slide-step">
+      <h4>Slide 4: c) Barevná paleta &amp; Typografie</h4>
+      <p style="color:var(--text-muted);">5 obdélníků s barvami a HEX kódy (#00F0FF, #A855F7, #EC4899, #0B0E14, #FFFFFF). Fonty: Montserrat (Headers) + JetBrains Mono / Inter (Body).</p>
+    </div>
+    <div class="slide-step">
+      <h4>Slide 5: d &amp; e) Logo s heslem &amp; Rozměry</h4>
+      <p style="color:var(--text-muted);">Vložení souborů <code>kite_logo_primary.svg</code> a <code>kite_logo_with_slogan.svg</code>. Heslo: <strong>OUTSPACE. OUTKITE. OUTCLIMB.</strong></p>
+    </div>
+    <div class="slide-step">
+      <h4>Slide 6: f) Barevné mutace (Tmavé vs. Bílé pozadí)</h4>
+      <p style="color:var(--text-muted);">Rozdělení slidu napůl (levá půlka tmavá, pravá půlka bílá) s vložením <code>kite_logo_primary.svg</code> a <code>kite_logo_light.svg</code>.</p>
+    </div>
+    <div class="slide-step">
+      <h4>Slide 7–9: g) Vizuální mockupy</h4>
+      <p style="color:var(--text-muted);">Slide s webovým e-shopem (<code>mockup_website_hero.svg</code>), slide s vizitkami a sociálními sítěmi (<code>mockup_business_card.svg</code>, <code>mockup_social_banner.svg</code>) a slide s turnajovým roll-up bannerem (<code>mockup_outdoor_board.svg</code>).</p>
+    </div>
+
+    <div class="canva-tip">
+      <strong>💡 Jak nahrát do Canvy:</strong>
+      <ol style="margin-left:20px; margin-top:8px; color:var(--text);">
+        <li>V Canvě klikněte vlevo na <strong>Nahrát (Uploads)</strong> -> <strong>Nahrát soubory</strong>.</li>
+        <li>Vyberte soubory <code>.svg</code> ze složky <code>brand_kite</code>. Canva nativně podporuje SVG – můžete v ní dokonce přímo měnit barvy jednotlivých křivek loga!</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

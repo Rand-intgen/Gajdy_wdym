@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="100%" height="100%">
+  <!-- Icon Section -->
+  <g transform="translate(60, 40)">
+    <circle cx="120" cy="130" r="95" fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="4 6" opacity="0.35"/>
+    <path d="M 120 40 L 50 145 L 110 128 L 120 205 Z" fill="#000000"/>
+    <path d="M 120 40 L 190 145 L 130 128 L 120 205 Z" fill="#000000" opacity="0.55"/>
+    <polygon points="120,52 125,130 120,195 115,130" fill="#FFFFFF"/>
+    <polygon points="120,115 131,130 120,145 109,130" fill="#FFFFFF" stroke="#000000" stroke-width="2.5"/>
+    <circle cx="120" cy="130" r="3.5" fill="#000000"/>
+  </g>
+
+  <!-- Typography: KITE -->
+  <g transform="translate(320, 190)" fill="#000000">
+    <polygon points="10,-95 40,-95 40,-35 80,-95 120,-95 72,-20 125,55 85,55 45,-5 40,2 40,55 10,55"/>
+    <polygon points="150,-95 180,-95 180,55 150,55"/>
+    <polygon points="150,-110 180,-110 172,-100 150,-100"/>
+    <polygon points="210,-95 300,-95 300,-70 270,-70 270,55 240,55 240,-70 210,-70"/>
+    <polygon points="325,-95 405,-95 405,-70 355,-70 355,-35 395,-35 395,-10 355,-10 355,30 410,30 410,55 325,55"/>
+
+    <text x="440" y="-15" font-family="'Segoe UI', Montserrat, Arial, sans-serif" font-size="28" font-weight="900" fill="#000000" letter-spacing="6">COACHING</text>
+    <text x="440" y="25" font-family="'Segoe UI', Montserrat, Arial, sans-serif" font-size="14" font-weight="700" fill="#000000" opacity="0.6" letter-spacing="4">MASTER TIER PLATFORM</text>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="120" y1="290" x2="880" y2="290" stroke="#000000" stroke-width="2" opacity="0.3"/>
+
+  <!-- Slogan / Heslo -->
+  <g transform="translate(500, 345)">
+    <text x="0" y="0" font-family="'Segoe UI', Montserrat, Arial, sans-serif" font-size="22" font-weight="900" fill="#000000" text-anchor="middle" letter-spacing="9">
+      OUTSPACE. OUTKITE. OUTCLIMB.
+    </text>
+  </g>
+</svg>

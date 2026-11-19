@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="webCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#0077FE"/>
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+  <!-- Browser Window Frame -->
+  <rect width="1000" height="650" rx="14" fill="#0B0F17" stroke="#1E293B" stroke-width="2"/>
+  
+  <!-- Browser top bar -->
+  <rect width="1000" height="42" rx="14" fill="#161F30"/>
+  <circle cx="25" cy="21" r="6" fill="#EF4444"/>
+  <circle cx="45" cy="21" r="6" fill="#F59E0B"/>
+  <circle cx="65" cy="21" r="6" fill="#10B981"/>
+  <rect x="180" y="10" width="640" height="22" rx="6" fill="#0B0F17"/>
+  <text x="500" y="26" font-family="'Segoe UI', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">https://kite-coaching.gg/store/master-adc-program</text>
+
+  <!-- Website Header Navigation -->
+  <rect y="42" width="1000" height="70" fill="#0E1524" opacity="0.9"/>
+  <!-- Mini Logo -->
+  <g transform="translate(40, 52) scale(0.28)">
+    <path d="M 120 40 L 50 145 L 110 128 L 120 205 Z" fill="#00F0FF"/>
+    <path d="M 120 40 L 190 145 L 130 128 L 120 205 Z" fill="#EC4899"/>
+    <circle cx="120" cy="130" r="10" fill="#FFFFFF"/>
+  </g>
+  <text x="110" y="85" font-family="'Segoe UI', sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" letter-spacing="2">KITE</text>
+  <text x="280" y="83" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#00F0FF">Coaching 1v1</text>
+  <text x="410" y="83" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#94A3B8">VOD Reviews</text>
+  <text x="530" y="83" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#94A3B8">E-books &amp; Guides</text>
+  <text x="680" y="83" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#94A3B8">Merch &amp; Mousepads</text>
+  <rect x="850" y="60" width="110" height="34" rx="17" fill="url(#btnGrad)"/>
+  <text x="905" y="82" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#0B0F17" text-anchor="middle">BOOK SESSION</text>
+
+  <!-- Hero Section -->
+  <g transform="translate(60, 150)">
+    <!-- Badge -->
+    <rect x="0" y="10" width="220" height="28" rx="14" fill="#132338" stroke="#00F0FF" stroke-width="1"/>
+    <text x="110" y="29" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#00F0FF" text-anchor="middle">⚡ MASTER TIER ADC COACHING</text>
+    
+    <text x="0" y="90" font-family="'Segoe UI', sans-serif" font-size="44" font-weight="900" fill="#FFFFFF">ZASTAV PROHRÁVAT.</text>
+    <text x="0" y="145" font-family="'Segoe UI', sans-serif" font-size="44" font-weight="900" fill="#00F0FF">ZAČNI KITOVAT JAKO BŮH.</text>
+    
+    <text x="0" y="195" font-family="'Segoe UI', sans-serif" font-size="16" fill="#94A3B8">Individuální rozbor chyb, spacing drilly, mechaniky orbwalkingu a macro</text>
+    <text x="0" y="220" font-family="'Segoe UI', sans-serif" font-size="16" fill="#94A3B8">pro každého ADC střelce, který míří z Platiny/Diamondu do Masteru.</text>
+
+    <!-- CTAs -->
+    <rect x="0" y="260" width="200" height="50" rx="25" fill="url(#btnGrad)"/>
+    <text x="100" y="292" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="900" fill="#0B0F17" text-anchor="middle">OBJEDNAT LEKCI</text>
+
+    <rect x="220" y="260" width="180" height="50" rx="25" fill="none" stroke="#334155" stroke-width="2"/>
+    <text x="310" y="292" font-family="'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">ZOBRAZIT GUIDY</text>
+  </g>
+
+  <!-- Hero Graphic Card / Master Badge Product Mockup -->
+  <g transform="translate(560, 160)">
+    <rect width="380" height="310" rx="20" fill="#101726" stroke="#1E293B" stroke-width="2"/>
+    <!-- Product preview header -->
+    <rect width="380" height="60" rx="20" fill="#162238"/>
+    <text x="30" y="38" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#00F0FF">BALÍČEK: ROAD TO MASTER</text>
+    <text x="330" y="38" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="900" fill="#EC4899">999 Kč</text>
+    
+    <!-- Big Logo Emblem in Preview -->
+    <g transform="translate(140, 90) scale(0.42)">
+      <path d="M 120 40 L 50 145 L 110 128 L 120 205 Z" fill="#00F0FF"/>
+      <path d="M 120 40 L 190 145 L 130 128 L 120 205 Z" fill="#EC4899"/>
+      <circle cx="120" cy="130" r="10" fill="#FFFFFF"/>
+    </g>
+    <text x="190" y="200" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">KITE 1-ON-1 INTENSIVE</text>
+    <text x="190" y="225" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94A3B8" text-anchor="middle">✓ 2× Live VOD Review + Live Spectate</text>
+    <text x="190" y="248" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94A3B8" text-anchor="middle">✓ Kompletní PDF Guide pro Spacing &amp; Macra</text>
+    <text x="190" y="271" font-family="'Segoe UI', sans-serif" font-size="13" fill="#00F0FF" text-anchor="middle">✓ Discord VIP Role &amp; Otázky 24/7</text>
+  </g>
+
+  <!-- Bottom stats bar -->
+  <rect y="540" width="1000" height="110" rx="14" fill="#080C14"/>
+  <g transform="translate(100, 580)">
+    <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="900" fill="#00F0FF">+350 LP</text>
+    <text x="0" y="22" font-family="'Segoe UI', sans-serif" font-size="12" fill="#64748B">Průměrný skok studentů</text>
+  </g>
+  <g transform="translate(420, 580)">
+    <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="900" fill="#EC4899">87% WR</text>
+    <text x="0" y="22" font-family="'Segoe UI', sans-serif" font-size="12" fill="#64748B">Úspěšnost v laning phase</text>
+  </g>
+  <g transform="translate(720, 580)">
+    <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="900" fill="#FFFFFF">MASTER TIER</text>
+    <text x="0" y="22" font-family="'Segoe UI', sans-serif" font-size="12" fill="#64748B">Ověřená úroveň kouče</text>
+  </g>
+</svg>

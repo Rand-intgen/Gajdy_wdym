@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="socBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B12"/>
+      <stop offset="50%" stop-color="#0E1626"/>
+      <stop offset="100%" stop-color="#140A20"/>
+    </linearGradient>
+    <linearGradient id="socCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+    <linearGradient id="socPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="450" rx="20" fill="url(#socBg)"/>
+  
+  <!-- Reticle Spacing Lines in Background -->
+  <circle cx="500" cy="225" r="210" fill="none" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="5 10" opacity="0.25"/>
+  <circle cx="500" cy="225" r="160" fill="none" stroke="#EC4899" stroke-width="1" stroke-dasharray="3 6" opacity="0.2"/>
+  <line x1="50" y1="225" x2="950" y2="225" stroke="#00F0FF" stroke-width="1" opacity="0.1"/>
+
+  <!-- Center Big Logo -->
+  <g transform="translate(425, 40) scale(0.7)">
+    <path d="M 110 30 L 30 160 L 100 140 L 110 230 Z" fill="url(#socCyan)"/>
+    <path d="M 110 30 L 190 160 L 120 140 L 110 230 Z" fill="url(#socPink)"/>
+    <polygon points="110,45 116,145 110,220 104,145" fill="#FFFFFF"/>
+    <circle cx="110" cy="142" r="8" fill="#00F0FF"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="500" y="260" font-family="'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="8">K I T E</text>
+  <text x="500" y="295" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#00F0FF" text-anchor="middle" letter-spacing="6">MASTER TIER COACHING</text>
+  <text x="500" y="340" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#E2E8F0" text-anchor="middle" letter-spacing="4">OUTSPACE  •  OUTKITE  •  OUTCLIMB</text>
+
+  <!-- Social links badges -->
+  <g transform="translate(500, 390)">
+    <text x="-220" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#94A3B8" text-anchor="middle">TWITCH.TV/GAJDY_ADC</text>
+    <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#94A3B8" text-anchor="middle">YOUTUBE: @KITE_COACHING</text>
+    <text x="220" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#94A3B8" text-anchor="middle">DISCORD.GG/KITE-ESPORTS</text>
+  </g>
+</svg>
