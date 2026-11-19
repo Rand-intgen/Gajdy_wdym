@@ -1,4 +1,4 @@
-# BIZNIS_PLAN_COACHING_STRANKA.md
+# BYZNYS_PLAN_COACHING_STRANKA.md
 # Strategický Plán: Vlastní Coaching Web a Monetizace ADC Skillu
 > **Autor:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
 > **Cíl:** Stabilní měsíční příjem (15 000 – 35 000 Kč) z individuálního koučinku a video analýz  
