@@ -2,7 +2,7 @@
 # Renesance On-Hit Varuse v New Dawn Updatu
 > **Šampion:** Varus (The Arrow of Retribution)  
 > **Koncept:** Návrat tradičního Attack Speed / On-Hit Tank Shreddera  
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL)  
 > **Datum:** 18. listopadu 2026
 
 ---

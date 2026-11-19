@@ -1,6 +1,6 @@
 # REALITA_MASTER_TIER.md
 # Je MASTER reálný cíl? Analýza mechanik, dat a časové osy
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)  
 > **Současný stav:** Plat 2 (špičkový mechanický strop: Eme 1 / Dia 4 na MMRadaru)  
 > **Datum:** 18. listopadu 2026
 

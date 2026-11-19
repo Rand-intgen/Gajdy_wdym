@@ -1,7 +1,7 @@
 # STRATEGIE_NEW_DAWN_RANKED_RUSH.md
 # Jak funguje "New Dawn Ranked Rush" (Všichni na Iron 4) a proč je to tvůj největší cheat kód
 > **Aktualizace pro Sezónu 2026/2027:** New Dawn Update & Ranked Rush  
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)
 
 ---
 

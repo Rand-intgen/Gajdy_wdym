@@ -1,6 +1,6 @@
 # PAST_HIGH_ELO_HRY_V_PLATINE.md
 # Paradox "Hraju jako High Elo, ale v Platině to nefunguje"
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)  
 > **Koncept:** Proč "správné" League of Legends prohrává v chaotické Platině a jak to exploitnout  
 > **Datum:** 18. listopadu 2026
 

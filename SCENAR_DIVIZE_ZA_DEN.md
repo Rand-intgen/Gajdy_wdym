@@ -1,6 +1,6 @@
 # SCENAR_DIVIZE_ZA_DEN.md
 # Realistická analýza: "Divize za den" vs. Stabilní Esportový Růst
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)  
 > **Výchozí stav (18. 11. 2026):** Platinum 2 (35 LP)  
 > **Cíl:** Emerald 4 do konce listopadu $\to$ Diamond 4 do 31. 12. 2026
 

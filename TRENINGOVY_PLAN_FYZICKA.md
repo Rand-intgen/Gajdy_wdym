@@ -1,6 +1,6 @@
 # 🏋️ FITNESS & POSTURE BLUEPRINT: Tělo Profesionálního Atleta
 
-> **Určeno pro:** Štěpán (17 let)  
+> **Určeno pro:** In the Dark#CHALL (17 let)  
 > **Cíl:** Zbavit se „gamer postavy“ (kulatá záda, slabé jádro), vybudovat svaly, shodit tuk a získat brutální sebevědomí v zrcadle.  
 > **Vybavení:** Vlastní váha těla (hrazda / židle / podlaha) – lze cvičit doma v pokoji.  
 > **Časová náročnost:** 30–35 minut, **3–4× týdně**.

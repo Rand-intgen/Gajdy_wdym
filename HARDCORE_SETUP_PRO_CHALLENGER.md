@@ -1,6 +1,6 @@
 # HARDCORE_SETUP_PRO_CHALLENGER.md
 # Síla Sparťanského Setupu: Proč tě 60 Hz a low-end PC dělají lepším hráčem
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)  
 > **Hardware:** 8 let starý 60 Hz monitor, low grafické detaily kvůli procesoru, Logitech G502 bez závaží  
 > **Rank:** Platina 2 (75 LP) -> směřování do Emeraldu a Diamondu  
 > **Datum:** 19. listopadu 2026

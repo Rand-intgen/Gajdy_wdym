@@ -1,5 +1,5 @@
 # DENNI_SEMAFOR_DISCIPLINY.md
-# Osobní Semafor Disciplíny & Rozhodování (Štěpán Gajdacz)
+# Osobní Semafor Disciplíny & Rozhodování (In the Dark#CHALL)
 > **Účel:** Okamžité vyhodnocení stavu po odehrané hře – kdy pokračovat a kdy nasadit 2hodinový reset.  
 > **Cíl:** Stabilní postup z Plat 3 (92 LP) přes Plat 2/1 do Emeraldu a Diamondu bez nočního tiltu a zbytečných pádů.  
 > **Poslední aktualizace:** 9. listopadu 2026

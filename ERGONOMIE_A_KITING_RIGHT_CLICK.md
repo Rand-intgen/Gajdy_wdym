@@ -1,6 +1,6 @@
 # ERGONOMIE_A_KITING_RIGHT_CLICK.md
 # Správná technika "A + Right Click" a okamžitá úleva pro pravou ruku
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)  
 > **Koncept:** Přechod na mechanický Attack Move + Prevence bolesti šlach a karpálů  
 > **Datum:** 19. listopadu 2026
 

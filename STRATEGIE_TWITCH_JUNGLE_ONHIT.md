@@ -1,7 +1,7 @@
 # STRATEGIE_TWITCH_JUNGLE_ONHIT.md
 # Návrat legendy: Twitch Jungle On-Hit v New Dawn Update
 > **Koncept:** Návrat Twitch Jungle (RATIRL Season 8/9 styl) s novým on-hit arzenálem (Fatetaker, New BotRK, AS Uncap)  
-> **Hráč:** Štěpán Gajdacz  
+> **Hráč:** In the Dark#CHALL  
 > **Poslední aktualizace:** 18. listopadu 2026
 
 ---

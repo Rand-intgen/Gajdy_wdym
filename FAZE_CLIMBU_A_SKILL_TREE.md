@@ -1,6 +1,6 @@
 # FAZE_CLIMBU_A_SKILL_TREE.md
 # Kompletní Strom Rozvoje Hráče: Od Platiny po Challenger & LEC
-> **Hráč:** Štěpán Gajdacz (Twitch OTP / Sivir pojistka)  
+> **Hráč:** In the Dark#CHALL (Twitch OTP / Sivir pojistka)  
 > **Server:** EUW (`In the Dark#CHALL`) & EUNE (`Orbwalk#ONN`)  
 > **Poslední aktualizace:** 26. října 2026
 

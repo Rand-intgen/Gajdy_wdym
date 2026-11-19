@@ -1,6 +1,6 @@
 # TEMPO_A_ROAM_PRIRUCKA_TWITCH.md
 # Mistrovství Tempa & Roamingu na ADC (Twitch Special)
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)  
 > **Cíl:** Jak proměnit výhodu z Botu v demolici celé mapy bez ztráty jediného miniona  
 > **Datum:** 19. listopadu 2026
 

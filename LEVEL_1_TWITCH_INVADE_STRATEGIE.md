@@ -2,7 +2,7 @@
 # Taktika "Never Be AFK Level 1" (Wunnon Grandmaster Twitch Style)
 > **Inspirace:** Wunnon (Grandmaster Twitch OTP, NA Server)  
 > **Koncept:** Jak vyhrát hru v prvních 90 vteřinách přes Level 1 Jungle / Top cheese & vizi  
-> **Hráč:** Štěpán Gajdacz (In the Dark#CHALL, EUW)  
+> **Hráč:** In the Dark#CHALL (In the Dark#CHALL, EUW)  
 > **Datum:** 19. listopadu 2026
 
 ---
